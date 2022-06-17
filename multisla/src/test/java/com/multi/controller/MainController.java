@@ -1,6 +1,5 @@
-package com.multi.controller;
 
-import javax.servlet.http.HttpSession;
+package com.multi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
