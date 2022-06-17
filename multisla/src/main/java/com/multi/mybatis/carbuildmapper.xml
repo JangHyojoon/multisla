@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CarbuildMapper">
+	
+	<select id="select" parameterType="int" resultType="carbuildVO">
+		select cb.codeno,cb.mid,cb.colid,cb.wid,cb.iid,cb.corder,m.mprice+c.colprice+w.wprice+i.iprice as carprice from carbuild cb
+		INNER JOIN model m on cb.mid=m.mid
+		INNER JOIN color c on cb.colid=c.colid
+		INNER JOIN wheel w on cb.wid=w.wid
+		INNER JOIN interior i on cb.iid=i.iid
+		WHERE CODENO=#{codeno}
+	</select>
+	<select id="selectall" resultType="carbuildVO">
+		select cb.codeno,cb.mid,cb.colid,cb.wid,cb.iid,cb.corder,m.mprice+c.colprice+w.wprice+i.iprice as carprice from carbuild cb
+		INNER JOIN model m on cb.mid=m.mid
+		INNER JOIN color c on cb.colid=c.colid
+		INNER JOIN wheel w on cb.wid=w.wid
+		INNER JOIN interior i on cb.iid=i.iid
+	</select>
+	<insert id="insert" parameterType="carbuildVO">
+
+			INSERT INTO carbuild VALUES (#{codeno},#{mid},#{colid},#{wid},#{iid},#{corder})
+
+
+	</insert>
+	<update id="update" parameterType="carbuildVO">
+
+
+			UPDATE carbuild SET MID=#{mid}, COLID=#{colid},WID=#{wid},IID=#{iid},CORDER=#{corder} WHERE CODENO=#{codeno}
+
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM carbuild WHERE CODENO=#{codeno}
+	</delete>
+	
+</mapper>
+
+
+
+
