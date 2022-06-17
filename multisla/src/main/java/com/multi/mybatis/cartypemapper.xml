@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CartypeMapper">
+	
+	<select id="select" parameterType="int" resultType="cartypeVO">
+		SELECT * FROM cartype WHERE CTID=#{ctid}
+	</select>
+	<select id="selectall" resultType="cartypeVO">
+		SELECT * FROM cartype
+	</select>
+	<insert id="insert" parameterType="cartypeVO">
+		<if	test="pid != 0"> 
+			INSERT INTO cartype VALUES (#{ctid},#{ctname},#{pid})
+		</if>
+		<if test="pid == 0">
+			INSERT INTO cartype VALUES (#{ctid},#{ctname},NULL)
+		</if>
+	</insert>
+	<update id="update" parameterType="cartypeVO">
+		<if test="pid != 0">
+			UPDATE cartype SET CTNAME=#{ctname},PID=#{pid} WHERE CTID=#{ctid}
+		</if>
+		<if test="pid == 0">
+			UPDATE cartype SET CTNAME=#{ctname} WHERE CTID=#{ctid}
+		</if>
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM cartype WHERE CTID=#{ctid}
+	</delete>
+	
+</mapper>
+
+
+
+

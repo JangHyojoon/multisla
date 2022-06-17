@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ModelMapper">
+	
+	<select id="select" parameterType="int" resultType="modelVO">
+		SELECT * FROM model WHERE MID=#{mid}
+	</select>
+	<select id="selectall" resultType="modelVO">
+		SELECT * FROM model
+	</select>
+	<insert id="insert" parameterType="modelVO">
+		INSERT INTO model VALUES (NULL,#{ctid},#{mname},#{mprice},curdate())
+	</insert>
+	<update id="update" parameterType="modelVO">
+		UPDATE model SET MNAME=#{mname},MPRICE=#{mprice},CTID=#{ctid} WHERE MID=#{mid}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM model WHERE MID=#{mid}
+	</delete>
+	
+</mapper>
+
+
+
+
