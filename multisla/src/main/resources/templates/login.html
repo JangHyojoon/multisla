@@ -1,20 +1,34 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function(){
+	$('#login_bt').click(function(){
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl'
+		});
+		$('#login_form').submit();		
+	});
+});
+</script>
+
 
 <div class="container">
   <div class="col-sm-offset-2 col-sm-10">
-  	<h2>Shop User Login form</h2>
-  	<h5 th:text="${msg}"></h5>
+  	<h2>로그인</h2>
   </div>
   <form class="form-horizontal" id="login_form">
     <div class="form-group">
-      <label class="control-label col-sm-2" for="id">ID:</label>
+      <label class="control-label col-sm-2" for="id">ID: </label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
+        <input type="text" class="form-control" id="uid" placeholder="Enter ID" name="uid">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Password:</label>
       <div class="col-sm-6">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+        <input type="password" class="form-control" id="upwd" placeholder="Enter password" name="upwd">
       </div>
     </div>
     <div class="form-group">        
