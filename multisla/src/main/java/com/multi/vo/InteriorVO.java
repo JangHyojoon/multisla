@@ -12,7 +12,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class InteriorVO {
+	// Fields
 	private int iid;
 	private String ioption;
 	private int iprice;
+	
+	// Constructors
+	public InteriorVO(String ioption, int iprice) {
+		this.ioption = ioption;
+		this.iprice = iprice;
+	}
 }

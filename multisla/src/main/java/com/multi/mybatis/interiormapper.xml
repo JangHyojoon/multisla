@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO INTERIOR VALUES (NULL,#{ioption},#{iprice})
 	</insert>
 	<update id="update" parameterType="interiorVO">
-		UPDATE INTERIOR SET IPTION=#{ioption},IPRICE=#{iprice} WHERE IID=#{iid}
+		UPDATE INTERIOR SET IOPTION=#{ioption},IPRICE=#{iprice} WHERE IID=#{iid}
 	</update>
 	<delete id="delete" parameterType="int">
 		DELETE FROM INTERIOR WHERE IID=#{iid}

@@ -12,7 +12,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class WheelVO {
+	// Fields
 	private int wid;
 	private String woption;
 	private int wprice;
+	
+	// Constructors
+	public WheelVO(String woption, int wprice) {
+		this.woption = woption;
+		this.wprice = wprice;
+	}
 }

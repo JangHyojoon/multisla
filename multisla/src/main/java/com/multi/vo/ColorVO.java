@@ -12,7 +12,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ColorVO {
+	// Fields
 	private int colid;
-	private int coloption;
+	private String coloption;
 	private int colprice;
+	
+	// Constructors
+	public ColorVO(String coloption, int colprice) {
+		this.coloption = coloption;
+		this.colprice = colprice;
+	}
 }
