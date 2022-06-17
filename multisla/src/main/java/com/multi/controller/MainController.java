@@ -15,6 +15,12 @@ public class MainController {
 		return "index";
 		
 	}
-
+	@RequestMapping("/login")
+	public String login(Model m) {
+	
+		
+		return "login";
+		
+	}
 	
 }
