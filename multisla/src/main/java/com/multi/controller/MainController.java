@@ -12,27 +12,27 @@ import com.multi.vo.UsersVO;
 public class MainController {
 	@Autowired
 	UsersBiz usersbiz;
-	
+
 	@RequestMapping("/")
 	public String main(Model m) {
-	
-		
+
+
 		return "index";
-		
+
 	}
 	@RequestMapping("/login")
 	public String login(Model m) {
-	
-		
+
+
 		return "login";
-		
+
 	}
 	@RequestMapping("/register")
 	public String register(Model m) {
-	
-		
+
+
 		return "register";
-		
+
 	}
 	@RequestMapping("/registerimpl")
 	public String registerimpl(Model m, UsersVO v) {
@@ -42,8 +42,38 @@ public class MainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		return "index";
+
+
+	}
+	@RequestMapping("/loginimpl")
+	public String loginimpl(Model m, String uid, String upwd) {
+
+		String next = "";
+		UsersVO users = null;
 		
-		return "register";
+		try {
+			users = usersbiz.get (uid);
+			if(users != null) {
+				if(users.getUpwd().equals(upwd)) {
+					
+					m.addAttribute("loginusers", users);
+					next="loginok";
+					
+				}else {
+					throw new Exception();
+				}
+					
+			}else {
+				throw new Exception();
+			}
+			
+		} catch (Exception e) {
+			next="loginfail";
+		}
 		
+	
+		return "index";
 	}
 }
