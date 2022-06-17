@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.WheelMapper">
+
+	<select id="select" parameterType="int" resultType="wheelVO">
+		SELECT * FROM WHEEL WHERE WID=#{wid}
+	</select>
+	<select id="selectall" resultType="wheelVO">
+		SELECT * FROM WHEEL
+	</select>
+	<insert id="insert" parameterType="wheelVO">
+		INSERT INTO WHEEL VALUES (NULL,#{woption},#{wprice})
+	</insert>
+	<update id="update" parameterType="wheelVO">
+		UPDATE WHEEL SET WOPTION=#{woption},WPRICE=#{wprice} WHERE WID=#{wid}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM WHEEL WHERE WID=#{wid}
+	</delete>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.InteriorMapper">
+
+	<select id="select" parameterType="int" resultType="interiorVO">
+		SELECT * FROM INTERIOR WHERE IID=#{iid}
+	</select>
+	<select id="selectall" resultType="interiorVO">
+		SELECT * FROM INTERIOR
+	</select>
+	<insert id="insert" parameterType="interiorVO">
+		INSERT INTO INTERIOR VALUES (NULL,#{ioption},#{iprice})
+	</insert>
+	<update id="update" parameterType="interiorVO">
+		UPDATE INTERIOR SET IPTION=#{ioption},IPRICE=#{iprice} WHERE IID=#{iid}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM INTERIOR WHERE IID=#{iid}
+	</delete>
+
+</mapper>

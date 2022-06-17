@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ColorMapper">
+
+	<select id="select" parameterType="int" resultType="colorVO">
+		SELECT * FROM COLOR WHERE COLID=#{id}
+	</select>
+	<select id="selectall" resultType="colorVO">
+		SELECT * FROM COLOR
+	</select>
+	<insert id="insert" parameterType="colorVO">
+		INSERT INTO COLOR VALUES (NULL,#{coloption},#{colprice})
+	</insert>
+	<update id="update" parameterType="colorVO">
+		UPDATE COLOR SET COLOPTION=#{coloption},COLPRICE=#{colprice} WHERE COLID=#{colid}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM COLOR WHERE COLID=#{colid}
+	</delete>
+
+</mapper>
