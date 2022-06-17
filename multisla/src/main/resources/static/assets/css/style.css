@@ -316,7 +316,7 @@ ul{
     list-style:none;
 }
 
-/*all overlay*/
+/*all overlay
 .overlay{
     background-color: rgba(51,51,51,0.50);
     position: absolute;
@@ -325,7 +325,7 @@ ul{
     width:100%;
     height: 100%;
 }
-
+ */
 .no-padding {
     padding: 0 !important;
     margin:0 !important;
@@ -912,6 +912,15 @@ Nav Menu style
 .home{
     background: url(../images/background/homepage-bg.jpg) no-repeat top center;
 }
+.home2{
+    background: url(../images/background/homepage-bg2.jpg) no-repeat top center;
+}
+.home3{
+    background: url(../images/background/homepage-bg3.jpg) no-repeat top center;
+}
+.home4{
+    background: url(../images/background/homepage-bg4.jpg) no-repeat top center;
+}
 .service-banner{
     background: url(../images/background/services-bg.jpg) no-repeat bottom center;
 }
@@ -957,6 +966,80 @@ Home Section style
     margin:0px auto;
     line-height: 2rem;
 }
+
+.main_home2{
+    overflow: hidden;
+    padding-top: 500px;
+    padding-bottom: 230px;
+    position: relative;
+    z-index: 1;
+}
+.home2_text h1{
+    font-family: 'Raleway', sans-serif;
+    font-size:4.286rem;
+    font-weight: 700;
+    line-height: 6.5rem;
+}
+
+.home2_text h5{
+    font-family: 'Crimson Text', serif;
+    font-size:18px;
+    font-weight: 400;
+    width:70%;
+    margin:0px auto;
+    line-height: 2rem;
+}
+
+
+
+.main_home3{
+    overflow: hidden;
+    padding-top: 500px;
+    padding-bottom: 230px;
+    position: relative;
+    z-index: 1;
+}
+.home3_text h1{
+    font-family: 'Raleway', sans-serif;
+    font-size:4.286rem;
+    font-weight: 700;
+    line-height: 6.5rem;
+}
+
+.home3_text h5{
+    font-family: 'Crimson Text', serif;
+    font-size:18px;
+    font-weight: 400;
+    width:70%;
+    margin:0px auto;
+    line-height: 2rem;
+}
+
+
+.main_home4{
+    overflow: hidden;
+    padding-top: 500px;
+    padding-bottom: 230px;
+    position: relative;
+    z-index: 1;
+}
+.home4_text h1{
+    font-family: 'Raleway', sans-serif;
+    font-size:4.286rem;
+    font-weight: 700;
+    line-height: 6.5rem;
+}
+
+.home4_text h5{
+    font-family: 'Crimson Text', serif;
+    font-size:18px;
+    font-weight: 400;
+    width:70%;
+    margin:0px auto;
+    line-height: 2rem;
+}
+
+
 
 
 
