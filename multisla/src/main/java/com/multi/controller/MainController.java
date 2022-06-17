@@ -22,11 +22,22 @@ public class MainController {
 	}
 	@RequestMapping("/login")
 	public String login(Model m) {
-	
-		
+
 		return "login";
-		
 	}
+	
+	@RequestMapping("/loginimpl")
+	public String loginimpl(Model m, String uid, String upwd) {
+		UsersVO u = null;
+		try {
+			u = usersbiz.get(uid);
+		} catch (Exception e) {
+			e.printStackTrace();
+			m.addAttribute("index");
+		}
+		return "index";
+	}
+	
 	@RequestMapping("/register")
 	public String register(Model m) {
 	
