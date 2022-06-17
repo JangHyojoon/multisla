@@ -24,28 +24,12 @@ public class MainController {
 	@RequestMapping("/login")
 	public String login(Model m) {
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 		return "login";
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 	}
 	
-	@RequestMapping("/loginimpl")
-	public String loginimpl(Model m, String uid, String upwd) {
-		UsersVO u = null;
-		try {
-			u = usersbiz.get(uid);
-		} catch (Exception e) {
-			e.printStackTrace();
-			m.addAttribute("index");
-		}
-		return "index";
-	}
+
 	
 	@RequestMapping("/register")
 	public String register(Model m) {
