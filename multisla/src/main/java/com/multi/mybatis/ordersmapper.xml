@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.OrdersMapper">
+	
+	<select id="select" parameterType="int" resultType="ordersVO">
+		SELECT * FROM ORDERS WHERE ORDERSNO=#{ordersno}
+	</select>
+	<select id="selectall" resultType="ordersVO">
+		SELECT * FROM ORDERS
+	</select>
+	<insert id="insert" parameterType="ordersVO">
+		INSERT INTO ORDERS VALUES (NULL,#{uid},SYSDATE(),#{carprice},#{shipprice},#{pay},#{shipaddr},#{shipdate},#{finalprice})
+	</insert>
+	<update id="update" parameterType="ordersVO">
+		UPDATE ORDERS SET UID=#{uid},CARPRICE=#{carprice},SHIPPRICE=#{shipprice},PAY=#{pay},SHIPADDR=#{shipaddr},SHIPDATE=#{shipdate},FINALPRICE=#{finalprice} WHERE ORDERSNO=#{ordersno}
+	</update>
+	<delete id="delete" parameterType="ordersVO">
+		DELETE FROM ORDERS WHERE ORDERSNO=#{ordersno}
+	</delete>
+</mapper>
+
+
+
+
+
+
