@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.OrdersdetailMapper">
+	
+	<select id="select" parameterType="int" resultType="ordersdetailVO">
+		SELECT * FROM ORDERSDETAIL WHERE ODETAILNO=#{odetailno}
+	</select>
+	<select id="selectall" resultType="ordersdetailVO">
+		SELECT * FROM ORDERSDETAIL
+	</select>
+	<insert id="insert" parameterType="ordersdetailVO">
+		INSERT INTO ORDERSDETAIL VALUES (NULL,#{ostatus},#{oredersno},#{codeno})
+	</insert>
+	<update id="update" parameterType="ordersdetailVO">
+		UPDATE ORDERSDETAIL SET OSTATUS=#{ostatus},ORDERSNO=#{ordersno},CODENO=#{codeno} WHERE ODETAILNO=#{odetailno}
+	</update>
+	<delete id="delete" parameterType="ordersdetailVO">
+		DELETE FROM ORDERSDETAIL WHERE ODETAILNO=#{odetailno}
+	</delete>
+</mapper>
+
+
+
+
+
+
