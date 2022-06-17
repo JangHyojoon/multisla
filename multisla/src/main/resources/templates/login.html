@@ -1,15 +1,7 @@
 <meta charset="utf-8">
 
 <script>
-$(document).ready(function(){
-	$('#login_bt').click(function(){
-		$('#login_form').attr({
-			'method':'post',
-			'action':'/loginimpl'
-		});
-		$('#login_form').submit();		
-	});
-});
+
 </script>
 
 
@@ -17,7 +9,7 @@ $(document).ready(function(){
   <div class="col-sm-offset-2 col-sm-10">
   	<h2>로그인</h2>
   </div>
-  <form class="form-horizontal" id="login_form">
+  <form class="form-horizontal" id="login_form" action="loginimpl" method="POST">
     <div class="form-group">
       <label class="control-label col-sm-2" for="id">ID: </label>
       <div class="col-sm-6">
@@ -32,7 +24,7 @@ $(document).ready(function(){
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button id="login_bt" class="btn btn-default">LOGIN</button>
+       <input class="btn btn-primary btn-user btn-block"  type="submit" name="REGISTER"><br>
       </div>
     </div>
   </form>
