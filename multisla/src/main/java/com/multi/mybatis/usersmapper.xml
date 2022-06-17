@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.UsersMapper">
+	
+	<select id="select" parameterType="String" resultType="usersVO">
+		SELECT * FROM USERS WHERE UID=#{uid}
+	</select>
+	<select id="selectall" resultType="usersVO">
+		SELECT * FROM USERS
+	</select>
+	<insert id="insert" parameterType="usersVO">
+		INSERT INTO USERS VALUES (#{uid},#{upwd},#{uname},#{uaddr},#{uphone},SYSDATE())
+	</insert>
+	<update id="update" parameterType="usersVO">
+		UPDATE USERS SET UPWD=#{upwd},UNAME=#{uname} WHERE UID=#{uid}
+	</update>
+	<delete id="delete" parameterType="usersVO">
+		DELETE FROM USERS WHERE UID=#{uid}
+	</delete>
+</mapper>
+
+
+
+
+
+
