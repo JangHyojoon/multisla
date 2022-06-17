@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.GarageMapper">
+
+	<select id="select" parameterType="int" resultType="garageVO">
+		SELECT g.gid, g.codeno, g.uid, u.uname, m.mname, co.coloption, w.woption, i.ioption, 
+		m.mprice+co.colprice+w.wprice+i.iprice as price, ca.corder FROM garage g
+		INNER JOIN carbuild ca ON ca.codeno = g.codeno
+		INNER JOIN users u ON u.uid = g.uid
+		INNER JOIN model m ON m.mid = ca.mid
+		INNER JOIN color co ON co.colid = ca.colid
+		INNER JOIN wheel w ON w.wid = ca.wid
+		INNER JOIN interior i ON i.iid = ca.iid
+		WHERE ca.corder = 0 AND g.gid = ${gid};
+	</select>
+	<select id="selectall" resultType="garageVO">
+		SELECT g.gid, g.codeno, g.uid, u.uname, m.mname, co.coloption, w.woption, i.ioption, 
+		m.mprice+co.colprice+w.wprice+i.iprice as price, ca.corder FROM garage g
+		INNER JOIN carbuild ca ON ca.codeno = g.codeno
+		INNER JOIN users u ON u.uid = g.uid
+		INNER JOIN model m ON m.mid = ca.mid
+		INNER JOIN color co ON co.colid = ca.colid
+		INNER JOIN wheel w ON w.wid = ca.wid
+		INNER JOIN interior i ON i.iid = ca.iid
+		WHERE ca.corder = 0;
+	</select>
+	<insert id="insert" parameterType="garageVO">
+		INSERT INTO GARAGE VALUES (NULL,#{codeno},#{uid})
+	</insert>
+	<update id="update" parameterType="garageVO">
+		UPDATE GARAGE SET CODENO=#{codeno},UID=#{uid} WHERE GID=#{gid}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM GARAGE WHERE GID=#{gid}
+	</delete>
+
+</mapper>
