@@ -23,9 +23,8 @@ public class MainController {
 	}
 	@RequestMapping("/login")
 	public String login(Model m) {
-
-
-		return "login";
+		m.addAttribute("center", "login");
+		return "/index";
 
 	}
 	
@@ -33,11 +32,10 @@ public class MainController {
 	
 	@RequestMapping("/register")
 	public String register(Model m) {
-
-
-		return "register";
-
+		m.addAttribute("center", "register");
+		return "/index";
 	}
+	
 	@RequestMapping("/registerimpl")
 	public String registerimpl(Model m, UsersVO v) {
 		try {

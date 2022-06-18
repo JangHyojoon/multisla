@@ -1,31 +1,58 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<script>
+<style>
+	#div-top{
+		padding-top: 100px;
+	}
+</style>
 
-</script>
 
 
-<div class="container">
-  <div class="col-sm-offset-2 col-sm-10">
-  	<h2>로그인</h2>
-  </div>
-  <form class="form-horizontal" id="login_form" action="loginimpl" method="POST">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="id">ID: </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" id="uid" placeholder="Enter ID" name="uid">
-      </div>
+<div id="div-top" class="container-fluid">
+ 	<div class="col-sm-4">
+ 	</div>
+  	<div class="col-sm-4" >
+		<div class="container">
+		  	<h2>로그인</h2>
+			<form class="form-horizontal" id="login_form" action="loginimpl" method="POST">
+		   		<div class="form-group">
+		      		<label class="control-label col-sm-2" for="id">ID: </label>
+		      		<div class="col-sm-3">
+		        		<input type="text" class="form-control" id="uid" placeholder="Enter ID" name="uid">
+		      		</div>
+		    	</div>
+		    	<div class="form-group">
+		      		<label class="control-label col-sm-2" for="pwd">Password:</label>
+		     		<div class="col-sm-3">          
+		        		<input type="password" class="form-control" id="upwd" placeholder="Enter password" name="upwd">
+		     		</div>
+		    	</div>
+		    	<div class="form-group">        
+		      		<div class="col-sm-offset-2 col-sm-3">
+		       			<a class="btn btn-info btn-user btn-block"  type="submit" name="login">로그인</a><br>
+		      		</div>
+		    	</div>
+		    	<div class="form-group">        
+		      		<div class="col-sm-offset-2 col-sm-3">
+		      			<hr>
+		      			<p>계정이 없다면?</p>
+		       			<a class="btn btn-default btn-user btn-block" href="register" name="register">계정생성하기</a><br>
+		      		</div>
+		    	</div>
+			 </form>
+		</div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-6">          
-        <input type="password" class="form-control" id="upwd" placeholder="Enter password" name="upwd">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-       <input class="btn btn-primary btn-user btn-block"  type="submit" name="REGISTER"><br>
-      </div>
-    </div>
-  </form>
+    <div class="col-sm-4">
+	</div>  
 </div>
+
+
+
+
+
+
+
