@@ -9,7 +9,7 @@ import com.multi.biz.UsersBiz;
 import com.multi.vo.UsersVO;
 
 @Controller
-public class MainController {
+public class MainController2 {
 	@Autowired
 	UsersBiz usersbiz;
 
