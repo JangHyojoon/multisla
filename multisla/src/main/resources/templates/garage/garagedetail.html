@@ -11,6 +11,7 @@
                             <div class="col-md-6">
                                 <div class="m_details_img">
                                     <img src="assets/images/angela-img.jpg" alt="" />
+                                    <!-- th:src="@{'assets/imges/model/'+${u.codeno}'.jpg'}" -->
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -44,7 +45,18 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
+                            <!-- 
+                            주문했으면(corder==true)면 주문상세
+                            주문 안했으면(corder==false)면 주문하러 가기
+                             -->
+                      		<div class="col-md-5" th:if="${ugarage.corder}==false">
+								<button type="button" href="#" class="btn btn-primary">주문하러 가기</button>
+								
+                      		</div>
+							<div class="col-md-5" th:unless="${ugarage.corder}==false">							
+								<button type="button" href="#" class="btn btn-default">주문상세</button> 
+                      		</div>
 
 
                             <div class="col-md-12">
