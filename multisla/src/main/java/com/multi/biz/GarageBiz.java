@@ -39,5 +39,10 @@ public class GarageBiz implements Biz<Integer, GarageVO>{
 	public List<GarageVO> get() throws Exception {
 		return dao.selectall();
 	}
-	
+	public List<GarageVO> getuid(String uid) throws Exception {
+		return dao.selectuid(uid);
+	}
+	public List<GarageVO> getmid(int mid) throws Exception {
+		return dao.selectmid(mid);
+	}
 }

@@ -17,7 +17,7 @@ class SelectTest {
 	void contextLoads() {
 		GarageVO obj = null;
 		try {
-			obj = biz.get(10002);
+			obj = biz.get(10000);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

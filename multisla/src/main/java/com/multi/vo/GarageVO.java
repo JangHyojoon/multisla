@@ -17,6 +17,7 @@ public class GarageVO {
 	private int codeno;
 	private String uid;
 	private String uname;	// Select를 위한 Fields
+	private int mid;
 	private String mname;
 	private String coloption;
 	private String woption;

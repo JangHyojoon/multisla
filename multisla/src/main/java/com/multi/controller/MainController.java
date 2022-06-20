@@ -18,12 +18,34 @@ import com.multi.vo.UsersVO;
 public class MainController {
 	@Autowired
 	UsersBiz usersbiz;
+	@Autowired
 	GarageBiz garagebiz;
+	
 	@RequestMapping("/garage")
-	public String garage(Model m) {
+	public String garage(Model m,String uid) {
 		List<GarageVO> list =null;
-		m.addAttribute("center", "garage");
-		m.addAttribute("ugarage", list);
+		try {
+			list =garagebiz.getuid(uid);
+			m.addAttribute("ugarage", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "garage/garage");
+	
+		return "index";
+
+	}
+	@RequestMapping("/garagedetail")
+	public String garagedetail(Model m,int gid) {
+		GarageVO list =null;
+		try {
+			list =garagebiz.get(gid);
+			m.addAttribute("ugarage", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "garage/garagedetail");
+	
 		return "index";
 
 	}
