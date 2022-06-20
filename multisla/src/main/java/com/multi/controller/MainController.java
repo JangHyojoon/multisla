@@ -24,37 +24,49 @@ public class MainController {
 
 	}
 	@RequestMapping("/login")
-	public String login(Model m) {
+	public String login(Model m,String msg) {
+		if(msg != null && msg.equals("f")) {
+			m.addAttribute("msg", "회원정보를 확인해주세요");
+	
+		}
 		m.addAttribute("center", "login");
 		return "/index";
 
 	}
-	
-
+	@RequestMapping("/logout")
+	public String logout(Model m,HttpSession session) {
+		if(session != null) {
+			session.invalidate();
+		}
+		return "index";
+	}
 	
 	@RequestMapping("/register")
-	public String register(Model m) {
+	public String register(Model m, String msg) {
+
 		m.addAttribute("center", "register");
 		return "/index";
 	}
 	
 	@RequestMapping("/registerimpl")
-	public String registerimpl(Model m, UsersVO v, HttpSession session) {
+	public String registerimpl(Model m, UsersVO v) {
 		try {
-			session.setAttribute("loginusers", v);
+
+		
 			usersbiz.register(v);
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 
-		return "login";
+		return "redirect:login";
 
 
 	}
 	@RequestMapping("/loginimpl")
 	public String loginimpl(Model m, String uid, String upwd, HttpSession session) {
 
-		String next = "";
+		
 		UsersVO users = null;
 		
 		try {
@@ -63,7 +75,7 @@ public class MainController {
 				if(users.getUpwd().equals(upwd)) {
 					session.setAttribute("loginusers", users);
 					m.addAttribute("loginusers", users);
-					next="index";
+					
 					
 				}else {
 					throw new Exception();
@@ -74,10 +86,10 @@ public class MainController {
 			}
 			
 		} catch (Exception e) {
-			next="login";
+			return "redirect:login?msg=f";
 		}
 		
 	
-		return next;
+		return "index";
 	}
 }

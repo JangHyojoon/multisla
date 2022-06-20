@@ -8,8 +8,15 @@
 	#div-top{
 		padding-top: 100px;
 	}
+	#cspan{
+	color:red;
+	
+	}
 </style>
+<script>
+	
 
+</script>
 
 
 <div id="div-top" class="container-fluid">
@@ -18,6 +25,7 @@
   	<div class="col-sm-4" >
 		<div class="container">
 		  	<h2>로그인</h2>
+		  	
 			<form class="form-horizontal" id="login_form" action="loginimpl" method="POST">
 		   		<div class="form-group">
 		      		<label class="control-label col-sm-2" for="id">ID: </label>
@@ -33,11 +41,9 @@
 		    	</div>
 		    	<div class="form-group">        
 		      		<div class="col-sm-offset-2 col-sm-3">
-<<<<<<< HEAD
-		       			<a class="btn btn-info btn-user btn-block"  type="submit" name="login">로그인</a><br>
-=======
+		      			<span id="cspan" th:text="${msg}"></span>
+		      			
 		       			<input class="btn btn-info btn-user btn-block"  type="submit" name="login" value="로그인"><br>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 		      		</div>
 		    	</div>
 			 </form>
@@ -47,11 +53,7 @@
 	      			<p>계정이 없다면?</p>
 	       			<a class="btn btn-default btn-user btn-block" href="register" name="register">계정생성하기</a><br>
 	      		</div>
-<<<<<<< HEAD
-	    	</div>
-=======
 		    </div>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 		</div>
     </div>
     <div class="col-sm-4">

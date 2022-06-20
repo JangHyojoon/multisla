@@ -90,8 +90,12 @@
                 <div class="container">    
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
-                        <ul>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <ul th:if="${session.loginusers == null}">
+                            <li><a th:href="login">LOGIN</a></li>   
+                            <li><a th:href="register">REGISTER</a></li> 
+                        </ul>
+                        <ul th:unless="${session.loginusers == null}">  
+                        	<li><a th:href="logout">lOGUT</a></li>   
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                                     <i class="fa fa-shopping-bag"></i>
@@ -147,7 +151,7 @@
                             <li><a href="#">model02</a></li> 							
                             <li><a href="#">model03</a></li> 
                             <li><a href="#">model04</a></li>                                       
-                            <li><a href="login">LOGIN</a></li>                    
+                                            
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>  

@@ -14,7 +14,7 @@ class InsertTest {
 	@Test
 	void contextLoads() {
 		
-		UsersVO uv = new UsersVO("id02","pwd02","KIM","BUSAN","01012345678",null);
+		UsersVO uv = new UsersVO("id03","pwd02","KIM","01012345678","11111","BUSAN","01012345678",null);
 		
 		try {
 			usersbiz.register(uv);

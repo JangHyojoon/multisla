@@ -14,7 +14,7 @@ class UpdateTest {
 	@Test
 	void contextLoads() {
 		
-		UsersVO uv = new UsersVO("id02","pwd02","JANG","BUSAN","01012345678",null);
+		UsersVO uv = new UsersVO("id02","pwd02","JANG","01012345678","33333","BUSAN","123",null);
 		
 		try {
 			usersbiz.modify(uv);

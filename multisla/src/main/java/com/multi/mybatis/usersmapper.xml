@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM USERS
 	</select>
 	<insert id="insert" parameterType="usersVO">
-		INSERT INTO USERS VALUES (#{uid},#{upwd},#{uname},#{uaddr},#{uphone},SYSDATE())
+		INSERT INTO USERS VALUES (#{uid},#{upwd},#{uname},#{uphone},#{upost},#{uaddr},#{udaddr},SYSDATE())
 	</insert>
 	<update id="update" parameterType="usersVO">
-		UPDATE USERS SET UPWD=#{upwd},UNAME=#{uname} WHERE UID=#{uid}
+		UPDATE USERS SET UPWD=#{upwd},UNAME=#{uname}, UPHONE=#{uphone}, UPOST=#{upost},UADDR=#{uaddr},UDADDR=#{udaddr} WHERE UID=#{uid}
 	</update>
 	<delete id="delete" parameterType="usersVO">
 		DELETE FROM USERS WHERE UID=#{uid}
