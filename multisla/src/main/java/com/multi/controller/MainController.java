@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,14 +9,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.biz.GarageBiz;
 import com.multi.biz.UsersBiz;
+import com.multi.vo.GarageVO;
 import com.multi.vo.UsersVO;
 
 @Controller
 public class MainController {
 	@Autowired
 	UsersBiz usersbiz;
+	GarageBiz garagebiz;
+	@RequestMapping("/garage")
+	public String garage(Model m) {
+		List<GarageVO> list =null;
+		m.addAttribute("center", "garage");
+		m.addAttribute("ugarage", list);
+		return "index";
 
+	}
 	@RequestMapping("/")
 	public String main(Model m) {
 
