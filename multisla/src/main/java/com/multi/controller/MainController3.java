@@ -6,12 +6,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.UsersBiz;
-import com.multi.vo.UsersVO;
 
+// 신승욱
 @Controller
 public class MainController3 {
 	@Autowired
 	UsersBiz usersbiz;
 
+	@RequestMapping("/model01")
+	public String model01(Model m) {
+		m.addAttribute("center", "detail/modeldetail");
+		return "index";
+	}
 	
+	@RequestMapping("/model02")
+	public String model02(Model m) {
+		m.addAttribute("center", "model02");
+		return "/index";
+	}
+	
+	@RequestMapping("/model03")
+	public String model03(Model m) {
+		m.addAttribute("center", "model03");
+		return "/index";
+	}
+	
+	@RequestMapping("/model04")
+	public String model04(Model m) {
+		m.addAttribute("center", "model04");
+		return "/index";
+	}
 }
