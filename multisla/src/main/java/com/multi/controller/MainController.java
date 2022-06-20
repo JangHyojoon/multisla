@@ -41,7 +41,6 @@ public class MainController {
 		try {
 			usersbiz.register(v);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
