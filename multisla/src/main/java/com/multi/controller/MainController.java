@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,19 +39,20 @@ public class MainController {
 	}
 	
 	@RequestMapping("/registerimpl")
-	public String registerimpl(Model m, UsersVO v) {
+	public String registerimpl(Model m, UsersVO v, HttpSession session) {
 		try {
+			session.setAttribute("loginusers", v);
 			usersbiz.register(v);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return "index";
+		return "login";
 
 
 	}
 	@RequestMapping("/loginimpl")
-	public String loginimpl(Model m, String uid, String upwd) {
+	public String loginimpl(Model m, String uid, String upwd, HttpSession session) {
 
 		String next = "";
 		UsersVO users = null;
@@ -58,9 +61,9 @@ public class MainController {
 			users = usersbiz.get (uid);
 			if(users != null) {
 				if(users.getUpwd().equals(upwd)) {
-					
+					session.setAttribute("loginusers", users);
 					m.addAttribute("loginusers", users);
-					next="loginok";
+					next="index";
 					
 				}else {
 					throw new Exception();
@@ -71,10 +74,10 @@ public class MainController {
 			}
 			
 		} catch (Exception e) {
-			next="loginfail";
+			next="login";
 		}
 		
 	
-		return "index";
+		return next;
 	}
 }
