@@ -1,0 +1,99 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+.tittle-margin{
+	margin-bottom: 30px;	
+}
+#circle60{
+	width:60px; height:60px;   
+}
+#circle55{
+	width:55px; height:55px;   
+}
+#circle60:active{
+	border: 3px solid;
+	border-color:gray;
+}
+#circle55:active{
+	border: 3px solid;
+	border-color:gray;
+}
+</style>
+
+
+<div id="div-top" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-9" style="background-color:yellow;">
+      <p>Lorem ipsum...</p>
+    </div>
+    
+    <!-- detail 선택 후 주문하기 -->
+    <div class="col-sm-3">
+    	<!-- 모델명 및 사양 -->   
+		<div class="selectbox">
+    		<div class="tittle-margin">
+     			<h1 class="text-black text-center">MODEL1</h1>
+			</div>
+     		<div class="col-sm-4 text-center"><h4 style="display:inline;">448</h4><h6 style="display:inline;">km</h6></div>
+     		<div class="col-sm-4 text-center"><h4 style="display:inline;">250</h4><h6 style="display:inline;">km/h</h6></div>
+     		<div class="col-sm-4 text-center"><h4 style="display:inline;">3.7</h4><h6 style="display:inline;">초</h6 ></div>
+
+     		<div class="col-sm-4 text-center"><p>주행가능거리</p></div>
+			<div class="col-sm-4 text-center"><p>최고속도</p></div>
+     		<div class="col-sm-4 text-center"><p>0.100km/h</p></div>
+		</div>
+		<form class="select-options">
+			<!-- 색상 -->
+			<div class="selectbox">
+	     		<div class="tittle-margin">
+	     			<h3 class="text-black text-center">색상</h3>
+	     		</div>
+	     		<div class="col-sm-3 text-center"><img src="assets/images/1-white.png" class="img-circle" alt="col_White" id="circle55"></div>
+	     		<div class="col-sm-3 text-center"><img src="assets/images/1-black.png" class="img-circle" alt="col_Black" id="circle55"></div>
+	     		<div class="col-sm-3 text-center"><img src="assets/images/1-red.png" class="img-circle" alt="col_Red" id="circle55"></div>
+	     		<div class="col-sm-3 text-center"><img src="assets/images/1-blue.png" class="img-circle" alt="col_Blue" id="circle55"></div>
+			</div>	
+			
+			<!-- 휠 -->
+			<div class="selectbox">
+				<div class="tittle-margin">
+	     			<h3 class="text-black text-center"> 휠 </h3>
+	     		</div>
+	     		<div class="col-sm-3 text-center"></div>
+	     		<div class="col-sm-3 text-center"><img src="assets/images/2-black.png" class="img-circle" alt="whe_Black" id="circle60"></div>
+	     		<div class="col-sm-3 text-center"><img src="assets/images/2-white.png" class="img-circle" alt="whe_White" id="circle60"></div>
+	     		<div class="col-sm-3 text-center"></div>
+	     	</div>
+	     		
+	     	<!-- 인테리어 -->
+	     	<div class="selectbox">
+	     		<div class="tittle-margin">
+	     			<h3 class="text-black text-center"> 인테리어 </h3>
+	     		</div>
+				<div class="col-sm-3 text-center"></div>
+	     		<div class="col-sm-3 text-center">
+		     		<input type="hidden" name="colid" value="201">
+		     		<input type="image" src="assets/images/3-black.png" class="img-circle" alt="inte_Black" id="circle60" onclick="f_test(this.value)">
+	     		</div>
+	     		<div class="col-sm-3 text-center"><input type="image" src="assets/images/3-white.png" class="img-circle" alt="inte_white" id="circle60"></div>
+	     		<div class="col-sm-3 text-center"></div>
+	 		</div>
+	 
+	 		<!-- 주문하기 -->
+			<div class="selectbox">
+	      		<div class="tittle-margin">
+	     			<h3 class="text-black text-center"> Model1 주문하기 </h3>
+	     		</div>
+	     		<div class="home_text text-center">
+				<button type="button" onClick="location.href='#'" class="btn btn-primary">결제하기</button>
+	 			</div>
+	     	</div>
+     	
+     	</form>
+     
+     	</div>	
+   </div>
+</div>
+

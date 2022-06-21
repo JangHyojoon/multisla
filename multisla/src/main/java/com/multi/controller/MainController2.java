@@ -9,9 +9,15 @@ import com.multi.biz.UsersBiz;
 import com.multi.vo.UsersVO;
 
 @Controller
-@RequestMapping("/detail")
 public class MainController2 {
 	
+	@RequestMapping("carbuild")
+	public String carbuild(Model m) {
 
+		m.addAttribute("center", "carbuild");
+
+		return "index";
+
+	}
 
 }
