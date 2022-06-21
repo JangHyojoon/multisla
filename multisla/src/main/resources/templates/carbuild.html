@@ -20,8 +20,21 @@
 	border: 3px solid;
 	border-color:gray;
 }
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 </style>
-
+<script>
+$(document).ready(function(){
+	$('input[name="colid"]').click(function(){
+		var col = this.val;
+		alert(col);
+	});
+});
+</script>
 
 <div id="div-top" class="container-fluid">
   <div class="row">
@@ -74,10 +87,13 @@
 	     		</div>
 				<div class="col-sm-3 text-center"></div>
 	     		<div class="col-sm-3 text-center">
-		     		<input type="hidden" name="colid" value="201">
-		     		<input type="image" src="assets/images/3-black.png" class="img-circle" alt="inte_Black" id="circle60" onclick="f_test(this.value)">
+	     			<label for="b"><img src="assets/images/3-black.png"></label>
+		     		<input type="radio" id="b" name="colid" value="201">
 	     		</div>
-	     		<div class="col-sm-3 text-center"><input type="image" src="assets/images/3-white.png" class="img-circle" alt="inte_white" id="circle60"></div>
+	     		<div class="col-sm-3 text-center">
+	     			<label for="w"><img src="assets/images/3-white.png"></label>
+	     			<input type="radio" id="w" name="colid" value="200">
+	     		</div>
 	     		<div class="col-sm-3 text-center"></div>
 	 		</div>
 	 
