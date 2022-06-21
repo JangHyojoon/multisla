@@ -14,21 +14,9 @@ public class MainController3 {
 		return "/index";
 	}
 	
-	@RequestMapping("/model02")
+	@RequestMapping("/buildmodely")
 	public String model02(Model m) {
-		m.addAttribute("center", "detail/modelYdetail");
-		return "/index";
-	}
-	
-	@RequestMapping("/model03")
-	public String model03(Model m) {
-		m.addAttribute("center", "model03");
-		return "/index";
-	}
-	
-	@RequestMapping("/model04")
-	public String model04(Model m) {
-		m.addAttribute("center", "model04");
+		m.addAttribute("center", "carbuild/modelY");
 		return "/index";
 	}
 }
