@@ -14,7 +14,7 @@ public class MainController2 {
 	@RequestMapping("carbuild")
 	public String carbuild(Model m) {
 
-		m.addAttribute("center", "carbuild");
+		m.addAttribute("center", "carbuild/carbuild");
 
 		return "index";
 
