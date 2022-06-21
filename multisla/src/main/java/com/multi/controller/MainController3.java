@@ -10,13 +10,13 @@ public class MainController3 {
 
 	@RequestMapping("/model01")
 	public String model01(Model m) {
-		m.addAttribute("center", "detail/modeldetail");
+		m.addAttribute("center", "detail/modelSdetail");
 		return "/index";
 	}
 	
 	@RequestMapping("/model02")
 	public String model02(Model m) {
-		m.addAttribute("center", "model02");
+		m.addAttribute("center", "detail/modelYdetail");
 		return "/index";
 	}
 	
