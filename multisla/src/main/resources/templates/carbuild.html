@@ -21,9 +21,15 @@
 	border-radius: 50%;
 	border-color: #4374D9;
 }
-
 </style>
-
+<script>
+$(document).ready(function(){
+	$('input[name="colid"]').click(function(){
+		var col = this.val;
+		alert(col);
+	});
+});
+</script>
 
 <div id="div-top" class="container-fluid">
   <div class="row">
