@@ -1,22 +1,17 @@
 package com.multi.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.biz.UsersBiz;
-
 // 신승욱
 @Controller
 public class MainController3 {
-	@Autowired
-	UsersBiz usersbiz;
 
 	@RequestMapping("/model01")
 	public String model01(Model m) {
 		m.addAttribute("center", "detail/modeldetail");
-		return "index";
+		return "/index";
 	}
 	
 	@RequestMapping("/model02")
