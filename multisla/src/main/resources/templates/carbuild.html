@@ -12,14 +12,16 @@
 #circle55{
 	width:55px; height:55px;   
 }
-#circle60:active{
-	border: 3px solid;
-	border-color:gray;
+
+.labelexpanded > input{
+	display:none;	
 }
-#circle55:active{
-	border: 3px solid;
-	border-color:gray;
+.labelexpanded input:checked + .radio-btns{
+	border:3px solid;
+	border-radius: 50%;
+	border-color: #4374D9;
 }
+
 </style>
 
 
@@ -44,16 +46,47 @@
 			<div class="col-sm-4 text-center"><p>최고속도</p></div>
      		<div class="col-sm-4 text-center"><p>0.100km/h</p></div>
 		</div>
+		
+		<!-- 옵션 선택 폼 -->
 		<form class="select-options">
+
 			<!-- 색상 -->
 			<div class="selectbox">
 	     		<div class="tittle-margin">
 	     			<h3 class="text-black text-center">색상</h3>
 	     		</div>
-	     		<div class="col-sm-3 text-center"><img src="assets/images/1-white.png" class="img-circle" alt="col_White" id="circle55"></div>
-	     		<div class="col-sm-3 text-center"><img src="assets/images/1-black.png" class="img-circle" alt="col_Black" id="circle55"></div>
-	     		<div class="col-sm-3 text-center"><img src="assets/images/1-red.png" class="img-circle" alt="col_Red" id="circle55"></div>
-	     		<div class="col-sm-3 text-center"><img src="assets/images/1-blue.png" class="img-circle" alt="col_Blue" id="circle55"></div>
+	     		<div class="col-sm-3 text-center">
+	     			<label class="labelexpanded">
+	     				<input type="radio" name="colid" value="200" id="radio">
+	     					<div class="radio-btns">
+	     					<img src="assets/images/1-black.png" class="img-circle" alt="col_Black" id="circle60">
+	     					</div>
+	     			</label>
+				</div>
+				<div class="col-sm-3 text-center">
+	     			<label class="labelexpanded">
+	     				<input type="radio" name="colid" value="201" id="radio">
+	     					<div class="radio-btns">
+	     					<img src="assets/images/1-white.png" class="img-circle" alt="col_White" id="circle60">
+	     					</div>
+	     			</label>
+				</div>
+				<div class="col-sm-3 text-center">
+	     			<label class="labelexpanded">
+	     				<input type="radio" name="colid" value="202" id="radio">
+	     					<div class="radio-btns">
+	     					<img src="assets/images/1-red.png" class="img-circle" alt="col_Red" id="circle60">
+	     					</div>
+	     			</label>
+				</div>
+				<div class="col-sm-3 text-center">
+	     			<label class="labelexpanded">
+	     				<input type="radio" name="colid" value="203" id="radio">
+	     					<div class="radio-btns">
+	     					<img src="assets/images/1-blue.png" class="img-circle" alt="col_Blue" id="circle60">
+	     					</div>
+	     			</label>
+				</div>
 			</div>	
 			
 			<!-- 휠 -->
@@ -62,9 +95,23 @@
 	     			<h3 class="text-black text-center"> 휠 </h3>
 	     		</div>
 	     		<div class="col-sm-3 text-center"></div>
-	     		<div class="col-sm-3 text-center"><img src="assets/images/2-black.png" class="img-circle" alt="whe_Black" id="circle60"></div>
-	     		<div class="col-sm-3 text-center"><img src="assets/images/2-white.png" class="img-circle" alt="whe_White" id="circle60"></div>
-	     		<div class="col-sm-3 text-center"></div>
+	     		<div class="col-sm-3 text-center">
+	     			<label class="labelexpanded">
+	     				<input type="radio" name="wid" value="300" id="radio">
+	     					<div class="radio-btns">
+	     					<img src="assets/images/2-black.png" class="img-circle" alt="whe_Black" id="circle60">
+	     					</div>
+	     			</label>
+				</div>
+				<div class="col-sm-3 text-center">
+	     			<label class="labelexpanded">
+	     				<input type="radio" name="wid" value="301" id="radio">
+	     					<div class="radio-btns">
+	     					<img src="assets/images/2-white.png" class="img-circle" alt="whe_White" id="circle60">
+	     					</div>
+	     			</label>
+				</div>
+				<div class="col-sm-3 text-center"></div>
 	     	</div>
 	     		
 	     	<!-- 인테리어 -->
@@ -74,10 +121,21 @@
 	     		</div>
 				<div class="col-sm-3 text-center"></div>
 	     		<div class="col-sm-3 text-center">
-		     		<input type="hidden" name="colid" value="201">
-		     		<input type="image" src="assets/images/3-black.png" class="img-circle" alt="inte_Black" id="circle60" onclick="f_test(this.value)">
-	     		</div>
-	     		<div class="col-sm-3 text-center"><input type="image" src="assets/images/3-white.png" class="img-circle" alt="inte_white" id="circle60"></div>
+		     		<label class="labelexpanded">
+						<input type="radio" name="iid" value="400" id="radio">
+							<div class="radio-btns">
+							<img src="assets/images/3-black.png" class="img-circle" alt="inte_Black" id="circle60">
+							</div>
+					</label>
+				</div>
+				<div class="col-sm-3 text-center">
+					<label class="labelexpanded">
+						<input type="radio" name="iid" value="401" id="radio">
+							<div class="radio-btns">
+							<img src="assets/images/3-white.png" class="img-circle" alt="inte_white" id="circle60">
+							</div>
+						</label>
+				</div>	
 	     		<div class="col-sm-3 text-center"></div>
 	 		</div>
 	 
