@@ -11,13 +11,11 @@ import com.multi.vo.UsersVO;
 @Controller
 public class MainController2 {
 	
-	@RequestMapping("carbuild")
-	public String carbuild(Model m) {
-
-		m.addAttribute("center", "carbuild/carbuild");
-
-		return "index";
-
+	@RequestMapping("/model02")
+	public String model02(Model m) {
+		m.addAttribute("center", "detail/modelYdetail");
+		return "/index";
 	}
+
 
 }

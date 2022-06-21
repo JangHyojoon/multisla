@@ -365,6 +365,12 @@ Separator
     margin:20px 0px;
     background: #000;
 }
+.separator_small2{
+    width:30px;
+    height:2px;
+    margin:20px 0px;
+    background: white;
+}
 
 /*
 Button
