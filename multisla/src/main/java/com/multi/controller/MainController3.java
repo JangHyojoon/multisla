@@ -18,8 +18,8 @@ public class MainController3 {
 	CarbuildBiz carbuildbiz;
 	
 	// go to model S detail page
-	@RequestMapping("/model01")
-	public String model01(Model m) {
+	@RequestMapping("/models")
+	public String models(Model m) {
 		m.addAttribute("center", "detail/modelSdetail");
 		return "/index";
 	}
@@ -32,7 +32,7 @@ public class MainController3 {
 	}
 	
 	// build model S
-	@RequestMapping("/carbuild")
+	@RequestMapping("/buildmodels")
 	public String carbuild(Model m, HttpSession session) {
 		m.addAttribute("session", session.getAttribute("loginusers"));
 		m.addAttribute("center", "carbuild/carbuild");
