@@ -10,7 +10,7 @@ import com.multi.mapper.CarbuildMapper;
 import com.multi.vo.CarbuildVO;
 @Service
 public class CarbuildBiz implements Biz<Integer,CarbuildVO>{
-	
+
 	@Autowired
 	CarbuildMapper dao;
 
@@ -42,6 +42,8 @@ public class CarbuildBiz implements Biz<Integer,CarbuildVO>{
 		return dao.selectall();
 	}
 
-	
+	public int selectlast() throws Exception {
+		return dao.selectlast();
+	}
 
 }

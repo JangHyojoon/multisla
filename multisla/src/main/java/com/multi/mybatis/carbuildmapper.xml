@@ -19,17 +19,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN wheel w on cb.wid=w.wid
 		INNER JOIN interior i on cb.iid=i.iid
 	</select>
+	<select id="selectlast" resultType="int">
+		SELECT MAX(codeno) AS cnt FROM carbuild
+	</select>
 	<insert id="insert" parameterType="carbuildVO">
-
-			INSERT INTO carbuild VALUES (NULL,#{mid},#{colid},#{wid},#{iid},#{corder})
-
-
+		INSERT INTO carbuild VALUES (NULL,#{mid},#{colid},#{wid},#{iid},#{corder})
 	</insert>
 	<update id="update" parameterType="carbuildVO">
-
-
-			UPDATE carbuild SET MID=#{mid}, COLID=#{colid},WID=#{wid},IID=#{iid},CORDER=#{corder} WHERE CODENO=#{codeno}
-
+		UPDATE carbuild SET MID=#{mid}, COLID=#{colid},WID=#{wid},IID=#{iid},CORDER=#{corder} WHERE CODENO=#{codeno}
 	</update>
 	<delete id="delete" parameterType="int">
 		DELETE FROM carbuild WHERE CODENO=#{codeno}

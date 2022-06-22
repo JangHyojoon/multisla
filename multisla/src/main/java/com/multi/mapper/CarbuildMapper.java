@@ -16,5 +16,5 @@ public interface CarbuildMapper {
 	public void update(CarbuildVO obj) throws Exception;
 	public CarbuildVO select(int obj) throws Exception;
 	public List<CarbuildVO> selectall() throws Exception;
-	
+	public int selectlast() throws Exception;
 }

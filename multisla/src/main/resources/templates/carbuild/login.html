@@ -1,0 +1,79 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+	#div-top{
+		padding-top: 100px;
+	}
+	#cspan{
+	color:red;
+	
+	}
+</style>
+<script>
+$(document).ready(function(){
+	$('#login_btn').click(function(){
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/logintogarage'
+		});
+		$('#login_form').submit();
+	});
+});
+</script>
+
+
+<div id="div-top" class="container-fluid">
+ 	<div class="col-sm-4">
+ 	</div>
+  	<div class="col-sm-4" >
+		<div class="container">
+		  	<h2>로그인</h2>
+		  	
+			<form class="form-horizontal" id="login_form" action="loginimpl" method="POST">
+		   		<div class="form-group">
+		      		<label class="control-label col-sm-2" for="id">ID: </label>
+		      		<div class="col-sm-3">
+		        		<input type="text" class="form-control" id="uid" placeholder="Enter ID" name="uid">
+		      		</div>
+		    	</div>
+		    	<div class="form-group">
+		      		<label class="control-label col-sm-2" for="pwd">Password:</label>
+		     		<div class="col-sm-3">          
+		        		<input type="password" class="form-control" id="upwd" placeholder="Enter password" name="upwd">
+		     		</div>
+		    	</div>
+		    	<div class="form-group">        
+		      		<div class="col-sm-offset-2 col-sm-3">
+
+		      			<span id="cspan" th:text="${msg}"></span>
+		      			
+
+		       			<button class="btn btn-info btn-user btn-block" id="login_btn">로그인</button><br>
+		      		</div>
+		    	</div>
+			 </form>
+			 <div class="form-group">        
+	      		<div class="col-sm-offset-2 col-sm-3">
+	      			<hr>
+	      			<p>계정이 없다면?</p>
+	       			<a class="btn btn-default btn-user btn-block" id="register">계정생성하기</a><br>
+	      		</div>
+
+	    	</div>
+
+		    </div>
+		</div>
+    <div class="col-sm-4">
+	</div>  
+</div>
+
+
+
+
+
+
+
