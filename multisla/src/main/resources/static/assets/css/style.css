@@ -417,7 +417,14 @@ Button
     color:#fff;
 }
 
-.btn-success{}
+.btn-success{
+	color: #fff;
+    background-color: transparent;
+    border:2px solid;
+    border-color: #fff;
+    padding: 0.8rem 2.5rem;
+    border-radius: 30px;
+}
 .btn-info{}
 .btn-warning{}
 .btn-danger{}
@@ -1106,7 +1113,7 @@ About section style
     top: 43%;
     width: 180px;
     height: 1px;
-    background-color: #ee997b;
+    background-color: gray;
     z-index: 1;
 }
 .work_separator2:before{
@@ -1116,7 +1123,7 @@ About section style
     top: 43%;
     width: 180px;
     height: 1px;
-    background-color: #ee997b;
+    background-color: gray;
     z-index: 1;
 }
 

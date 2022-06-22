@@ -11,9 +11,15 @@ import com.multi.vo.UsersVO;
 @Controller
 public class MainController2 {
 	
-	@RequestMapping("/model02")
-	public String model02(Model m) {
+	@RequestMapping("/modely")
+	public String modely(Model m) {
 		m.addAttribute("center", "detail/modelYdetail");
+		return "/index";
+	}
+	
+	@RequestMapping("/modelx")
+	public String modelx(Model m) {
+		m.addAttribute("center", "detail/modelXdetail");
 		return "/index";
 	}
 
