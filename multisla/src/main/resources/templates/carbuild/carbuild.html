@@ -1,7 +1,6 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <style>
 #carimg{
 	position: fixed;
@@ -31,8 +30,15 @@
 	background: url(assets/images/carbuild/models/models_black.png) no-repeat top center;
 }
 </style>
-<script>
+<script th:inline="javascript">
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 $(document).ready(function(){
+	
 	$("#carimg").attr('src', 'assets/images/carbuild/models/models_black_w19.png')
 	$('input[name="colid"], input[name="wid"]').click(function(){
 		var c = $('input[name="colid"]:checked').val();
@@ -84,6 +90,37 @@ $(document).ready(function(){
 			$("#carimg").attr('src','assets/images/carbuild/models/models_white_interior.jpg').fadeIn(300);
 		};
 	});
+	
+	$('#togarage').click(function(){
+		var session = '[[${session}]]';
+		var mid = 100;
+		var colid = $('input[name="colid"]:checked').val();
+		var wid = $('input[name="wid"]:checked').val();
+		var iid = $('input[name="iid"]:checked').val();
+		var corder = 0;
+/*		var obj = {mid:mid, colid:colid, wid:wid, iid:iid, corder:corder};
+		console.log(obj);
+		console.log(session);*/
+		if (session == '{}') {
+			// 로그인 정보가 없을 때
+			// 쿠키에 견적 저장
+			// 로그인 페이지로 이동하고 로그인 후 쿠키를 garage에 저장
+			setCookie('mid',mid,1);
+			setCookie('colid',colid,1);
+			setCookie('wid',wid,1);
+			setCookie('iid',iid,1);
+			setCookie('corder',corder,1);
+			
+		}else {
+			// 로그인 정보가 있을 때
+			// 바로 garage로 이동
+			$('#build').attr({
+				'method':'post',
+				'action':'/gogarage'
+			});
+			$('#build').submit();
+		}
+	});
 });
 </script>
 
@@ -127,7 +164,7 @@ $(document).ready(function(){
 			</div>
 		
 			<!-- 옵션 선택 폼 -->
-			<form class="select-options">
+			<form class="select-options" id="build">
 			<!-- 모델명 -->
 			
 				<!-- 색상 -->
@@ -176,18 +213,18 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-3 text-center"></div>
 					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="wid" value="300" id="radio" checked="checked" class="wheelid">
+						<label class="labelexpanded" for="w19">
+							<input type="radio" name="wid" value="300" id="w19" checked="checked" class="wheelid">
 							<div class="radio-btns">
-								<img src="assets/images/2-black.png" class="img-circle" alt="whe_Black" id="w_19">
+								<img src="assets/images/carbuild/models/w_19.png" class="img-circle" alt="whe_Black" id="w_19">
 							</div>
 						</label>
 					</div>
 					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="wid" value="301" id="radio" class="wheelid">
+						<label class="labelexpanded" for="w21">
+							<input type="radio" name="wid" value="301" id="w21" class="wheelid">
 							<div class="radio-btns">
-								<img src="assets/images/2-white.png" class="img-circle" alt="whe_White" id="w_21">
+								<img src="assets/images/carbuild/models/w_21.png" class="img-circle" alt="whe_White" id="w_21">
 							</div>
 						</label>
 					</div>
@@ -201,16 +238,16 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-3 text-center"></div>
 					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="iid" value="400" id="radio" checked="checked">
+						<label class="labelexpanded" for="iblack">
+							<input type="radio" name="iid" value="400" id="iblack" checked="checked">
 							<div class="radio-btns">
 								<img src="assets/images/3-black.png" class="img-circle" alt="inte_Black" id="circle60">
 							</div>
 						</label>
 					</div>
 					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="iid" value="401" id="radio">
+						<label class="labelexpanded" for="iwhite">
+							<input type="radio" name="iid" value="401" id="iwhite">
 							<div class="radio-btns">
 								<img src="assets/images/3-white.png" class="img-circle" alt="inte_white" id="circle60">
 							</div>
@@ -225,7 +262,7 @@ $(document).ready(function(){
 						<h3 class="text-black text-center">내 차고에 담기</h3>
 					</div>
 					<div class="home_text text-center">
-						<button type="button" onClick="location.href='#'" class="btn btn-primary">차고에 담기</button>
+						<button type="button" class="btn btn-primary" id="togarage">차고에 담기</button>
 					</div>
 				</div>
 			</form>

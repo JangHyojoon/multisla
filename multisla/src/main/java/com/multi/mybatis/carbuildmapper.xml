@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<insert id="insert" parameterType="carbuildVO">
 
-			INSERT INTO carbuild VALUES (#{codeno},#{mid},#{colid},#{wid},#{iid},#{corder})
+			INSERT INTO carbuild VALUES (NULL,#{mid},#{colid},#{wid},#{iid},#{corder})
 
 
 	</insert>
