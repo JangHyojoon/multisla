@@ -1,7 +1,5 @@
 package com.multi.orders;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,11 +13,11 @@ class UpdateTest {
 	OrdersBiz ordersbiz;
 	@Test
 	void contextLoads() {
-		Date today = new Date();
-		OrdersVO ov = new OrdersVO(2,"id01",1234,56789,"credit","seoul",today,20202020);
+		
+		OrdersVO uv = new OrdersVO(2,"id01",1000000,100,200,300,400,5000,"pay","phone","post","addr","daddr",7777777);
 		
 		try {
-			ordersbiz.modify(ov);
+			ordersbiz.modify(uv);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

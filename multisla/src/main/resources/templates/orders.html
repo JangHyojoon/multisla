@@ -11,6 +11,12 @@
    #spwd{
 	  color: red;
    }
+   h2 {
+   text-align: center;
+   }
+   .pannel-detail{
+   text-align: right;
+   }
    
 
 </style>
@@ -28,58 +34,8 @@ function execDaumPostcode() {
         }).open();
     });
 }
-function sendUid(uid){
-   $.ajax({
-      url:'/checkuid',
-      data:{'uid':uid},
-      success:function(data){
-         if(data == '1'){
-            $('#uspan').text('사용불가능한 ID입니다');
-         }else{
-            $('#uspan').text('사용가능한 ID입니다');
-        
-         }
-      }
-   });
-};
+
 $(document).ready(function(){
-	//아이디 유효성 검사
-	$('input[name="uid"]').keyup(function(){
-	
-	   var uid = $(this).val();
-		if(uid.length <3){
-		 $('#uspan').text('3자리 이상이어야 합니다.');
-		}else{
-		 $('#uspan').text('');
-		   sendUid(uid);
-		}
-	});
-	//비밀번호 유효성 검사
-	$('input[name="upwd"]').keyup(function(){
-		var uid = $('input[name="uid"]').val();
-		var pwd = $('input[name="upwd"]').val();
-		var pwd2 = $('input[name="upwd2"]').val();
-			if(pwd != uid){
-				$('#spwd').text('');
-			
-			}else {
-				$('#spwd').text('아이디와 비밀번호가 같습니다');
-			}
-	});		
-	//비밀번호2 유효성 검사
-	$('input[name="upwd2"]').keyup(function(){
-		var pwd = $('input[name="upwd"]').val();
-		var pwd2 = $('input[name="upwd2"]').val();
-			if(pwd != pwd2){
-				$('#spwd2').text('비밀번호가 일치하지 않습니다');
-				
-			}else {
-				$('#spwd2').text('비밀번호가 일치합니다');
-			}
-	 });
-	
-	
-	
 	//전화번호 유효성 검사
 	function autoHypenTel(str) {
 		  str = str.replace(/[^0-9]/g, '');
@@ -158,37 +114,24 @@ $(document).ready(function(){
 </script>
 
 <div id="div-top" class="container-fluid">
-<span id="hidden1"></span>
-<span id="hidden2"></span>
+
     <div class="col-sm-4">
+    
     </div>
-    <div class="col-sm-4" >
+    <div class="col-sm-6" >
+    <h2 >주문하기</h2>
        <div class="container">
-       <h2 >주문하기</h2>
+       
          <form class="form-horizontal" >
-            <div class="form-group">
-               <label class="control-label col-sm-2" for="id">ID: </label>
-               <div class="col-sm-4">
-                    <input type="text" class="form-control" id="uid" name="uid">
-                     <span id="uspan"></span>
-                  </div>
-            </div>
+			<input type="hidden" class="form-control" id="uid" name="uid">
+			<input type="hidden" class="form-control" name="mname" id="mname" readonly th:value="${garage.mname}"/>
+			<input type="hidden" class="form-control" name="coloption" id="coloption" readonly th:value="${garage.coloption}"/>
+			<input type="hidden" class="form-control" name="woption" id="woption" readonly th:value="${garage.woption}"/>
+			<input type="hidden" class="form-control" name="ioption" id="ioption" readonly th:value="${garage.ioption}"/>
+			<input type="hidden" class="form-control" name="carprice" id="carprice" readonly th:value="${garage.price}"/>
+
             
-            <div class="form-group">
-               <label class="control-label col-sm-2" for="pwd">Password:</label>
-                 <div class="col-sm-4">          
-                    <input type="password" class="form-control" id="upwd" name="upwd">
-                    <span id="spwd"></span>
-                 </div>
-             </div>
-             
-             <div class="form-group">
-               <label class="control-label col-sm-2" for="pwd">Password Confirm:</label>
-                 <div class="col-sm-4">          
-                    <input type="password" class="form-control" id="upwd2" name="upwd2">
-                    <span id="spwd2"></span>
-                 </div>
-             </div>
+            
              
             
             <div class="form-group">
@@ -247,18 +190,47 @@ $(document).ready(function(){
 				</div>
 				<span id="ppost"></span>
 			</div>
-             
 
-             
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="mname">탁송비:</label>
+				<div class="col-sm-4">
+			    	<input type="text" class="form-control" name="shipprice" id="shipprice" readonly/>
+				</div>
+			</div>
+    
+            <div class="form-group">
+				<label class="control-label col-sm-2" for="price">최종 가격:</label>
+				<div class="col-sm-4">
+			    	<input type="text" class="form-control" name="finalprice" id="finalprice" readonly/>
+				</div>
+			</div>
+		<div class="form-group">
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							
+							<h3 class= "col-sm-4" th:text="${garage.mname}"></h3><a class ="pannel-detail" data-toggle="collapse" href="#collapse1">자세히 보기</a>
+						</h4>   
+					</div>
+						<div id="collapse1" class="panel-collapse collapse">
+							<div class="panel-body" th:text="${garage.coloption}">색상</div>
+							<div class="panel-body" th:text="${garage.woption}">휠</div>
+							<div class="panel-body" th:text="${garage.ioption}">인테리어</div>
+						<div class="panel-footer" th:text="${garage.price}">견적가</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
              <div class="form-group">        
                   <div class="col-sm-offset-2 col-sm-3">
                        <a href="#" class="btn btn-info m-btn--air"  id="registerbtn">회원가입 </a>
          
                   </div>
-             </div>
-             
-
+            </div>
          </form>
+         
          <div class="form-group">        
                <div class="col-sm-offset-2 col-sm-3">
                   <hr>

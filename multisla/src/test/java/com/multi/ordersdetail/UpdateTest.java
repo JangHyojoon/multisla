@@ -6,20 +6,21 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.OrdersBiz;
-import com.multi.vo.OrdersVO;
+import com.multi.biz.OrdersdetailBiz;
+import com.multi.vo.OrdersdetailVO;
 
 @SpringBootTest
 class UpdateTest {
 	@Autowired
-	OrdersBiz ordersbiz;
+	OrdersdetailBiz ordersdetailbiz;
 	@Test
 	void contextLoads() {
 		Date today = new Date();
-		OrdersVO ov = new OrdersVO(2,"id01",1234,56789,"credit","seoul",today,20202020);
+
+		OrdersdetailVO uv = new OrdersdetailVO(2,"배송중",today,1,1000);
 		
 		try {
-			ordersbiz.modify(ov);
+			ordersdetailbiz.modify(uv);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

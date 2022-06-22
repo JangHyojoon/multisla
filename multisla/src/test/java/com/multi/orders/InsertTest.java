@@ -1,7 +1,5 @@
 package com.multi.orders;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +13,9 @@ class InsertTest {
 	OrdersBiz ordersbiz;
 	@Test
 	void contextLoads() {
-		Date today = new Date();
-		OrdersVO uv = new OrdersVO("id01",1234,56789,"credit","seoul",today,11123);
+		
+		OrdersVO uv = new OrdersVO("id01",1000000,100,200,300,400,5000,"pay","phone","post","addr","daddr",8888);
+
 		
 		try {
 			ordersbiz.register(uv);

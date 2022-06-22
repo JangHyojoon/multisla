@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM ORDERSDETAIL
 	</select>
 	<insert id="insert" parameterType="ordersdetailVO">
-		INSERT INTO ORDERSDETAIL VALUES (NULL,#{ostatus},#{oredersno},#{codeno})
+		INSERT INTO ORDERSDETAIL VALUES (NULL,#{ostatus},#{shipdate},#{ordersno},#{codeno})
 	</insert>
 	<update id="update" parameterType="ordersdetailVO">
-		UPDATE ORDERSDETAIL SET OSTATUS=#{ostatus},ORDERSNO=#{ordersno},CODENO=#{codeno} WHERE ODETAILNO=#{odetailno}
+		UPDATE ORDERSDETAIL SET OSTATUS=#{ostatus},SHIPDATE=#{shipdate},ORDERSNO=#{ordersno},CODENO=#{codeno} WHERE ODETAILNO=#{odetailno}
 	</update>
 	<delete id="delete" parameterType="ordersdetailVO">
 		DELETE FROM ORDERSDETAIL WHERE ODETAILNO=#{odetailno}
