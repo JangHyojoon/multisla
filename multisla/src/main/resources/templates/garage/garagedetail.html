@@ -1,5 +1,14 @@
 <meta charset="utf-8">
+<style>
+.option {
+	width:80px;
+}
+.btn {
+margin:auto;
 
+}
+
+</style>
 
 
 
@@ -10,8 +19,8 @@
                         <div class="main_details">
                             <div class="col-md-6">
                                 <div class="m_details_img">
-                                    <img src="assets/images/angela-img.jpg" alt="" />
-                                    <!-- th:src="@{'assets/imges/model/'+${u.codeno}'.jpg'}" -->
+                                     <img alt="????" th:src="@{'assets/images/garage/'+${ugarage.mname}+'_'+${ugarage.coloption}+'_'+${ugarage.woption}+'.png'}">
+                                     <!--  img alt="????" th:src="@{'assets/images/option/'+${ugarage.ioption}+'.jpg'}"-->                                   
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -22,68 +31,84 @@
                                 </div>
                                
                                 <hr />
+                                
+                                
                                 <div class="person_details m-top-40">
                                     <div class="row">
-                                        <div class="col-md-5 text-left">
-                                           
-                                            <p>Color</p>
-                                            <p>Wheel:</p>
-                                            <p>Interior:</p>
-                                            <p>Price</p>
-                                            <p>Corder</p>
-                                            
+                                    	
+                                        <div class="col-md-3 text-left"> 
+                                        	<h4 >COLOR</h4>                                      
+                                            <img class="option" alt="?" th:src="@{'assets/images/option/'+${ugarage.colid} +'.png'}">     
+                                            <p th:text="${ugarage.coloption}"></p> 
                                         </div>
-                                        <div class="col-md-7 text-left">
-                                            
-                                            <p th:text="${ugarage.coloption}">COLOR</p>
-                                            <p th:text="${ugarage.woption}">WHEEL</p>
-                                            <p th:text="${ugarage.ioption}">INTERIOR</p>
-                                            <p th:text="${ugarage.price}">PRICE</p>
-                                            <p th:text="${ugarage.corder}">CORDER</p>
-                                            
+                                       
+                                        <div class="col-md-3 text-left">   
+                                         	<h4 >WHEEL</h4>                           
+                                            <img class="option" alt="?" th:src="@{'assets/images/option/'+${ugarage.wid} +'.png'}">
+                                            <p th:text="${ugarage.woption}+' inch'"></p> 
+                                        </div>
+                                        
+                                       
+                                       
+                                        <div class="col-md-3 text-left">   
+                                         	<h4>INTERIOR</h4>                                      
+                                            <img class="option" alt="?" th:src="@{'assets/images/option/'+${ugarage.iid} +'.png'}">  
+                                            <p th:text="${ugarage.ioption}"></p>        
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="m_details_content m-bottom-40">
+                                </div>
+                               
+                                <hr />
+                                
+                                
+                                <div class="person_details m-top-40">
+                                    <div class="row">
+                                    	
+                                        <div class="col-md-6 text-left"> 
+                                        	                                     
+                                            <h4 th:text="'견적가 : '+${ugarage.price}" >  </h4>   
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                             <div class="col-md-6">
+                                <div class="m_details_content m-bottom-40">
+       							
+                                    
+                                
+                                </div>
+                               
+                                
+                                
+                                
+                                <div class="person_details m-top-40">
+                                    <div class="row">
+                               
+                                    </div>
+                                </div>
+                            </div>
+                      
                             
-                            <!-- 
-                            주문했으면(corder==true)면 주문상세
-                            주문 안했으면(corder==false)면 주문하러 가기
-                             -->
-                      		<div class="col-md-5" th:if="${ugarage.corder}==false">
-								<button type="button" href="#" class="btn btn-primary">주문하러 가기</button>
-								
-                      		</div>
-							<div class="col-md-5" th:unless="${ugarage.corder}==false">							
-								<button type="button" href="#" class="btn btn-default">주문상세</button> 
-                      		</div>
+                      		
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="skill_bar m-top-70">    
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="teamskillbar clearfix m-top-50" data-percent="63%">
-                                                <h6 class="one">Fashionista <span class="pull-right">63%</span></h6>
-                                                <div class="teamskillbar-bar"></div>
-                                            </div> <!-- End Skill Bar -->
-
-                                            <div class="teamskillbar clearfix m-top-50" data-percent="75%">
-                                                <h6 class="two">catwalk <span class="pull-right">75%</span></h6>
-                                                <div class="teamskillbar-bar"></div>
-                                            </div> <!-- End Skill Bar -->
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="teamskillbar clearfix m-top-50" data-percent="88%">
-                                                <h6 class="three">photo models <span class="pull-right">88%</span></h6>
-                                                <div class="teamskillbar-bar"></div>
-                                            </div> <!-- End Skill Bar -->
-
-                                            <div class="teamskillbar clearfix m-top-50" data-percent="76%">
-                                                <h6 class="foure">catwalk <span class="pull-right">76%</span></h6>
-                                                <div class="teamskillbar-bar"></div>
-                                            </div> <!-- End Skill Bar -->
+			                            <div class="col-md-6">
+			                                <div class="col-md-6 btn" th:if="${ugarage.corder}==false">
+												<a type="button" href="#" class="btn btn-primary">주문하러 가기</a>
+												<a type="button" href="#" class="btn btn-default">수정하기</a>
+												<a type="button" href="#" th:href="@{delete(gid=${ugarage.gid})}" class="btn btn-default">삭제</a>
+			                      			</div>
+											<div class="col-md-6 btn" th:unless="${ugarage.corder}==false">							
+												<button type="button" href="#" class="btn btn-default">주문상세</button> 
+			                      			</div>
                                         </div>
                                     </div>
                                 </div>

@@ -13,10 +13,10 @@
                             <div class="col-md-12 m-bottom-60">
                                 <div class="filters-button-group sm-text-center">
                                     <button class="button is-checked" data-filter="*">View all</button>
-                                    <button class="button" data-filter=".metal">MODEL1</button>
-                                    <button class="button" data-filter=".transition">MODEL2</button>
-                                    <button class="button" data-filter=".alkali">MODEL3</button>
-                                    <button class="button" data-filter=".ar">MODEL4</button>
+                                    <button class="button" data-filter=".models">MODEL S</button>
+                                    <button class="button" data-filter=".modelx">MODEL X</button>
+                                    <button class="button" data-filter=".modely">MODEL Y</button>
+                                   
                                 </div>
                             </div>
 
@@ -29,11 +29,11 @@
                              
                              -->
                             <div class="grid models text-center">
-                            	<!--  div th:each="u : ${ugarage}" class="'grid-item model-item transition'+${u.mid}" -->
-                                <div th:each="u : ${ugarage}" class="grid-item model-item transition metal ium" >
-                                    <img alt="" src="assets/images/model/1.jpg">
+                            	
+                                <div th:each="u : ${ugarage}" class="grid-item model-item transition" th:classappend="${u.mname} ? ${u.mname}" >
+                                    <img alt="????" th:src="@{'assets/images/garage/'+${u.mname}+'_'+${u.coloption}+'_'+${u.woption}+'.png'}">
 									<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details<i class="fa fa-long-arrow-right"></i></a>
-                   				<!-- th:src="@{'assets/imges/model/'+${u.codeno}'.jpg'}" -->
+                   			
                                 </div><!-- End off grid item -->
 
 	

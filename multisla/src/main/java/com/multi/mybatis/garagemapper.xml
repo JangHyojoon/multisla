@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.GarageMapper">
 
 	<select id="select" parameterType="int" resultType="garageVO">
-		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid, m.mname, co.coloption, w.woption, i.ioption, 
+		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid,co.colid,w.wid,i.iid, m.mname, co.coloption, w.woption, i.ioption, 
 		m.mprice+co.colprice+w.wprice+i.iprice as price, ca.corder FROM garage g
 		INNER JOIN carbuild ca ON ca.codeno = g.codeno
 		INNER JOIN users u ON u.uid = g.uid
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE g.gid = #{gid}
 	</select>
 	<select id="selectall" resultType="garageVO">
-		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid, m.mname, co.coloption, w.woption, i.ioption, 
+		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid,co.colid,w.wid,i.iid, m.mname, co.coloption, w.woption, i.ioption, 
 		m.mprice+co.colprice+w.wprice+i.iprice as price, ca.corder FROM garage g
 		INNER JOIN carbuild ca ON ca.codeno = g.codeno
 		INNER JOIN users u ON u.uid = g.uid
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</select>
 		<select id="selectuid" resultType="garageVO">
-		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid, m.mname, co.coloption, w.woption, i.ioption, 
+		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid,co.colid,w.wid,i.iid, m.mname, co.coloption, w.woption, i.ioption, 
 		m.mprice+co.colprice+w.wprice+i.iprice as price, ca.corder FROM garage g
 		INNER JOIN carbuild ca ON ca.codeno = g.codeno
 		INNER JOIN users u ON u.uid = g.uid
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE g.uid = #{uid}
 	</select>
 			<select id="selectmid" resultType="garageVO">
-		SELECT g.gid, g.codeno, g.uid, u.uname,m.mid, m.mname, co.coloption, w.woption, i.ioption, 
+		SELECT g.gid, g.codeno, g.uid, u.uname, m.mid,co.colid,w.wid,i.iid, m.mname, co.coloption, w.woption, i.ioption, 
 		m.mprice+co.colprice+w.wprice+i.iprice as price, ca.corder FROM garage g
 		INNER JOIN carbuild ca ON ca.codeno = g.codeno
 		INNER JOIN users u ON u.uid = g.uid

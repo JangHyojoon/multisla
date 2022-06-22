@@ -126,4 +126,22 @@ public class MainController {
 	
 		return "index";
 	}
+	@RequestMapping("/delete")
+	public String delete(Model m,int gid) {
+		String uid=null;
+		GarageVO gv = null;
+		try {
+		
+			gv =garagebiz.get(gid);
+			garagebiz.remove(gid) ;
+			uid=gv.getUid();
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}
+
+		return "redirect:garage?uid="+ uid;
+
+
+	}
 }
