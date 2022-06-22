@@ -102,7 +102,7 @@ margin:auto;
                                     <div class="row">
 			                            <div class="col-md-6">
 			                                <div class="col-md-6 btn" th:if="${ugarage.corder}==false">
-												<a type="button" href="#" class="btn btn-primary">주문하러 가기</a>
+												<a type="button" href="#" th:href="@{orders(gid=${ugarage.gid})}" class="btn btn-primary">주문하러 가기</a>
 												<a type="button" href="#" class="btn btn-default">수정하기</a>
 												<a type="button" href="#" th:href="@{delete(gid=${ugarage.gid})}" class="btn btn-default">삭제</a>
 			                      			</div>

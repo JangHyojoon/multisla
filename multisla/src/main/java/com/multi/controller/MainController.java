@@ -128,8 +128,8 @@ public class MainController {
 	}
 	@RequestMapping("/delete")
 	public String delete(Model m,int gid) {
-		String uid=null;
 		GarageVO gv = null;
+		String uid=null;
 		try {
 		
 			gv =garagebiz.get(gid);
@@ -141,6 +141,25 @@ public class MainController {
 		}
 
 		return "redirect:garage?uid="+ uid;
+
+
+	}
+	@RequestMapping("/orders")
+	public String orders(Model m,int gid) {
+		GarageVO gv =null;
+		UsersVO uv =null;
+		String uid =null;
+		try {
+			gv = garagebiz.get(gid);
+			uid = gv.getUid();
+			uv = usersbiz.get(uid);
+			m.addAttribute("garage", gv);
+			m.addAttribute("users", uv);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "orders";
 
 
 	}

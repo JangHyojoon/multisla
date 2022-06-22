@@ -1,0 +1,274 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style>
+   #div-top{
+      padding-top: 100px;
+   }
+   #spwd{
+	  color: red;
+   }
+   
+
+</style>
+
+<script>
+/** 우편번호 찾기 */
+function execDaumPostcode() {
+    daum.postcode.load(function(){
+        new daum.Postcode({
+            oncomplete: function(data) {
+              // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+              $("#upost").val(data.zonecode);
+              $("#uaddr").val(data.roadAddress);
+            }
+        }).open();
+    });
+}
+function sendUid(uid){
+   $.ajax({
+      url:'/checkuid',
+      data:{'uid':uid},
+      success:function(data){
+         if(data == '1'){
+            $('#uspan').text('사용불가능한 ID입니다');
+         }else{
+            $('#uspan').text('사용가능한 ID입니다');
+        
+         }
+      }
+   });
+};
+$(document).ready(function(){
+	//아이디 유효성 검사
+	$('input[name="uid"]').keyup(function(){
+	
+	   var uid = $(this).val();
+		if(uid.length <3){
+		 $('#uspan').text('3자리 이상이어야 합니다.');
+		}else{
+		 $('#uspan').text('');
+		   sendUid(uid);
+		}
+	});
+	//비밀번호 유효성 검사
+	$('input[name="upwd"]').keyup(function(){
+		var uid = $('input[name="uid"]').val();
+		var pwd = $('input[name="upwd"]').val();
+		var pwd2 = $('input[name="upwd2"]').val();
+			if(pwd != uid){
+				$('#spwd').text('');
+			
+			}else {
+				$('#spwd').text('아이디와 비밀번호가 같습니다');
+			}
+	});		
+	//비밀번호2 유효성 검사
+	$('input[name="upwd2"]').keyup(function(){
+		var pwd = $('input[name="upwd"]').val();
+		var pwd2 = $('input[name="upwd2"]').val();
+			if(pwd != pwd2){
+				$('#spwd2').text('비밀번호가 일치하지 않습니다');
+				
+			}else {
+				$('#spwd2').text('비밀번호가 일치합니다');
+			}
+	 });
+	
+	
+	
+	//전화번호 유효성 검사
+	function autoHypenTel(str) {
+		  str = str.replace(/[^0-9]/g, '');
+		  var tmp = '';
+
+		  if (str.substring(0, 2) == 02) {
+		    // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
+		    if (str.length < 3) {
+		      return str;
+		    } else if (str.length < 6) {
+		      tmp += str.substr(0, 2);
+		      tmp += '-';
+		      tmp += str.substr(2);
+		      return tmp;
+		    } else if (str.length < 10) {
+		      tmp += str.substr(0, 2);
+		      tmp += '-';
+		      tmp += str.substr(2, 3);
+		      tmp += '-';
+		      tmp += str.substr(5);
+		      return tmp;
+		    } else {
+		      tmp += str.substr(0, 2);
+		      tmp += '-';
+		      tmp += str.substr(2, 4);
+		      tmp += '-';
+		      tmp += str.substr(6, 4);
+		      return tmp;
+		    }
+		  } else {
+		    // 핸드폰 및 다른 지역 전화번호 일 경우
+		    if (str.length < 4) {
+		      return str;
+		    } else if (str.length < 7) {
+		      tmp += str.substr(0, 3);
+		      tmp += '-';
+		      tmp += str.substr(3);
+		      return tmp;
+		    } else if (str.length < 11) {
+		      tmp += str.substr(0, 3);
+		      tmp += '-';
+		      tmp += str.substr(3, 3);
+		      tmp += '-';
+		      tmp += str.substr(6);
+		      return tmp;
+		    } else {
+		      tmp += str.substr(0, 3);
+		      tmp += '-';
+		      tmp += str.substr(3, 4);
+		      tmp += '-';
+		      tmp += str.substr(7);
+		      return tmp;
+		    }
+		  }
+
+		  return str;
+		}
+	
+	$('#uphone').keyup(function (event) {
+		  event = event || window.event;
+		  var _val = this.value.trim();
+		  this.value = autoHypenTel(_val);
+		});
+
+	
+	$('#registerbtn').click(function(){
+		$('.form-horizontal').attr({
+			'method':'post',
+			'action':'registerimpl'
+		});
+		$('.form-horizontal').submit();
+		alert("회원가입이 완료되었습니다");
+	});
+	
+});
+</script>
+
+<div id="div-top" class="container-fluid">
+<span id="hidden1"></span>
+<span id="hidden2"></span>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4" >
+       <div class="container">
+       <h2 >주문하기</h2>
+         <form class="form-horizontal" >
+            <div class="form-group">
+               <label class="control-label col-sm-2" for="id">ID: </label>
+               <div class="col-sm-4">
+                    <input type="text" class="form-control" id="uid" name="uid">
+                     <span id="uspan"></span>
+                  </div>
+            </div>
+            
+            <div class="form-group">
+               <label class="control-label col-sm-2" for="pwd">Password:</label>
+                 <div class="col-sm-4">          
+                    <input type="password" class="form-control" id="upwd" name="upwd">
+                    <span id="spwd"></span>
+                 </div>
+             </div>
+             
+             <div class="form-group">
+               <label class="control-label col-sm-2" for="pwd">Password Confirm:</label>
+                 <div class="col-sm-4">          
+                    <input type="password" class="form-control" id="upwd2" name="upwd2">
+                    <span id="spwd2"></span>
+                 </div>
+             </div>
+             
+            
+            <div class="form-group">
+               <label class="control-label col-sm-2" for="name">Name:</label>
+                 <div class="col-sm-4">          
+                    <input type="text" class="form-control" name="uname" id="uname" th:value="${users.uname}">
+                 </div>
+             </div>
+             <div class="form-group">
+               <label class="control-label col-sm-2" for="phone">Phone Number:</label>
+                 <div class="col-sm-4">          
+                    <input type="tel" class="form-control" name="uphone" id="uphone" maxlength="13" th:value="${users.uphone}">
+                 
+           
+                 </div>
+             </div>
+            
+        
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="addr">Address:</label>
+				<div class="col-sm-2">
+			    	<input type="text" class="form-control" name="upost" id="upost" placeholder="우편번호" readonly th:value="${users.upost}"/>
+				</div>
+				<div class="col-sm-2">
+			   		<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="addr"></label>
+				<div class="col-sm-4">
+					<input
+					  type="text"
+					  class="form-control"
+					  name="uaddr"
+					  id="uaddr"
+					  placeholder="도로명 주소"
+					  readonly
+					  th:value="${users.uaddr}"
+					/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="addr"></label>
+				<div class="col-sm-4">
+					<input
+					  type="text"
+					  class="form-control"
+					  name="udaddr"
+					  id="udaddr"
+					  placeholder="상세 주소"
+					  required
+					  th:value="${users.udaddr}"
+					/>
+				</div>
+				<span id="ppost"></span>
+			</div>
+             
+
+             
+             <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-3">
+                       <a href="#" class="btn btn-info m-btn--air"  id="registerbtn">회원가입 </a>
+         
+                  </div>
+             </div>
+             
+
+         </form>
+         <div class="form-group">        
+               <div class="col-sm-offset-2 col-sm-3">
+                  <hr>
+                  <p>계정이 있으신가요?</p>
+                   <a class="btn btn-default btn-user btn-block" href="login" name="login">로그인하러가기</a><br>
+               </div>
+          </div>
+      </div>
+      
+    </div>
+    <div class="col-sm-4">
+   </div>  
+</div>
