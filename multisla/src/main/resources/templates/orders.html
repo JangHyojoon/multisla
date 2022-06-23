@@ -8,16 +8,11 @@
    #div-top{
       padding-top: 100px;
    }
-   #spwd{
-	  color: red;
+
+   li{
+   float:left;
+   margin-right: 20px;
    }
-   h2 {
-   text-align: center;
-   }
-   .pannel-detail{
-   text-align: right;
-   }
-   
 
 </style>
 
@@ -99,6 +94,26 @@ $(document).ready(function(){
 		  var _val = this.value.trim();
 		  this.value = autoHypenTel(_val);
 		});
+	
+	
+	//탁송비
+	
+	var addr = $('#uaddr').val();
+	if (addr.match("제주")){
+		$('#shipprice').val(100000);	
+	}else if (addr = ''){
+		$('#shipprice').val(0);
+	}else{
+		$('#shipprice').val(10000);
+	};
+	
+	//최종가격
+	var carprice = $('#carprice').val();
+	var shipprice = $('#shipprice').val();
+	var cp = parseInt(carprice,10);
+	var sp = parseInt(shipprice,10);
+	$('#finalprice').val(cp+sp);
+
 
 	
 	$('#registerbtn').click(function(){
@@ -115,15 +130,12 @@ $(document).ready(function(){
 
 <div id="div-top" class="container-fluid">
 
-    <div class="col-sm-4">
-    
-    </div>
-    <div class="col-sm-6" >
+    <div class="col-sm-12" >
     <h2 >주문하기</h2>
        <div class="container">
        
          <form class="form-horizontal" >
-			<input type="hidden" class="form-control" id="uid" name="uid">
+			
 			<input type="hidden" class="form-control" name="mname" id="mname" readonly th:value="${garage.mname}"/>
 			<input type="hidden" class="form-control" name="coloption" id="coloption" readonly th:value="${garage.coloption}"/>
 			<input type="hidden" class="form-control" name="woption" id="woption" readonly th:value="${garage.woption}"/>
@@ -133,91 +145,98 @@ $(document).ready(function(){
             
             
              
-            
-            <div class="form-group">
-               <label class="control-label col-sm-2" for="name">Name:</label>
-                 <div class="col-sm-4">          
-                    <input type="text" class="form-control" name="uname" id="uname" th:value="${users.uname}">
-                 </div>
-             </div>
-             <div class="form-group">
-               <label class="control-label col-sm-2" for="phone">Phone Number:</label>
-                 <div class="col-sm-4">          
-                    <input type="tel" class="form-control" name="uphone" id="uphone" maxlength="13" th:value="${users.uphone}">
-                 
-           
-                 </div>
-             </div>
-            
-        
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="addr">Address:</label>
-				<div class="col-sm-2">
-			    	<input type="text" class="form-control" name="upost" id="upost" placeholder="우편번호" readonly th:value="${users.upost}"/>
-				</div>
-				<div class="col-sm-2">
-			   		<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="addr"></label>
-				<div class="col-sm-4">
-					<input
-					  type="text"
-					  class="form-control"
-					  name="uaddr"
-					  id="uaddr"
-					  placeholder="도로명 주소"
-					  readonly
-					  th:value="${users.uaddr}"
-					/>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="addr"></label>
-				<div class="col-sm-4">
-					<input
-					  type="text"
-					  class="form-control"
-					  name="udaddr"
-					  id="udaddr"
-					  placeholder="상세 주소"
-					  required
-					  th:value="${users.udaddr}"
-					/>
-				</div>
-				<span id="ppost"></span>
-			</div>
+            <div class="form-group ship">
+            	<h3>탁송 정보</h3>        
+	            <div class="form-group">
+	               <label class="control-label col-sm-2" for="name">Name:</label>
+	                 <div class="col-sm-4">          
+	                    <input type="text" class="form-control" name="uname" id="uname" th:value="${users.uname}">
+	                 </div>
+	             </div>
+	             <div class="form-group">
+	               <label class="control-label col-sm-2" for="phone">Phone Number:</label>
+	                 <div class="col-sm-4">          
+	                    <input type="tel" class="form-control" name="uphone" id="uphone" maxlength="13" th:value="${users.uphone}">
 
+	                 </div>
+	             </div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="addr">Address:</label>
+					<div class="col-sm-2">
+				    	<input type="text" class="form-control" name="upost" id="upost" placeholder="우편번호" readonly th:value="${users.upost}"/>
+					</div>
+					<div class="col-sm-2">
+				   		<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="addr"></label>
+					<div class="col-sm-4">
+						<input
+						  type="text"
+						  class="form-control"
+						  name="uaddr"
+						  id="uaddr"
+						  placeholder="도로명 주소"
+						  readonly
+						  th:value="${users.uaddr}"
+						/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="addr"></label>
+					<div class="col-sm-4">
+						<input
+						  type="text"
+						  class="form-control"
+						  name="udaddr"
+						  id="udaddr"
+						  placeholder="상세 주소"
+						  required
+						  th:value="${users.udaddr}"
+						/>
+					</div>
+					<span id="ppost"></span>
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="mname">탁송비:</label>
 				<div class="col-sm-4">
-			    	<input type="text" class="form-control" name="shipprice" id="shipprice" readonly/>
+			    	<input type="number" class="form-control" name="shipprice" id="shipprice" readonly/>
+			   
 				</div>
 			</div>
     
             <div class="form-group">
 				<label class="control-label col-sm-2" for="price">최종 가격:</label>
 				<div class="col-sm-4">
-			    	<input type="text" class="form-control" name="finalprice" id="finalprice" readonly/>
+			    	<input type="number" class="form-control" name="finalprice" id="finalprice" readonly/>
 				</div>
 			</div>
+
+			
+		<h3>차견적</h3>	
 		<div class="form-group">
 			<div class="panel-group">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							
-							<h3 class= "col-sm-4" th:text="${garage.mname}"></h3><a class ="pannel-detail" data-toggle="collapse" href="#collapse1">자세히 보기</a>
+				<div class="panel panel-default" >
+					<div class="panel-heading" >
+						<h4 class="panel-title" >
+
+							<a class ="pannel-detail" data-toggle="collapse" href="#collapse1" th:text="${garage.mname}">자세히 보기</a>
 						</h4>   
 					</div>
 						<div id="collapse1" class="panel-collapse collapse">
-							<div class="panel-body" th:text="${garage.coloption}">색상</div>
-							<div class="panel-body" th:text="${garage.woption}">휠</div>
-							<div class="panel-body" th:text="${garage.ioption}">인테리어</div>
-						<div class="panel-footer" th:text="${garage.price}">견적가</div>
+							<div class="panel-body">
+								  <ul class="list-group">
+								    <li class="list-group-item">휠옵션<p th:text="${garage.coloption}"></p></li>
+								    <li class="list-group-item">th:text="${garage.woption}"</li>
+								    <li class="list-group-item">th:text="${garage.ioption}"</li>
+								    <li class="list-group-item">th:text="${garage.woption}"</li>						 
+								  </ul>
+							</div>							
+						</div>
 					</div>
 				</div>
 			</div>
@@ -234,8 +253,7 @@ $(document).ready(function(){
          <div class="form-group">        
                <div class="col-sm-offset-2 col-sm-3">
                   <hr>
-                  <p>계정이 있으신가요?</p>
-                   <a class="btn btn-default btn-user btn-block" href="login" name="login">로그인하러가기</a><br>
+                
                </div>
           </div>
       </div>
