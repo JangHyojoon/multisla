@@ -25,6 +25,13 @@ public class MainController2 {
 		m.addAttribute("center", "detail/modelXdetail");
 		return "/index";
 	}
+	
+	@RequestMapping("/ordersdetail")
+	public String ordersdetail(Model m) {
+		m.addAttribute("center", "ordersdetail");
+		return "/index";
+	}
+	
 
 
 }

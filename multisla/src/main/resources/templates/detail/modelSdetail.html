@@ -1,6 +1,9 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <style>
+	.modely{
+		background: white;
+	}
 	.modelsmain{
 		background: url(assets/images/model/Model-S-Main.jpg) no-repeat top center;
 	}
@@ -234,7 +237,6 @@
                         <div class="col-md-5 col-sm-12 col-xs-12 text-right pull-left sm-text-center">
                             <div class="work_item_details m-top-80 sm-m-top-20">
                                 <h4>연결 상태 유지</h4>
-                                <div class="work_separator1"></div>
                                 <p class="m-top-40 sm-m-top-10">여러 대의 전자기기를 Bluetooth로 동시에 연결하고 무선 또는 36W 출력의 USB-C 포트를 통해 고속 충전이 가능합니다.</p>
                             </div>
                         </div>
@@ -256,7 +258,6 @@
 			            <div class="col-md-5 col-sm-12 col-xs-12 text-left pull-left sm-text-center">
 			                <div class="work_item_details m-top-80 sm-m-top-20">
 			                    <h4>몰입감 있는 사운드</h4>
-			                    <div class="work_separator2"></div>
 			                    <p class="m-top-40 sm-m-top-10">액티브 로드 노이즈 저감 기술이 적용된 22개의 스피커와 960 와트 출력의 오디오 시스템은 몰입감 있는 스튜디오 수준의 사운드를 제공합니다.</p>
 			                </div>
 			            </div>
@@ -276,7 +277,6 @@
 			            <div class="col-md-5 col-sm-12 col-xs-12 text-right pull-left sm-text-center">
 			                <div class="work_item_details m-top-80 sm-m-top-20">
 			                    <h4>모든 것을 위한 공간</h4>
-			                    <div class="work_separator1"></div>
 			                    <p class="m-top-40 sm-m-top-10">앞뒤 트렁크와 평평한 시트 폴딩 공간을 활용해 짐을 내리거나 휠을 분리할 필요없이 자전거를 실을 수 있습니다.</p>
 			                </div>
 			            </div>
@@ -296,67 +296,32 @@
 <br />
 <br />
 
-<section id="hello" class="modelsperformance bg-mega">
-    <div class="overlay"></div>
-    <div class="container">
+<section id="hello" class="modely">
+	<div class="feature_photo wow fadeIn">
+	  <img src="assets/images/model/Model-S-Performance-Hero-Desktop-LHD.jpg" >
+	</div>
+	<br />
+	<br />
+	<br />
         <div class="row">
-            <div class="main_home text-center">
-                <div class="home_text">
-                </div>
-            </div>
-            <div class="main_counter text-center">
-			    <div class="col-md-4">
-			        <div class="counter_item">
-			            <h2 class="statistic-counter" style="color: white;"><em>483</em></h2>
-			            <h2 style="color: white;">km</h2>
-			            <div class="separator_small"></div>
-			            <h5>주행 가능 거리</h5>
-			        </div>
-			    </div>
-			    <div class="col-md-4">
-			        <div class="counter_item sm-m-top-40">
-			            <h2 class="statistic-counter" style="color: white;"><em>2.1</em></h2>
-			            <h2 style="color: white;">sec</h2>
-			            <div class="separator_small"></div>
-			            <h5>0-100 km/h*</h5>
-			        </div>
-			    </div>
-			    <div class="col-md-4">
-			        <div class="counter_item sm-m-top-40">
-			            <h2 class="statistic-counter" style="color: white;"><em>322</em></h2>
-			            <h2 style="color: white;">km/h</h2>
-			            <div class="separator_small"></div>
-			            <h5>최고속도†</h5>
-			        </div>
-			    </div>
-			</div>
-        </div><!--End off row-->
-	</div><!--End off container -->
-</section> <!--End off Home Sections-->
-
-<hr />
-<br />
-<br />
-<br />
-<div class="row">
-	<div class="main_blog_fashion"></div>
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
-		<div class="blog_fashion_left">
-			<div class="blog_fashion_content">
-			    <ol class="breadcrumb">
-			        <li><a href="#" class="text-black">Plaid</a></li>
-			    </ol>
+          <div class="main_blog_fashion"></div>
+		<div class="col-md-2"></div>
+		<div class="feature_photo wow fadeInUp col-md-8">
+			<div class="col-md-4">
 			    <h2>루디크러스를 넘어</h2>
-			    <p>Model S Plaid는 현존하는 양산 차량 중 가장 빠른 가속력을 자랑하는 차량 중 하나입니다. 모든 Model S는 업데이트된 배터리 구조를 통해 반복적인 트랙 주행에도 성능 저하가 일어나지 않습니다.</p>
-			
-			
-			    <a href="/buildmodels" class="btn btn-primary m-top-20">지금 주문하기<i class="fa fa-long-arrow-right"></i></a>
+			    <div class="pricing_btn m-top-30">
+              		<a href="/buildmodelx" class="btn btn-primary">지금 주문하기<i class="fa fa-long-arrow-right"></i></a>
+            	</div>
+            	<div class="pricing_btn m-top-50"></div>
+            </div>
+			<div class="col-md-8">  
+		   		<p>Model S Plaid는 현존하는 양산 차량 중 가장 빠른 가속력을 자랑하는 차량 중 하나입니다. 모든 Model S는 업데이트된 배터리 구조를 통해 반복적인 트랙 주행에도 성능 저하가 일어나지 않습니다.</p>
 			</div>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
-	<div class="col-md-3"></div>
-</div>
+</section>
+
 
 <!--Simple Section-->
 <section id="simple" class="simple bg-grey roomy-80">
@@ -459,40 +424,37 @@
     </div><!-- Portfolio container end -->
 </section><!-- End off portfolio section -->
 
-<section id="hello" class="modelsexterior bg-mega">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="main_home text-center">
-                <div class="home_text">
-                </div>
-            </div>
-        </div><!--End off row-->
-	</div><!--End off container -->
-</section> <!--End off Home Sections-->
-
-<hr />
-<br />
-<br />
-<br />
-<br />
-<div class="row">
-	<div class="main_blog_fashion"></div>
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
-		<div class="blog_fashion_left">
-			<div class="blog_fashion_content">
-			    <h3>외부</h3>
-			    <h2>효율성을 위한 설계</h2>
-			    <p>Model S는 0.208 Cd에 불과한 공기저항 계수를 자랑하며 속도, 내구성 및 주행 가능 거리를 위해 설계되었습니다. 향상된 공기역학 성능과 더 넓어진 차체는 더 빠른 응답성을 발휘하여 운전자가 더 빠르고 자신 있게 코너를 주행할 수 있습니다.</p>
-			
-			
-			    <a href="/buildmodels" class="btn btn-primary m-top-20">지금 주문하기<i class="fa fa-long-arrow-right"></i></a>
+<section id="hello" class="modely">
+	<div class="feature_photo wow fadeIn">
+	  <img src="assets/images/model/Model-S-Exterior-Hero-Desktop-Global.jpg" >
+	</div>
+	<br />
+	<br />
+	<br />
+	<div class="row">
+		<div class="main_blog_fashion"></div>
+		<div class="col-md-2"></div>
+		<div class="feature_photo wow fadeInUp col-md-8">
+			<div class="col-md-4">
+				<h2>효율성을 위한 설계</h2>
+				<div class="pricing_btn m-top-30">
+	              		<a href="/buildmodelx" class="btn btn-primary">지금 주문하기<i class="fa fa-long-arrow-right"></i></a>
+	            </div>
+	            <div class="pricing_btn m-top-50"></div>
+	        </div>
+			<div class="col-md-8"> 
+				<p>Model S는 0.208 Cd에 불과한 공기저항 계수를 자랑하며 속도, 내구성 및 주행 가능 거리를 위해 설계되었습니다. 향상된 공기역학 성능과 더 넓어진 차체는 더 빠른 응답성을 발휘하여 운전자가 더 빠르고 자신 있게 코너를 주행할 수 있습니다.</p>
 			</div>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
-	<div class="col-md-3"></div>
-</div>
+</section>
+
+<br>
+
+<br>
+
+<br>
 
 <!--Our Work Section-->
 <div class="container">
@@ -510,7 +472,6 @@
                         <div class="col-md-5 col-sm-12 col-xs-12 text-right pull-left sm-text-center">
                             <div class="work_item_details m-top-80 sm-m-top-20">
                                 <h4>지치지 않는 성능</h4>
-                                <div class="work_separator1"></div>
                                 <p class="m-top-40 sm-m-top-10">뛰어난 성능의 퍼포먼스 휠과 타이어는 차량의 접지력을 향상시켜 더 강한 출력을 도로에 전달하는데 도움을 줍니다.</p>
                             </div>
                         </div>
@@ -529,7 +490,6 @@
 			            <div class="col-md-5 col-sm-12 col-xs-12 text-left pull-left sm-text-center">
 			                <div class="work_item_details m-top-80 sm-m-top-20">
 			                    <h4>최적화된 공기역학</h4>
-			                    <div class="work_separator2"></div>
 			                    <p class="m-top-40 sm-m-top-10">모든 부분의 디테일을 고려한 외관 디자인으로 Model S는 가장 공기역학적으로 설계된 차량 중 하나입니다.</p>
 			                </div>
 			            </div>
@@ -549,7 +509,6 @@
 			            <div class="col-md-5 col-sm-12 col-xs-12 text-right pull-left sm-text-center">
 			                <div class="work_item_details m-top-80 sm-m-top-20">
 			                    <h4>정제된 디자인</h4>
-			                    <div class="work_separator1"></div>
 			                    <p class="m-top-40 sm-m-top-10">아이코닉한 실루엣과 참신하고 우아한 비율의 만남</p>
 			                </div>
 			            </div>
