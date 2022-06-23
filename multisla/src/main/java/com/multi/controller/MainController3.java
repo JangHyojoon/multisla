@@ -10,11 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CarbuildBiz;
+import com.multi.biz.ColorBiz;
 import com.multi.biz.GarageBiz;
+import com.multi.biz.InteriorBiz;
+import com.multi.biz.ModelBiz;
 import com.multi.biz.UsersBiz;
+import com.multi.biz.WheelBiz;
 import com.multi.vo.CarbuildVO;
+import com.multi.vo.ColorVO;
 import com.multi.vo.GarageVO;
+import com.multi.vo.InteriorVO;
+import com.multi.vo.ModelVO;
 import com.multi.vo.UsersVO;
+import com.multi.vo.WheelVO;
 
 // 신승욱
 @Controller
@@ -28,6 +36,18 @@ public class MainController3 {
 	
 	@Autowired
 	UsersBiz usersbiz;
+	
+	@Autowired
+	ModelBiz modelbiz;
+	
+	@Autowired
+	ColorBiz colorbiz;
+	
+	@Autowired
+	WheelBiz wheelbiz;
+	
+	@Autowired
+	InteriorBiz interiorbiz;
 	
 	// go to model S detail page
 	@RequestMapping("/models")
@@ -132,12 +152,12 @@ public class MainController3 {
 		try {	// cookie값을 담은 변수로 carbuild를 register하고 그 후에 garage에 register
 			carbuildbiz.register(new CarbuildVO(mid, colid, wid, iid, corder));
 			int codeno = carbuildbiz.selectlast();
-			garagebiz.register(new GarageVO(codeno, uid));
+			garagebiz.register(new GarageVO(codeno, users.getUid()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		m.addAttribute("center", "garage/garage");
-		return "redirect:/garage?uid="+uid;
+		return "redirect:/garage?uid="+users.getUid();
 	}
 	
 	// build -> login -> register
@@ -148,7 +168,7 @@ public class MainController3 {
 		return "index";
 	}
 	
-	// build register -> garage
+	// build -> login -> register -> garage
 	// 회원가입을 하고 자동 로그인 후 garage로 이동
 	@RequestMapping("/build_register")
 	public String build_register(Model m, UsersVO obj, HttpSession session, HttpServletRequest resq) {
@@ -156,18 +176,18 @@ public class MainController3 {
 		try {
 			usersbiz.register(obj);
 			users = usersbiz.get(obj.getUid());
-			session.setAttribute("loginusers", users);
+			session.setAttribute("loginusers", users);	// 자동 로그인
 			m.addAttribute("loginusers", users);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Cookie[] cookie = resq.getCookies();
+		Cookie[] cookie = resq.getCookies();	// servlet에서 쿠키 요청 후 cookie 배열에 담기
 		int mid = 0;
 		int colid = 0;
 		int wid = 0;
 		int iid = 0;
 		boolean corder = false;
-		for (Cookie c : cookie) {
+		for (Cookie c : cookie) {		// 각각의 변수에 쿠키의 value 넣기
 			if (c.getName().equals("mid")) {
 				mid = Integer.parseInt(c.getValue());
 			}
@@ -184,7 +204,7 @@ public class MainController3 {
 				corder = Boolean.parseBoolean(c.getValue());
 			}
 		}
-		try {
+		try {	// 받아 온 쿠키 value를 기반으로 carbuild에 register, garage에도 register
 			carbuildbiz.register(new CarbuildVO(mid, colid, wid, iid, corder));
 			int codeno = carbuildbiz.selectlast();
 			garagebiz.register(new GarageVO(codeno, users.getUid()));
@@ -193,5 +213,48 @@ public class MainController3 {
 		}
 		m.addAttribute("center", "garage/garage");
 		return "redirect:/garage?uid="+users.getUid();
+	}
+	
+	// garage detail -> modify build
+	// 차고 상세 조회에서 수정하기 누르면 수정 페이지로 이동
+	@RequestMapping("/modifygarage")
+	public String modifygarage(Model mo, int gid) {
+		GarageVO g = null;
+		CarbuildVO car = null;
+		ModelVO m = null;
+		ColorVO c = null;
+		WheelVO w = null;
+		InteriorVO i = null;
+		try {
+			g = garagebiz.get(gid);
+			car = carbuildbiz.get(g.getCodeno());
+			m = modelbiz.get(car.getMid());
+			c = colorbiz.get(car.getColid());
+			w = wheelbiz.get(car.getWid());
+			i = interiorbiz.get(car.getIid());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mo.addAttribute("g", g);
+		mo.addAttribute("car", car);
+		mo.addAttribute("m", m);
+		mo.addAttribute("c",c);
+		mo.addAttribute("w", w);
+		mo.addAttribute("i", i);
+		mo.addAttribute("center", "garage/modify");
+		return "index";
+	}
+	
+	// modify build -> garage
+	// 수정페이지에서 modify 하고 garage로 이동
+	@RequestMapping("/modifybuild")
+	public String modifybuild(Model m, CarbuildVO obj, String uid) {
+		try {
+			carbuildbiz.modify(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "garage/garage");
+		return "redirect:/garage?uid="+uid;
 	}
 }
