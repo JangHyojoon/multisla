@@ -148,11 +148,12 @@ $(document).ready(function(){
 	$('#registerbtn').click(function(){
 		$('.form-horizontal').attr({
 			'method':'post',
-			'action':'registerimpl'
+			'action':'/build_register'
 		});
 		$('.form-horizontal').submit();
 		alert("회원가입이 완료되었습니다");
 	});
+	
 	
 });
 </script>
@@ -250,7 +251,7 @@ $(document).ready(function(){
              
              <div class="form-group">        
                   <div class="col-sm-offset-2 col-sm-3">
-                       <a href="#" class="btn btn-info m-btn--air"  id="registerbtn">회원가입 </a>
+                       <a class="btn btn-info m-btn--air"  id="registerbtn">회원가입 </a>
          
                   </div>
              </div>

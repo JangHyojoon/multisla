@@ -60,6 +60,7 @@ public class MainController3 {
 	
 	
 	// build -> garage
+	// login 상태에서 build하면 garage로 이동
 	@RequestMapping("/gogarage")
 	public String gogarage(Model m, CarbuildVO obj, String uid) {
 		int codeno = 0;
@@ -76,6 +77,7 @@ public class MainController3 {
 	}
 	
 	// build -> login
+	// login하지 않고 build할 때, login으로 이동
 	@RequestMapping("/buildlogin")
 	public String buildlogin(Model m) {
 		m.addAttribute("center", "carbuild/login");
@@ -83,6 +85,7 @@ public class MainController3 {
 	}
 	
 	// build -> login -> garage
+	// login하지 않고 build할 때, login 성공하면 쿠키 정보를 garage로 register
 	@RequestMapping("/logintogarage")
 	public String logintogarage(Model m, String uid, String upwd, HttpSession session, HttpServletRequest resq) {
 		UsersVO users = null;
@@ -102,6 +105,61 @@ public class MainController3 {
 			m.addAttribute("center", "carbuild/login");
 			m.addAttribute("msg", "회원정보를 확인해주세요");
 			return "index";
+		}
+		Cookie[] cookie = resq.getCookies();
+		int mid = 0;
+		int colid = 0;
+		int wid = 0;
+		int iid = 0;
+		boolean corder = false;
+		for (Cookie c : cookie) {	// cookie value를 변수에 담기
+			if (c.getName().equals("mid")) {
+				mid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("colid")) {
+				colid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("wid")) {
+				wid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("iid")) {
+				iid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("corder")) {
+				corder = Boolean.parseBoolean(c.getValue());
+			}
+		}
+		try {	// cookie값을 담은 변수로 carbuild를 register하고 그 후에 garage에 register
+			carbuildbiz.register(new CarbuildVO(mid, colid, wid, iid, corder));
+			int codeno = carbuildbiz.selectlast();
+			garagebiz.register(new GarageVO(codeno, uid));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "garage/garage");
+		return "redirect:/garage?uid="+uid;
+	}
+	
+	// build -> login -> register
+	// build 후 login에서 계정이 없을 때 register로 이동
+	@RequestMapping("/buildregister")
+	public String buildregister(Model m) {
+		m.addAttribute("center", "carbuild/register");
+		return "index";
+	}
+	
+	// build register -> garage
+	// 회원가입을 하고 자동 로그인 후 garage로 이동
+	@RequestMapping("/build_register")
+	public String build_register(Model m, UsersVO obj, HttpSession session, HttpServletRequest resq) {
+		UsersVO users = null;
+		try {
+			usersbiz.register(obj);
+			users = usersbiz.get(obj.getUid());
+			session.setAttribute("loginusers", users);
+			m.addAttribute("loginusers", users);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		Cookie[] cookie = resq.getCookies();
 		int mid = 0;
@@ -129,11 +187,11 @@ public class MainController3 {
 		try {
 			carbuildbiz.register(new CarbuildVO(mid, colid, wid, iid, corder));
 			int codeno = carbuildbiz.selectlast();
-			garagebiz.register(new GarageVO(codeno, uid));
+			garagebiz.register(new GarageVO(codeno, users.getUid()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		m.addAttribute("center", "garage/garage");
-		return "redirect:/garage?uid="+uid;
+		return "redirect:/garage?uid="+users.getUid();
 	}
 }
