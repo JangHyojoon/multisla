@@ -45,5 +45,9 @@ public class CarbuildBiz implements Biz<Integer,CarbuildVO>{
 	public int selectlast() throws Exception {
 		return dao.selectlast();
 	}
+	
+	public int selectprice(CarbuildVO v) throws Exception {
+		return dao.selectprice(v);
+	}
 
 }
