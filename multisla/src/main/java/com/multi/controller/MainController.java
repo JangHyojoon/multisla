@@ -9,10 +9,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.biz.CarbuildBiz;
+import com.multi.biz.ColorBiz;
 import com.multi.biz.GarageBiz;
+import com.multi.biz.InteriorBiz;
+import com.multi.biz.ModelBiz;
+import com.multi.biz.OrdersBiz;
 import com.multi.biz.UsersBiz;
+import com.multi.biz.WheelBiz;
+import com.multi.vo.CarbuildVO;
+import com.multi.vo.ColorVO;
 import com.multi.vo.GarageVO;
+import com.multi.vo.InteriorVO;
+import com.multi.vo.ModelVO;
+import com.multi.vo.OrdersVO;
 import com.multi.vo.UsersVO;
+import com.multi.vo.WheelVO;
 
 @Controller
 public class MainController {
@@ -20,7 +32,18 @@ public class MainController {
 	UsersBiz usersbiz;
 	@Autowired
 	GarageBiz garagebiz;
-	
+	@Autowired
+	ColorBiz colorbiz;
+	@Autowired
+	WheelBiz wheelbiz;
+	@Autowired
+	InteriorBiz interiorbiz;
+	@Autowired
+	ModelBiz modelbiz;
+	@Autowired
+	OrdersBiz ordersbiz;
+	@Autowired
+	CarbuildBiz carbuildbiz;
 	@RequestMapping("/garage")
 	public String garage(Model m,String uid) {
 		List<GarageVO> list =null;
@@ -144,23 +167,70 @@ public class MainController {
 
 
 	}
+
 	@RequestMapping("/orders")
 	public String orders(Model m,int gid) {
 		GarageVO gv =null;
 		UsersVO uv =null;
+		ModelVO mv = null;
+		ColorVO cv =null;
+		WheelVO wv =null;
+		InteriorVO iv = null;
 		String uid =null;
+		int mid=0;
+		int colid =0;
+		int wid=0;
+		int iid=0;
+		
 		try {
 			gv = garagebiz.get(gid);
 			uid = gv.getUid();
-			uv = usersbiz.get(uid);
+			uv =usersbiz.get(uid);
+			mid=gv.getMid();
+			mv = modelbiz.get(mid);
+			colid=gv.getColid();
+			cv = colorbiz.get(colid);
+			wid=gv.getWid();
+			wv = wheelbiz.get(wid);
+			iid=gv.getIid();
+			iv = interiorbiz.get(iid);
 			m.addAttribute("garage", gv);
 			m.addAttribute("users", uv);
+			m.addAttribute("model", mv);
+			m.addAttribute("color", cv);
+			m.addAttribute("wheel", wv);
+			m.addAttribute("interior", iv);
+		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "orders";
+		
+		m.addAttribute("center", "orders");
+		return "index";
 
 
+	}
+	@RequestMapping("/ordersimpl")
+	public String ordersimpl(Model m,OrdersVO v,int gid) {
+
+		GarageVO gv =null;
+		CarbuildVO cbv = null;
+		int codeno = 0;
+		
+		
+		try {
+			ordersbiz.register(v);
+			gv = garagebiz.get(gid);
+			codeno = gv.getCodeno();
+			cbv = carbuildbiz.get(codeno);
+			cbv.setCorder(true);
+			carbuildbiz.modify(cbv);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		m.addAttribute("center", "center");
+		return "index";
 	}
 }

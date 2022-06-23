@@ -1,264 +1,348 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<style>
-   #div-top{
-      padding-top: 100px;
-   }
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+		<style>
+			#div-top{
+			   padding-top: 100px;
+			}
 
-   li{
-   float:left;
-   margin-right: 20px;
-   }
+		</style>
+        <meta charset="utf-8">
+        <title>Blog Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="favicon.ico">
 
-</style>
+        <!--Google Fonts link-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
-<script>
-/** 우편번호 찾기 */
-function execDaumPostcode() {
-    daum.postcode.load(function(){
-        new daum.Postcode({
-            oncomplete: function(data) {
-              // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-              $("#upost").val(data.zonecode);
-              $("#uaddr").val(data.roadAddress);
-            }
-        }).open();
-    });
-}
-
-$(document).ready(function(){
-	//전화번호 유효성 검사
-	function autoHypenTel(str) {
-		  str = str.replace(/[^0-9]/g, '');
-		  var tmp = '';
-
-		  if (str.substring(0, 2) == 02) {
-		    // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
-		    if (str.length < 3) {
-		      return str;
-		    } else if (str.length < 6) {
-		      tmp += str.substr(0, 2);
-		      tmp += '-';
-		      tmp += str.substr(2);
-		      return tmp;
-		    } else if (str.length < 10) {
-		      tmp += str.substr(0, 2);
-		      tmp += '-';
-		      tmp += str.substr(2, 3);
-		      tmp += '-';
-		      tmp += str.substr(5);
-		      return tmp;
-		    } else {
-		      tmp += str.substr(0, 2);
-		      tmp += '-';
-		      tmp += str.substr(2, 4);
-		      tmp += '-';
-		      tmp += str.substr(6, 4);
-		      return tmp;
-		    }
-		  } else {
-		    // 핸드폰 및 다른 지역 전화번호 일 경우
-		    if (str.length < 4) {
-		      return str;
-		    } else if (str.length < 7) {
-		      tmp += str.substr(0, 3);
-		      tmp += '-';
-		      tmp += str.substr(3);
-		      return tmp;
-		    } else if (str.length < 11) {
-		      tmp += str.substr(0, 3);
-		      tmp += '-';
-		      tmp += str.substr(3, 3);
-		      tmp += '-';
-		      tmp += str.substr(6);
-		      return tmp;
-		    } else {
-		      tmp += str.substr(0, 3);
-		      tmp += '-';
-		      tmp += str.substr(3, 4);
-		      tmp += '-';
-		      tmp += str.substr(7);
-		      return tmp;
-		    }
-		  }
-
-		  return str;
-		}
-	
-	$('#uphone').keyup(function (event) {
-		  event = event || window.event;
-		  var _val = this.value.trim();
-		  this.value = autoHypenTel(_val);
-		});
-	
-	
-	//탁송비
-	
-	var addr = $('#uaddr').val();
-	if (addr.match("제주")){
-		$('#shipprice').val(100000);	
-	}else if (addr = ''){
-		$('#shipprice').val(0);
-	}else{
-		$('#shipprice').val(10000);
-	};
-	
-	//최종가격
-	var carprice = $('#carprice').val();
-	var shipprice = $('#shipprice').val();
-	var cp = parseInt(carprice,10);
-	var sp = parseInt(shipprice,10);
-	$('#finalprice').val(cp+sp);
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
 
 
-	
-	$('#registerbtn').click(function(){
-		$('.form-horizontal').attr({
-			'method':'post',
-			'action':'registerimpl'
-		});
-		$('.form-horizontal').submit();
-		alert("회원가입이 완료되었습니다");
-	});
-	
-});
-</script>
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/slick-theme.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/fonticons.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/bootsnav.css">
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<div id="div-top" class="container-fluid">
+        <!--For Plugins external css-->
+        <!--<link rel="stylesheet" href="assets/css/plugins.css" />-->
 
-    <div class="col-sm-12" >
-    <h2 >주문하기</h2>
-       <div class="container">
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!--<link rel="stylesheet" href="assets/css/colors/maron.css">-->
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+
+        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script>
+        /** 우편번호 찾기 */
+        function execDaumPostcode() {
+            daum.postcode.load(function(){
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                      $("#upost").val(data.zonecode);
+                      $("#uaddr").val(data.roadAddress);
+                    }
+                }).open();
+            });
+        }
+        
+        $(document).ready(function(){
+	        $('#ordersbtn').click(function(){
+	    		$('.form-horizontal').attr({
+	    			'method':'post',
+	    			'action':'ordersimpl'
+	    		});
+	    		$('.form-horizontal').submit();
+	    		
+	    	});
+	      //전화번호 유효성 검사
+	    	function autoHypenTel(str) {
+	    		  str = str.replace(/[^0-9]/g, '');
+	    		  var tmp = '';
+
+	    		  if (str.substring(0, 2) == 02) {
+	    		    // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
+	    		    if (str.length < 3) {
+	    		      return str;
+	    		    } else if (str.length < 6) {
+	    		      tmp += str.substr(0, 2);
+	    		      tmp += '-';
+	    		      tmp += str.substr(2);
+	    		      return tmp;
+	    		    } else if (str.length < 10) {
+	    		      tmp += str.substr(0, 2);
+	    		      tmp += '-';
+	    		      tmp += str.substr(2, 3);
+	    		      tmp += '-';
+	    		      tmp += str.substr(5);
+	    		      return tmp;
+	    		    } else {
+	    		      tmp += str.substr(0, 2);
+	    		      tmp += '-';
+	    		      tmp += str.substr(2, 4);
+	    		      tmp += '-';
+	    		      tmp += str.substr(6, 4);
+	    		      return tmp;
+	    		    }
+	    		  } else {
+	    		    // 핸드폰 및 다른 지역 전화번호 일 경우
+	    		    if (str.length < 4) {
+	    		      return str;
+	    		    } else if (str.length < 7) {
+	    		      tmp += str.substr(0, 3);
+	    		      tmp += '-';
+	    		      tmp += str.substr(3);
+	    		      return tmp;
+	    		    } else if (str.length < 11) {
+	    		      tmp += str.substr(0, 3);
+	    		      tmp += '-';
+	    		      tmp += str.substr(3, 3);
+	    		      tmp += '-';
+	    		      tmp += str.substr(6);
+	    		      return tmp;
+	    		    } else {
+	    		      tmp += str.substr(0, 3);
+	    		      tmp += '-';
+	    		      tmp += str.substr(3, 4);
+	    		      tmp += '-';
+	    		      tmp += str.substr(7);
+	    		      return tmp;
+	    		    }
+	    		  }
+
+	    		  return str;
+	    		}
+	    	
+	    	$('#uphone').keyup(function (event) {
+	    		  event = event || window.event;
+	    		  var _val = this.value.trim();
+	    		  this.value = autoHypenTel(_val);
+	    		});
+
+        });
+        </script>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar-collapse">
+
+
        
-         <form class="form-horizontal" >
-			
-			<input type="hidden" class="form-control" name="mname" id="mname" readonly th:value="${garage.mname}"/>
-			<input type="hidden" class="form-control" name="coloption" id="coloption" readonly th:value="${garage.coloption}"/>
-			<input type="hidden" class="form-control" name="woption" id="woption" readonly th:value="${garage.woption}"/>
-			<input type="hidden" class="form-control" name="ioption" id="ioption" readonly th:value="${garage.ioption}"/>
-			<input type="hidden" class="form-control" name="carprice" id="carprice" readonly th:value="${garage.price}"/>
+
+ 
+
+
+            <!--Home Sections-->
+
+
+
+            <!--Blog Features Section-->
+            <section id="blog_details" class="blog_details roomy-100">
+                <div class="container">
+                    <div class="row">
+						
+                        <div class="col-md-8">
+                            <div class="main_blog_details">
+
+                                <div class="blog_details_left">
+                                    <div class="blog_details_img">
+                                        <img src="assets/images/blog-details-img1.jpg" 
+                                        th:src="@{'assets/images/garage/'+${garage.mname}+'_'+${garage.coloption}+'_'+${garage.woption}+'.png'}"
+                                         alt="" />
+                                    </div>
+                                 
+
+                                </div>
+
+
+                                <hr />
+                            </div>
+                        </div><!-- End off col-md-8 -->
+
+                        <div class="col-md-4">
+                            <div class="blog_saidbar sm-m-top-70">
+                                <div class="said_ctg fix">
+                                    <h2 class="text-uppercase">옵션</h2>
+                                    <ul class="text-uppercase m-top-40">
+                                        <li>  모델&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        <span th:text="${model.mname}" class="pull-center"></span>
+                                        <span th:text="${model.mprice}" class="pull-right"></span>
+                                        </li>
+                                        <li>  색상&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        <span th:text="${color.coloption}" class="pull-center"></span>
+                                        <span th:text="${color.colprice}" class="pull-right"></span>
+                                        </li>
+                                        <li>   휠&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        <span th:text="${wheel.woption}+'inch'" class="pull-center"></span>
+                                        <span th:text="${wheel.wprice}" class="pull-right"></span>
+                                        </li>
+                                        <li>인테리어&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                        <span th:text="${interior.ioption}" class="pull-center"></span>
+                                        <span th:text="${interior.iprice}" class="pull-right"></span>
+                                        </li>                                        
+                                    </ul>
+                                    <h6 class="text-uppercase">견적가<span th:text="${garage.price}" class="pull-right"></span></h6>
+                                </div>
+                                <form class="form-horizontal">
+                                <input type="hidden" class="form-control" name="uid" id="uid" th:value="${garage.uid}"/>
+                                <input type="hidden" class="form-control" name="carprice" id="carprice"  th:value="${garage.price}"/>
+                                <input type="hidden" class="form-control" name="mid" id="mid" th:value="${model.mid}"/>
+								<input type="hidden" class="form-control" name="colid" id="colid" th:value="${garage.colid}"/>
+								<input type="hidden" class="form-control" name="wid" id="wid" th:value="${garage.wid}"/>
+								<input type="hidden" class="form-control" name="iid" id="iid" th:value="${garage.iid}"/>
+								
+								<input type="hidden" class="form-control" name="shipprice" id="shipprice" value=100000 />
+							    <input type="hidden" class="form-control" name="finalprice" id="finalprice" th:value="${garage.price}+10000" />
+							    <input type="hidden" class="form-control" name="gid" id="gid" th:value="${garage.gid}"/>
+									<div class="blog_details_content">
+	                                        <div class="blog_details_head m-top-80">
+	                                            <div class="head_text">
+	                                                <h2>배송지 정보</h2>              
+	                                            </div>
+	                                        </div> 
+	                                        <div class="blog_details_figure m-top-40">
+	                                      	  
+	                                  
+												<div>
+													<label class="col-md-3" for="phone">연락처</label>
+													<div class="col-md-9">          
+														<input type="tel" class="form-control" name="shipphone" id="shipphone" maxlength="13" th:value="${users.uphone}">
+													
+													</div>
+												</div>
+												<div style="padding-top:10px">
+													<label class="col-md-3" for="addr">주소</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" name="shippost" id="shippost" placeholder="우편번호" readonly th:value="${users.upost}"/>
+													</div>
+													<div class="col-md-4">
+														<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
+													</div>
+												</div>
+												<div style="padding-top:10px">
+													<label class="control-label col-md-3" for="addr"></label>
+													<div class="col-md-9">
+														<input
+														  type="text"
+														  class="form-control"
+														  name="shipaddr"
+														  id="shipaddr"
+														  placeholder="도로명 주소"
+														  readonly
+														  th:value="${users.uaddr}"
+														 
+														/>
+													</div>
+												</div>
+	
+												<div style="padding-top:10px">
+													<label class="control-label col-md-3" for="addr"></label>
+													<div class="col-md-9">
+														<input
+														  type="text"
+														  class="form-control"
+														  name="shipdaddr"
+														  id="shipdaddr"
+														  placeholder="상세 주소"
+														  required
+														  th:value="${users.udaddr}"
+														/>
+													</div>
+												</div>
+											</div>
+	
+	
+	
+	                                       
+	                                    </div>
+								
+								
+								
+								
+									<div class="said_ctg fix">
+	                                    <h2 class="text-uppercase m-top-80">결제</h2>
+	                         
+	                                    <ul class="text-uppercase m-top-40">
+	                                        <li>  견적가&nbsp&nbsp&nbsp&nbsp&nbsp 
+	                                        <span th:text="${garage.price}" class="pull-right"></span>                                      
+	                                        </li>
+	                                        <li>  탁송비&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+	                                        <span  class="pull-right">100000</span>                                                                        
+	                                    </ul>
+	                                    <h6 class="text-uppercase">최종금액<span th:text="${garage.price}" class="pull-right"></span></h6>
+										
+											<div class="m-top-40">
+												<div class="radio" style="text-align: center">
+													<label><input type="radio" name="pay" id="pay" value="credit" checked>카드결제</label>
+													<label><input type="radio" name="pay" id="pay" value="cash">현금결제</label>
+												</div>
+											<div class="m-top-40">
+												<div style="text-align: center">
+													<a href="#" class="btn btn-info m-btn--air"  id="ordersbtn">주문하기 </a>
+												</div>	
+											</div>								
+											</div>		                                              
+	                      			  </div><!-- End off col-md-4 -->
+								</form>
+
+                    </div><!-- End off row -->
+
+
+
+
+                </div><!-- End off container -->
+                </div>
+                </div>
+            </section><!-- End off blog Fashion -->
+
+
 
             
-            
-             
-            <div class="form-group ship">
-            	<h3>탁송 정보</h3>        
-	            <div class="form-group">
-	               <label class="control-label col-sm-2" for="name">Name:</label>
-	                 <div class="col-sm-4">          
-	                    <input type="text" class="form-control" name="uname" id="uname" th:value="${users.uname}">
-	                 </div>
-	             </div>
-	             <div class="form-group">
-	               <label class="control-label col-sm-2" for="phone">Phone Number:</label>
-	                 <div class="col-sm-4">          
-	                    <input type="tel" class="form-control" name="uphone" id="uphone" maxlength="13" th:value="${users.uphone}">
 
-	                 </div>
-	             </div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="addr">Address:</label>
-					<div class="col-sm-2">
-				    	<input type="text" class="form-control" name="upost" id="upost" placeholder="우편번호" readonly th:value="${users.upost}"/>
-					</div>
-					<div class="col-sm-2">
-				   		<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="addr"></label>
-					<div class="col-sm-4">
-						<input
-						  type="text"
-						  class="form-control"
-						  name="uaddr"
-						  id="uaddr"
-						  placeholder="도로명 주소"
-						  readonly
-						  th:value="${users.uaddr}"
-						/>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="addr"></label>
-					<div class="col-sm-4">
-						<input
-						  type="text"
-						  class="form-control"
-						  name="udaddr"
-						  id="udaddr"
-						  placeholder="상세 주소"
-						  required
-						  th:value="${users.udaddr}"
-						/>
-					</div>
-					<span id="ppost"></span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="mname">탁송비:</label>
-				<div class="col-sm-4">
-			    	<input type="number" class="form-control" name="shipprice" id="shipprice" readonly/>
-			   
-				</div>
-			</div>
-    
-            <div class="form-group">
-				<label class="control-label col-sm-2" for="price">최종 가격:</label>
-				<div class="col-sm-4">
-			    	<input type="number" class="form-control" name="finalprice" id="finalprice" readonly/>
-				</div>
-			</div>
 
-			
-		<h3>차견적</h3>	
-		<div class="form-group">
-			<div class="panel-group">
-				<div class="panel panel-default" >
-					<div class="panel-heading" >
-						<h4 class="panel-title" >
+            <!-- scroll up-->
+            <div class="scrollup">
+                <a href="#"><i class="fa fa-chevron-up"></i></a>
+            </div><!-- End off scroll up -->
 
-							<a class ="pannel-detail" data-toggle="collapse" href="#collapse1" th:text="${garage.mname}">자세히 보기</a>
-						</h4>   
-					</div>
-						<div id="collapse1" class="panel-collapse collapse">
-							<div class="panel-body">
-								  <ul class="list-group">
-								    <li class="list-group-item">휠옵션<p th:text="${garage.coloption}"></p></li>
-								    <li class="list-group-item">th:text="${garage.woption}"</li>
-								    <li class="list-group-item">th:text="${garage.ioption}"</li>
-								    <li class="list-group-item">th:text="${garage.woption}"</li>						 
-								  </ul>
-							</div>							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-             <div class="form-group">        
-                  <div class="col-sm-offset-2 col-sm-3">
-                       <a href="#" class="btn btn-info m-btn--air"  id="registerbtn">회원가입 </a>
-         
-                  </div>
-            </div>
-         </form>
-         
-         <div class="form-group">        
-               <div class="col-sm-offset-2 col-sm-3">
-                  <hr>
-                
-               </div>
-          </div>
-      </div>
-      
-    </div>
-    <div class="col-sm-4">
-   </div>  
-</div>
+
+           
+
+
+
+
+        
+
+        <!-- JS includes -->
+
+        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+        <script src="assets/js/isotope.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/slick.min.js"></script>
+        <script src="assets/js/jquery.collapse.js"></script>
+        <script src="assets/js/bootsnav.js"></script>
+        <script src="assets/js/masonry.min.js"></script>
+
+        <script type="text/javascript">
+            var msnry = new Masonry('.blog_area');
+        </script>
+
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
