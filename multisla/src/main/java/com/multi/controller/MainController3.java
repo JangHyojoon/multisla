@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +33,14 @@ public class MainController3 {
 	@RequestMapping("/models")
 	public String models(Model m) {
 		m.addAttribute("center", "detail/modelSdetail");
-		return "/index";
+		return "index";
 	}
 	
 	// build model Y
 	@RequestMapping("/buildmodely")
 	public String buildmodely(Model m) {
 		m.addAttribute("center", "carbuild/modelY");
-		return "/index";
+		return "index";
 	}
 	
 	// build model S
@@ -46,14 +48,14 @@ public class MainController3 {
 	public String carbuild(Model m, HttpSession session) {
 		m.addAttribute("session", session.getAttribute("loginusers"));
 		m.addAttribute("center", "carbuild/modelS");
-		return "/index";
+		return "index";
 	}
 	
 	// build model X
 	@RequestMapping("/buildmodelx")
 	public String buildmodelx(Model m) {
 		m.addAttribute("center", "carbuild/modelX");
-		return "/index";
+		return "index";
 	}
 	
 	
@@ -77,12 +79,12 @@ public class MainController3 {
 	@RequestMapping("/buildlogin")
 	public String buildlogin(Model m) {
 		m.addAttribute("center", "carbuild/login");
-		return "/index";
+		return "index";
 	}
 	
 	// build -> login -> garage
 	@RequestMapping("/logintogarage")
-	public String logintogarage(Model m, String uid, String upwd, HttpSession session) {
+	public String logintogarage(Model m, String uid, String upwd, HttpSession session, HttpServletRequest resq) {
 		UsersVO users = null;
 		try {
 			users = usersbiz.get(uid);
@@ -95,12 +97,43 @@ public class MainController3 {
 				}
 			} else {
 				throw new Exception();
-
 			}
 		} catch (Exception e) {
-			return "redirect:login?msg=f";
+			m.addAttribute("center", "carbuild/login");
+			m.addAttribute("msg", "회원정보를 확인해주세요");
+			return "index";
 		}
-		
-		return "redirect";
+		Cookie[] cookie = resq.getCookies();
+		int mid = 0;
+		int colid = 0;
+		int wid = 0;
+		int iid = 0;
+		boolean corder = false;
+		for (Cookie c : cookie) {
+			if (c.getName().equals("mid")) {
+				mid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("colid")) {
+				colid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("wid")) {
+				wid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("iid")) {
+				iid = Integer.parseInt(c.getValue());
+			}
+			if (c.getName().equals("corder")) {
+				corder = Boolean.parseBoolean(c.getValue());
+			}
+		}
+		try {
+			carbuildbiz.register(new CarbuildVO(mid, colid, wid, iid, corder));
+			int codeno = carbuildbiz.selectlast();
+			garagebiz.register(new GarageVO(codeno, uid));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "garage/garage");
+		return "redirect:/garage?uid="+uid;
 	}
 }
