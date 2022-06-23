@@ -16,7 +16,7 @@ class DeleteTest {
 	
 		
 		try {
-			ordersbiz.remove(3);
+			ordersbiz.remove(2);
 		
 		} catch (Exception e) {
 			e.printStackTrace();

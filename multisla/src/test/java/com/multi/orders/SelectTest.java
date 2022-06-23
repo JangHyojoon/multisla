@@ -17,7 +17,7 @@ class SelectTest {
 		OrdersVO ov;
 		
 		try {
-			ov = ordersbiz.get(2);
+			ov = ordersbiz.get(1);
 			System.out.println(ov);
 		} catch (Exception e) {
 			e.printStackTrace();
