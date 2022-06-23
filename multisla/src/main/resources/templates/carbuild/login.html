@@ -22,6 +22,10 @@ $(document).ready(function(){
 		});
 		$('#login_form').submit();
 	});
+	
+	$('#register_btn').click(function(){
+		location.href = '/buildregister';
+	});
 });
 </script>
 
@@ -60,7 +64,7 @@ $(document).ready(function(){
 	      		<div class="col-sm-offset-2 col-sm-3">
 	      			<hr>
 	      			<p>계정이 없다면?</p>
-	       			<a class="btn btn-default btn-user btn-block" id="register">계정생성하기</a><br>
+	       			<a class="btn btn-default btn-user btn-block" id="register_btn">계정생성하기</a><br>
 	      		</div>
 
 	    	</div>
