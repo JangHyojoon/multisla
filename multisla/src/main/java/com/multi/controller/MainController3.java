@@ -57,7 +57,7 @@ public class MainController3 {
 	public List<GarageVO> cartmenu() {
 		List<GarageVO> cartlist = null;
 		try {
-			cartlist = garagebiz.get();
+			cartlist = garagebiz.getcart();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

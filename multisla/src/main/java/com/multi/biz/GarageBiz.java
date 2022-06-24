@@ -46,4 +46,7 @@ public class GarageBiz implements Biz<Integer, GarageVO>{
 		return dao.selectmid(mid);
 	}
 
+	public List<GarageVO> getcart() throws Exception {
+		return dao.selectcart();
+	}
 }
