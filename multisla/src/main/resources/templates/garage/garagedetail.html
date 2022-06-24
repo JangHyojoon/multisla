@@ -107,7 +107,7 @@ margin:auto;
 												<a type="button" href="#" th:href="@{delete(gid=${ugarage.gid})}" class="btn btn-default">삭제</a>
 			                      			</div>
 											<div class="col-md-6 btn" th:unless="${ugarage.corder}==false">							
-												<button type="button" href="#" class="btn btn-default">주문상세</button> 
+												<a type="button" th:href="@{ordersdetail(codeno=${ugarage.codeno})}" class="btn btn-default">주문상세</a> 
 			                      			</div>
                                         </div>
                                     </div>

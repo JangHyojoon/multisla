@@ -16,5 +16,5 @@ public interface OrdersMapper {
 	
 	public OrdersVO select(int ordersno) throws Exception;
 	public List<OrdersVO> selectall() throws Exception;
-
+	public Integer selectlast() throws Exception;
 }

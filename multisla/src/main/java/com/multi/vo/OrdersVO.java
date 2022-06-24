@@ -24,6 +24,7 @@ public class OrdersVO {
 	  private int iid;
 	  private int shipprice;
 	  private String pay;
+	  private String shipname;
 	  private String shipphone;
 	  private String shippost;
 	  private String shipaddr;
@@ -36,7 +37,7 @@ public class OrdersVO {
 	  private String woption;  
 	  private String ioption;
 	public OrdersVO(String uid, int carprice, int mid, int colid, int wid, int iid, int shipprice, String pay,
-			String shipphone, String shippost, String shipaddr, String shipdaddr, int finalprice) {
+			String shipphone,String shipname, String shippost, String shipaddr, String shipdaddr, int finalprice) {
 		super();
 		this.uid = uid;
 		this.carprice = carprice;
@@ -46,6 +47,7 @@ public class OrdersVO {
 		this.iid = iid;
 		this.shipprice = shipprice;
 		this.pay = pay;
+		this.shipname = shipname;
 		this.shipphone = shipphone;
 		this.shippost = shippost;
 		this.shipaddr = shipaddr;
@@ -53,7 +55,7 @@ public class OrdersVO {
 		this.finalprice = finalprice;
 	}
 	public OrdersVO(int ordersno, String uid, int carprice, int mid, int colid, int wid, int iid, int shipprice,
-			String pay, String shipphone, String shippost, String shipaddr, String shipdaddr, int finalprice) {
+			String pay,String shipname, String shipphone, String shippost, String shipaddr, String shipdaddr, int finalprice) {
 		super();
 		this.ordersno = ordersno;
 		this.uid = uid;
@@ -64,13 +66,14 @@ public class OrdersVO {
 		this.iid = iid;
 		this.shipprice = shipprice;
 		this.pay = pay;
+		this.shipname = shipname;
 		this.shipphone = shipphone;
 		this.shippost = shippost;
 		this.shipaddr = shipaddr;
 		this.shipdaddr = shipdaddr;
 		this.finalprice = finalprice;
 	}
-	public OrdersVO(int ordersno, String uid, Date regdate, int carprice, int shipprice, String pay, String shipphone,
+	public OrdersVO(int ordersno, String uid, Date regdate, int carprice, int shipprice, String pay,String shipname, String shipphone,
 			String shippost, String shipaddr, String shipdaddr, int finalprice, String mname,
 			String coloption, String woption, String ioption) {
 		super();
@@ -80,6 +83,7 @@ public class OrdersVO {
 		this.carprice = carprice;
 		this.shipprice = shipprice;
 		this.pay = pay;
+		this.shipname = shipname;
 		this.shipphone = shipphone;
 		this.shippost = shippost;
 		this.shipaddr = shipaddr;
