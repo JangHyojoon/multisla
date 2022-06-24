@@ -17,4 +17,5 @@ public interface GarageMapper {
 	public List<GarageVO> selectall() throws Exception;
 	public List<GarageVO> selectuid(String uid) throws Exception;
 	public List<GarageVO> selectmid(int mid) throws Exception;
+
 }

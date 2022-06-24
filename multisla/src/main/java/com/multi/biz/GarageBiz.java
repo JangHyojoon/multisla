@@ -45,4 +45,5 @@ public class GarageBiz implements Biz<Integer, GarageVO>{
 	public List<GarageVO> getmid(int mid) throws Exception {
 		return dao.selectmid(mid);
 	}
+
 }

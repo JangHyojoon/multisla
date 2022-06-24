@@ -211,9 +211,14 @@
 	                                                <h2>배송지 정보</h2>              
 	                                            </div>
 	                                        </div> 
-	                                        <div class="blog_details_figure m-top-40">
-	                                      	  
-	                                  
+	                                        <div class="blog_details_figure m-top-40">	              
+	                                  			<div>
+													<label class="col-md-3" for="phone">이름</label>
+													<div class="col-md-9">          
+														<input type=text class="form-control" name="shipname" id="shippname" th:value="${users.uname}">
+													
+													</div>
+												</div>
 												<div>
 													<label class="col-md-3" for="phone">연락처</label>
 													<div class="col-md-9">          

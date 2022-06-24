@@ -39,6 +39,10 @@ public class OrdersdetailBiz implements Biz<Integer,OrdersdetailVO> {
 	public List<OrdersdetailVO> get() throws Exception {
 		return dao.selectall();
 	}
-
-	
+	public OrdersdetailVO selectcodeno(int codeno) throws Exception {
+		return dao.selectcodeno(codeno);
+	}
+	public Integer selectlast() throws Exception {
+		return dao.selectlast();
+	}
 }

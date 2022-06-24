@@ -31,11 +31,7 @@ public class MainController2 {
 		return "/index";
 	}
 	
-	@RequestMapping("/ordersdetail")
-	public String ordersdetail(Model m) {
-		m.addAttribute("center", "ordersdetail");
-		return "/index";
-	}
+
 	
 
 	// build model X

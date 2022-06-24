@@ -91,18 +91,16 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul class="nav navbar-nav navbar-right"  th:if="${session.loginusers == null}">
-                            <li><a th:href="login">LOGIN</a></li>   
-                            <li><a th:href="register">REGISTER</a></li> 
+
                         </ul>
                         <ul class="nav navbar-nav navbar-right" th:unless="${session.loginusers == null}">  
-                        	<li><a th:href="logout">lOGUT</a></li>   
-                            <li class="dropdown">
+                            <li class="dropdown sm-m-top-20">
                                 <a href="#" th:href="@{garage(uid=${session.loginusers.uid})}" class="dropdown-toggle" data-toggle="dropdown" >
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">3</span>
                                 </a>
                                 <ul class="dropdown-menu cart-list">
-                                    <li th:each="g : ${glist}">
+                                    <li th:each="g : ${cartlist}">
                                         <a href="#" class="photo"><img src="assets/images/thumb01.jpg" class="cart-thumb" alt="" /></a>
                                         <h6><a href="#">Delica omtantur </a></h6>
                                         <p class="m-top-10">2x - <span class="price">$99.99</span></p>
@@ -110,7 +108,7 @@
                                     <!---- More List ---->
                                     <li class="total">
                                         <span class="pull-right"><strong>Total</strong>: $0.00</span>
-                                        <a href="#" class="btn btn-cart">Cart</a>
+                                        <a th:href="@{garage(uid=${session.loginusers.uid})}" class="btn btn-cart">Cart</a>
                                     </li>
                                 </ul>
                             </li>
@@ -135,13 +133,23 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
-                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp" th:if="${session.loginusers == null}">
                             <li><a href="/">home</a></li> 
 							<li><a href="/models">MODEL S</a></li> 							                   
                             <li><a href="/modelx">MODEL X</a></li> 							
                             <li><a href="/modely">MODEL Y</a></li>                                      
-                                            
+                            <li><a th:href="login">LOGIN</a></li>   
+                            <li><a th:href="register">REGISTER</a></li>                 
                         </ul>
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp" th:unless="${session.loginusers == null}">
+                            <li><a href="/">home</a></li> 
+							<li><a href="/models">MODEL S</a></li> 							                   
+                            <li><a href="/modelx">MODEL X</a></li> 							
+                            <li><a href="/modely">MODEL Y</a></li>                                      
+							<li><a th:href="logout">lOGUT</a></li>                
+                        </ul>
+                       
+                        
                     </div><!-- /.navbar-collapse -->
                 </div>  
 
