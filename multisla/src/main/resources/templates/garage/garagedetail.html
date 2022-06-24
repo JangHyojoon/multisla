@@ -35,14 +35,13 @@ margin:auto;
                                 
                                 <div class="person_details m-top-40">
                                     <div class="row">
-                                    	
-                                        <div class="col-md-3 text-left"> 
+                                      	<div class="col-xs-3 text-center"> 
                                         	<h4 >COLOR</h4>                                      
                                             <img class="option" alt="?" th:src="@{'assets/images/option/'+${ugarage.colid} +'.png'}">     
                                             <p th:text="${ugarage.coloption}"></p> 
                                         </div>
                                        
-                                        <div class="col-md-3 text-left">   
+                                        <div class="col-xs-3 text-center">   
                                          	<h4 >WHEEL</h4>                           
                                             <img class="option" alt="?" th:src="@{'assets/images/option/'+${ugarage.wid} +'.png'}">
                                             <p th:text="${ugarage.woption}+' inch'"></p> 
@@ -50,12 +49,12 @@ margin:auto;
                                         
                                        
                                        
-                                        <div class="col-md-3 text-left">   
+                                        <div class="col-xs-3 text-center">   
                                          	<h4>INTERIOR</h4>                                      
                                             <img class="option" alt="?" th:src="@{'assets/images/option/'+${ugarage.iid} +'.png'}">  
                                             <p th:text="${ugarage.ioption}"></p>        
                                         </div>
-                                     
+                                      </div>
                                     </div>
                                 </div>
                             </div>
