@@ -53,15 +53,15 @@ public class MainController3 {
 	InteriorBiz interiorbiz;
 	
 	// always return garage list for index.html
-	@ModelAttribute("glist")
+	@ModelAttribute("cartlist")
 	public List<GarageVO> cartmenu() {
-		List<GarageVO> glist = null;
+		List<GarageVO> cartlist = null;
 		try {
-			glist = garagebiz.get();
+			cartlist = garagebiz.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return glist;
+		return cartlist;
 	}
 	
 	// go to model S detail page
