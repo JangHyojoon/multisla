@@ -18,11 +18,14 @@
 							<p>내가 디자인한 나만의 멀티슬라 자동차 리스트를 확인할 수 있습니다.</p>
 						</div>						
 						<div class="col-md-12 m-bottom-60 m-top-60">
+							
+
 							<div class="filters-button-group sm-text-center">
 								<button class="button is-checked" data-filter="*">View all</button>
 								<button class="button" data-filter=".S">MODEL S</button>
 								<button class="button" data-filter=".X">MODEL X</button>
 								<button class="button" data-filter=".Y">MODEL Y</button>
+
 							</div>
 						</div>
 						<div style="clear: both;"></div>
@@ -33,26 +36,17 @@
 						 -->
 					                    
 						<div class="grid models text-center">
-							
-							<div th:each="u : ${ugarage}" class="grid-item model-item transition" th:classappend="${u.mname} ? ${u.mname}" >
+							<div  th:each="u : ${ugarage}">
+							<div  class="grid-item model-item " th:classappend="${u.mname} ? ${u.mname}">
 								<img alt="????" th:src="@{'assets/images/garage/'+${u.mname}+'_'+${u.coloption}+'_'+${u.woption}+'.png'}">
-								<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details<i class="fa fa-long-arrow-right"></i></a>
-							    <h5 th:text="${u.mname}"></h5> 			
+								<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details</a>
+							    
+							    <h5 class="m-top-20" th:text="${u.mname}"></h5>
+							    <h5 th:if ="${u.corder} == true" th:text="Ordered"></h5>  			
 							</div><!-- End off grid item -->
-						
+							</div>
 						</div>
 						
-						<div class="grid models text-center">
-						                   	
-							<div th:each="u : ${ugarage}" class="grid-item model-item transition" th:classappend="${u.mname} ? ${u.mname}" >
-								<img alt="????" th:src="@{'assets/images/garage/'+${u.mname}+'_'+${u.coloption}+'_'+${u.woption}+'.png'}">
-								<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details<i class="fa fa-long-arrow-right"></i></a>
-							    <h5 th:text="${u.mname}"></h5>       			
-							</div><!-- End off grid item -->
-						
-						</div>
-						
-						<div style="clear: both;"></div>
 					</div>
 				</div>
 			</div><!-- Portfolio container end -->
