@@ -127,7 +127,8 @@
 								    </li>     
 								    <li >   결제방식
 									    <span  class="pull-center"></span>
-									    <span  class="pull-right" th:text="${o.pay}"></span>
+									    <span th:if="${o.pay} == 'cash'" class="pull-right" th:text="현금결제"></span>
+									    <span th:if="${o.pay} == 'credit'" class="pull-right" th:text="카드결제"></span>
 								    </li>                                                                                             
 								</ul>                                
 							</div>
