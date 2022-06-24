@@ -13,17 +13,17 @@ margin:auto;
 
 
 <div th:if="${session.loginusers != null}">
-	<div th:if="${session.loginusers.uid == ugarage.uid}">
+<div th:if="${session.loginusers.uid == ugarage.uid}">
+	<div id="div-top" class="text-center" style="background-color:#E5DEC9;">
+		<h1>내 자동차 상세보기</h1>
+		<h4>My Multisla Detail</h4>
+		<p>내가 디자인한 나만의 멀티슬라 자동차의 상세정보를 확인할 수 있습니다.</p>
+	</div>
+	<div>
 		<!--Model Details Section-->
 		<section id="m_details" class="m_details roomy-100 fix">
 			<div class="container">
 				<div class="row">
-					<div class="text-center m-bottom-60">
-						<h1>내 자동차 상세보기</h1>
-						<h4>My Multisla Detail</h4>
-						<p>내가 디자인한 나만의 멀티슬라 자동차의 상세정보를 확인할 수 있습니다.</p>
-					</div>						
-				
 					<div class="main_details">
 						<div class="col-md-6">
 							<div class="m_details_img">
@@ -33,13 +33,9 @@ margin:auto;
 						</div>
 						<div class="col-md-6">
 							<div class="m_details_content m-bottom-40">
-							
 								<h2 th:text="${ugarage.mname}">MNAME</h2>
-							                     
 							</div>
-						                    
 							<hr>
-						                      
 							<div class="person_details m-top-40">
 								<div class="row">
 									<div class="col-xs-3 text-center"> 
@@ -114,6 +110,7 @@ margin:auto;
 				</div>
 			</div><!-- End off row -->
 		</section> <!-- End off Model Details Section -->
+		</div>
 	</div>
 	<div id="div-top" class="container-fluid" th:unless="${session.loginusers.uid == ugarage.uid}">
 		<h1 class="text-black text-center">잘못 된 경로입니다.</h1>
