@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT o.ordersno, o.uid, o.regdate, o.carprice,
 		m.mid, co.colid, w.wid, i.iid,
 		m.mname, co.coloption, w.woption,i.ioption,o.shipprice,o.pay,
-		o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM ORDERS o
+		o.shipname, o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM ORDERS o
 		INNER JOIN model m ON m.mid = o.mid
 		INNER JOIN color co ON co.colid = o.colid
 		INNER JOIN wheel w ON w.wid = o.wid
@@ -19,18 +19,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT o.ordersno, o.uid, o.regdate, o.carprice,
 		m.mid, co.colid, w.wid, i.iid,
 		m.mname, co.coloption, w.woption,i.ioption,o.shipprice,o.pay,
-		o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM ORDERS o
+		o.shipname, o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM ORDERS o
 		INNER JOIN model m ON m.mid = o.mid
 		INNER JOIN color co ON co.colid = o.colid
 		INNER JOIN wheel w ON w.wid = o.wid
 		INNER JOIN interior i ON i.iid = o.iid
 	</select>
+		<select id="selectlast" resultType="int">
+		SELECT MAX(ordersno) FROM orders
+	</select>
 	<insert id="insert" parameterType="ordersVO">
-		INSERT INTO ORDERS VALUES (NULL,#{uid},SYSDATE(),#{carprice},#{mid},#{colid},#{wid},#{iid},#{shipprice},#{pay},#{shipphone},#{shippost},#{shipaddr},#{shipdaddr},#{finalprice})
+		INSERT INTO ORDERS VALUES (NULL,#{uid},SYSDATE(),#{carprice},#{mid},#{colid},#{wid},#{iid},#{shipprice},#{pay},#{shipname},#{shipphone},#{shippost},#{shipaddr},#{shipdaddr},#{finalprice})
 	</insert>
 	<update id="update" parameterType="ordersVO">
 		UPDATE ORDERS SET UID=#{uid},CARPRICE=#{carprice}, MID=#{mid}, COLID=#{colid}, WID=#{wid}, IID=#{iid}, SHIPPRICE=#{shipprice},PAY=#{pay},
-		SHIPPHONE=#{shipphone},SHIPPOST=#{shippost}, SHIPPOST=#{shippost}, SHIPADDR=#{shipaddr}, SHIPDADDR=#{shipdaddr},FINALPRICE=#{finalprice}
+		SHIPNAME=#{shipname},SHIPPHONE=#{shipphone},SHIPPOST=#{shippost}, SHIPPOST=#{shippost}, SHIPADDR=#{shipaddr}, SHIPDADDR=#{shipdaddr},FINALPRICE=#{finalprice}
 		WHERE ORDERSNO=#{ordersno}
 	</update>
 	<delete id="delete" parameterType="ordersVO">

@@ -1,5 +1,6 @@
 package com.multi.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import com.multi.biz.GarageBiz;
 import com.multi.biz.InteriorBiz;
 import com.multi.biz.ModelBiz;
 import com.multi.biz.OrdersBiz;
+import com.multi.biz.OrdersdetailBiz;
 import com.multi.biz.UsersBiz;
 import com.multi.biz.WheelBiz;
 import com.multi.vo.CarbuildVO;
@@ -23,6 +25,7 @@ import com.multi.vo.GarageVO;
 import com.multi.vo.InteriorVO;
 import com.multi.vo.ModelVO;
 import com.multi.vo.OrdersVO;
+import com.multi.vo.OrdersdetailVO;
 import com.multi.vo.UsersVO;
 import com.multi.vo.WheelVO;
 
@@ -44,6 +47,9 @@ public class MainController {
 	OrdersBiz ordersbiz;
 	@Autowired
 	CarbuildBiz carbuildbiz;
+	@Autowired
+	OrdersdetailBiz ordersdetailbiz;
+	
 	@RequestMapping("/garage")
 	public String garage(Model m,String uid) {
 		List<GarageVO> list =null;
@@ -74,9 +80,8 @@ public class MainController {
 	}
 	@RequestMapping("/")
 	public String main(Model m) {
-
 		m.addAttribute("center", "center");
-
+		
 		return "index";
 
 	}
@@ -125,14 +130,16 @@ public class MainController {
 
 		
 		UsersVO users = null;
-		
+
 		try {
+
 			users = usersbiz.get (uid);
+			
 			if(users != null) {
 				if(users.getUpwd().equals(upwd)) {
 					session.setAttribute("loginusers", users);
 					m.addAttribute("loginusers", users);
-					
+
 					
 				}else {
 					throw new Exception();
@@ -215,22 +222,69 @@ public class MainController {
 
 		GarageVO gv =null;
 		CarbuildVO cbv = null;
+		Date today = new Date();
 		int codeno = 0;
-		
-		
+		int ordersno = 0;
+		int odetailno = 0;
 		try {
+			//orders insert
 			ordersbiz.register(v);
 			gv = garagebiz.get(gid);
 			codeno = gv.getCodeno();
 			cbv = carbuildbiz.get(codeno);
 			cbv.setCorder(true);
 			carbuildbiz.modify(cbv);
+			
+			//ordersdetail insert
+			ordersno = ordersbiz.selectlast();
+			OrdersdetailVO odv = new OrdersdetailVO("제작중",today,ordersno,codeno);
+			ordersdetailbiz.register(odv);
+			odetailno = ordersdetailbiz.selectlast();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		
-		m.addAttribute("center", "center");
+		
+		return "redirect:garagedetail?gid="+gid;
+	}
+	@RequestMapping("/ordersdetail")
+	public String ordersdetail(Model m,int codeno) {
+		OrdersdetailVO odv = null;
+		OrdersVO ov = null;
+		ModelVO mv = null;
+		ColorVO cv =null;
+		WheelVO wv =null;
+		InteriorVO iv = null;
+		
+		int ordersno = 0;
+		int mid=0;
+		int colid =0;
+		int wid=0;
+		int iid=0;
+		try {
+			odv = ordersdetailbiz.selectcodeno(codeno);
+			ordersno = odv.getOrdersno();
+			ov = ordersbiz.get(ordersno);
+			m.addAttribute("od", odv);
+			m.addAttribute("o", ov);
+			mid=ov.getMid();
+			mv = modelbiz.get(mid);
+			m.addAttribute("m",mv);
+			colid=ov.getColid();
+			cv = colorbiz.get(colid);
+			m.addAttribute("c",cv);
+			wid = ov.getWid();
+			wv = wheelbiz.get(wid);
+			m.addAttribute("w",wv);
+			iid = ov.getIid();
+			iv = interiorbiz.get(iid);
+			m.addAttribute("i",iv);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		m.addAttribute("center", "ordersdetail");
 		return "index";
 	}
 }

@@ -14,7 +14,7 @@ class UpdateTest {
 	@Test
 	void contextLoads() {
 		
-		OrdersVO uv = new OrdersVO(2,"id01",1000000,100,200,300,400,5000,"pay","phone","post","addr","daddr",7777777);
+		OrdersVO uv = new OrdersVO(1,"id01",1022000,100,200,300,400,5000,"pay","JANG","phone","post","addr","daddr",7777777);
 		
 		try {
 			ordersbiz.modify(uv);

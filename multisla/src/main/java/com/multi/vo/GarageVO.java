@@ -27,7 +27,7 @@ public class GarageVO {
 	private String ioption;
 	private int price;
 	private boolean corder;
-	
+
 	// Constructors
 	public GarageVO(int codeno, String uid) {	// Insert를 위한 Constructor
 		this.codeno = codeno;

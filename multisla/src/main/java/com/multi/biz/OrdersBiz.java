@@ -39,6 +39,8 @@ public class OrdersBiz implements Biz<Integer,OrdersVO> {
 	public List<OrdersVO> get() throws Exception {
 		return dao.selectall();
 	}
-
+	public Integer selectlast() throws Exception {
+		return dao.selectlast();
+	}
 	
 }

@@ -13,7 +13,8 @@ public interface OrdersdetailMapper {
 	public void insert(OrdersdetailVO orders) throws Exception;
 	public void delete(int odetailno) throws Exception;
 	public void update(OrdersdetailVO orders) throws Exception;
-	
+	public OrdersdetailVO selectcodeno(int codeno) throws Exception;
+	public Integer selectlast() throws Exception;
 	public OrdersdetailVO select(int odetailno) throws Exception;
 	public List<OrdersdetailVO> selectall() throws Exception;
 
