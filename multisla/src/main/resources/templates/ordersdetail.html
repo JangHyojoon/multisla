@@ -98,31 +98,32 @@
 								    
   								    <li>   <label class="col-md-1" style="font-size=30px">모델</label>
 									    <span  class="pull-center " th:text="${m.mname}"></span>
-									    <span  class="pull-right" th:text="'₩'+${m.mprice}"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(m.mprice, 0, 'COMMA')}"></span>
 								    </li>  
    								    <li>  <label class="col-md-1" style="font-size=30px">색상</label>
 									    <span  class="pull-center" th:text="${c.coloption}"></span>
-									    <span  class="pull-right" th:text="'₩'+${c.colprice}"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(c.colprice, 0, 'COMMA')}"></span>
 								    </li>  
    								    <li>   <label class="col-md-1" style="font-size=30px">휠</label>
 									    <span  class="pull-center" th:text="${w.woption} + '인치'"></span>
-									    <span  class="pull-right" th:text="'₩'+${w.wprice}"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(w.wprice, 0, 'COMMA')}"></span>
 								    </li>
    								    <li>   <label class="col-md-1" style="font-size=30px">인테리어</label>
 									    <span  class="pull-center" th:text="${i.ioption}"></span>
-									    <span  class="pull-right" th:text="'₩'+${i.iprice}"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(i.iprice, 0, 'COMMA')}"></span>
 								    </li>       
    								    <li style="font-weight:bold">   견적가
 									    <span  class="pull-center"></span>
-									    <span  class="pull-right" th:text="'₩'+(${i.iprice}+${w.wprice}+${c.colprice}+${m.mprice})"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(o.carprice, 0, 'COMMA')}"></span>
+									   
 								    </li>       
    								    <li>   탁송비
 									    <span  class="pull-center"></span>
-									    <span  class="pull-right" th:text="'₩'+(${o.shipprice})"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(o.shipprice, 0, 'COMMA')}"></span>
 								    </li>       
    								    <li style="font-weight:bold">   최종금액
 									    <span  class="pull-center"></span>
-									    <span  class="pull-right" th:text="'₩'+(${i.iprice}+${w.wprice}+${c.colprice}+${m.mprice}+${o.shipprice})"></span>
+									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(o.finalprice, 0, 'COMMA')}"></span>
 								    </li>     
 								    <li >   결제방식
 									    <span  class="pull-center"></span>
