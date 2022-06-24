@@ -76,12 +76,15 @@
 	        	
 	        	var name = $('#shipname').val();
 	    		var phone = $('#shipphone').val();
-	    		
+	    		var addr = $('#shipaddr').val();
 	    		if(phone !=''){
 	    			$('#phonespan').hide();
 	    		}
 	    		if(name !=''){
 	    			$('#namespan').hide();
+	    		}
+	    		if(addr !=''){
+	    			$('#addrspan').hide();
 	    		}
 
 	    		
@@ -95,6 +98,10 @@
 	    		if(phone ==''){
 	    			$('#phonespan').show();
 	    			$('#shipphone').focus();
+	    			return;
+	    		}if(addr ==''){
+	    			$('#addrspan').show();
+	    			$('#shipaddr').focus();
 	    			return;
 	    		}
 
@@ -287,10 +294,9 @@
 														  id="shipaddr"
 														  placeholder="도로명 주소"
 														  readonly
-														  th:value="${users.uaddr}"
-														 
+														  th:value="${users.uaddr}"														 
 														/>
-														
+														<span id="addrspan" class="help-block">필수 입력사항입니다</span>
 													</div>
 												</div>
 	
