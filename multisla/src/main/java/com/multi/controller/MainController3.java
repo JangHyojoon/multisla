@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CarbuildBiz;
@@ -49,6 +52,18 @@ public class MainController3 {
 	@Autowired
 	InteriorBiz interiorbiz;
 	
+	// always return garage list for index.html
+	@ModelAttribute("glist")
+	public List<GarageVO> cartmenu() {
+		List<GarageVO> glist = null;
+		try {
+			glist = garagebiz.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return glist;
+	}
+	
 	// go to model S detail page
 	@RequestMapping("/models")
 	public String models(Model m) {
@@ -58,7 +73,24 @@ public class MainController3 {
 	
 	// build model Y
 	@RequestMapping("/buildmodely")
-	public String buildmodely(Model m) {
+	public String buildmodely(Model m, HttpSession session) {
+		ModelVO model = null;
+		List<ColorVO> color = null;
+		List<WheelVO> wheel = null;
+		List<InteriorVO> inter = null;
+		try {
+			model = modelbiz.get(101);
+			color = colorbiz.get();
+			wheel = wheelbiz.get();
+			inter = interiorbiz.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("model", model);
+		m.addAttribute("color", color);
+		m.addAttribute("wheel", wheel);
+		m.addAttribute("interior", inter);
+		m.addAttribute("session", session.getAttribute("loginusers"));
 		m.addAttribute("center", "carbuild/modelY");
 		return "index";
 	}
@@ -66,6 +98,22 @@ public class MainController3 {
 	// build model S
 	@RequestMapping("/buildmodels")
 	public String carbuild(Model m, HttpSession session) {
+		ModelVO model = null;
+		List<ColorVO> color = null;
+		List<WheelVO> wheel = null;
+		List<InteriorVO> inter = null;
+		try {
+			model = modelbiz.get(100);
+			color = colorbiz.get();
+			wheel = wheelbiz.get();
+			inter = interiorbiz.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("model", model);
+		m.addAttribute("color", color);
+		m.addAttribute("wheel", wheel);
+		m.addAttribute("interior", inter);
 		m.addAttribute("session", session.getAttribute("loginusers"));
 		m.addAttribute("center", "carbuild/modelS");
 		return "index";
@@ -73,7 +121,24 @@ public class MainController3 {
 	
 	// build model X
 	@RequestMapping("/buildmodelx")
-	public String buildmodelx(Model m) {
+	public String buildmodelx(Model m, HttpSession session) {
+		ModelVO model = null;
+		List<ColorVO> color = null;
+		List<WheelVO> wheel = null;
+		List<InteriorVO> inter = null;
+		try {
+			model = modelbiz.get(102);
+			color = colorbiz.get();
+			wheel = wheelbiz.get();
+			inter = interiorbiz.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("model", model);
+		m.addAttribute("color", color);
+		m.addAttribute("wheel", wheel);
+		m.addAttribute("interior", inter);
+		m.addAttribute("session", session.getAttribute("loginusers"));
 		m.addAttribute("center", "carbuild/modelX");
 		return "index";
 	}
@@ -225,6 +290,9 @@ public class MainController3 {
 		ColorVO c = null;
 		WheelVO w = null;
 		InteriorVO i = null;
+		List<ColorVO> color = null;
+		List<WheelVO> wheel = null;
+		List<InteriorVO> inter = null;
 		try {
 			g = garagebiz.get(gid);
 			car = carbuildbiz.get(g.getCodeno());
@@ -232,6 +300,9 @@ public class MainController3 {
 			c = colorbiz.get(car.getColid());
 			w = wheelbiz.get(car.getWid());
 			i = interiorbiz.get(car.getIid());
+			color = colorbiz.get();
+			wheel = wheelbiz.get();
+			inter = interiorbiz.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -241,6 +312,9 @@ public class MainController3 {
 		mo.addAttribute("c",c);
 		mo.addAttribute("w", w);
 		mo.addAttribute("i", i);
+		mo.addAttribute("color", color);
+		mo.addAttribute("wheel", wheel);
+		mo.addAttribute("interior", inter);
 		mo.addAttribute("center", "garage/modify");
 		return "index";
 	}
