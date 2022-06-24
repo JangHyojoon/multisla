@@ -12,6 +12,19 @@
 	color:red;
 	
 	}
+	.btn-primary{
+    color: #fff;
+    background-color: #333;
+    border:1px solid;
+    border-color: #333;
+    padding: 0.8rem 2.5rem;
+    border-radius: 5px;
+}
+.btn-primary:hover{
+    background-color: #8E93A3;
+    border-color: #8E93A3;
+    color:#fff;
+}
 </style>
 <script>
 	
@@ -45,7 +58,7 @@
 		      			<span id="cspan" th:text="${msg}"></span>
 		      			
 
-		       			<input class="btn btn-info btn-user btn-block"  type="submit" name="login" value="로그인"><br>
+		       			<input class="btn btn-primary btn-user btn-block"  type="submit" name="login" value="로그인"><br>
 		      		</div>
 		    	</div>
 			 </form>

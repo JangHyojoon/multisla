@@ -12,6 +12,19 @@
 	color:red;
 	
 	}
+	.btn-primary{
+    color: #fff;
+    background-color: #333;
+    border:1px solid;
+    border-color: #333;
+    padding: 0.8rem 2.5rem;
+    border-radius: 5px;
+	}
+	.btn-primary:hover{
+	    background-color: #8E93A3;
+	    border-color: #8E93A3;
+	    color:#fff;
+	}
 </style>
 <script>
 $(document).ready(function(){
@@ -54,7 +67,7 @@ $(document).ready(function(){
 				<div class="form-group">        
 					<div class="col-sm-offset-2 col-sm-3">
 						<span id="cspan" th:text="${msg}"></span>
-						<button class="btn btn-info btn-user btn-block" id="login_btn">로그인</button><br>
+						<button class="btn btn-primary btn-user btn-block" id="login_btn">로그인</button><br>
 					</div>
 				</div>
 			</form>

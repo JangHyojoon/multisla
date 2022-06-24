@@ -12,7 +12,19 @@
 	  color: red;
    }
    
-
+.btn-primary{
+    color: #fff;
+    background-color: #333;
+    border:1px solid;
+    border-color: #333;
+    padding: 0.8rem 2.5rem;
+    border-radius: 5px;
+}
+.btn-primary:hover{
+    background-color: #8E93A3;
+    border-color: #8E93A3;
+    color:#fff;
+}
 </style>
 
 <script>
@@ -213,7 +225,7 @@ $(document).ready(function(){
 			    	<input type="text" class="form-control" name="upost" id="upost" placeholder="우편번호" readonly />
 				</div>
 				<div class="col-sm-2">
-			   		<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
+			   		<button type="button" class="btn btn-primary" onclick="execDaumPostcode()">우편번호 찾기</button>
 				</div>
 			</div>
 			
@@ -250,7 +262,7 @@ $(document).ready(function(){
              
              <div class="form-group">        
                   <div class="col-sm-offset-2 col-sm-3">
-                       <a href="#" class="btn btn-info m-btn--air"  id="registerbtn">회원가입 </a>
+                       <a href="#" class="btn btn-primary m-btn--air"  id="registerbtn">회원가입 </a>
          
                   </div>
              </div>
@@ -258,7 +270,7 @@ $(document).ready(function(){
 
          </form>
          <div class="form-group">        
-               <div class="col-sm-offset-2 col-sm-3">
+               <div class="col-sm-offset-2 col-sm-4">
                   <hr>
                   <p>계정이 있으신가요?</p>
                    <a class="btn btn-default btn-user btn-block" href="login" name="login">로그인하러가기</a><br>
