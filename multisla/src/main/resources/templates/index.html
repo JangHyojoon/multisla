@@ -100,10 +100,10 @@
                                     <span class="badge">3</span>
                                 </a>
                                 <ul class="dropdown-menu cart-list">
-                                    <li th:each="g : ${cartlist}">
-                                        <a href="#" class="photo"><img src="assets/images/thumb01.jpg" class="cart-thumb" alt="" /></a>
-                                        <h6><a href="#">Delica omtantur </a></h6>
-                                        <p class="m-top-10">2x - <span class="price">$99.99</span></p>
+                                    <li th:each="g : ${cartlist}" th:if="${session.loginusers.uid == g.uid}">
+                                        <a th:href="@{garagedetail(gid=${g.gid})}" class="photo"><img th:src="@{'assets/images/garage/'+${g.mname}+'_'+${g.coloption}+'_'+${g.woption}+'.png'}" class="cart-thumb" alt="" /></a>
+                                        <h6><a th:href="@{garagedetail(gid=${g.gid})}" th:text="${g.mname}">Model Name</a></h6>
+                                        <p class="m-top-10"><span class="price" data-th-text="'&#8361;'+${#numbers.formatInteger(g.price, 0, 'COMMA')}">Price</span></p>
                                     </li>
                                     <!---- More List ---->
                                     <li class="total">
