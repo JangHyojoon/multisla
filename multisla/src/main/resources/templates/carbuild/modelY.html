@@ -12,13 +12,6 @@
 .tittle-margin{
 	margin-bottom: 30px;	
 }
-#circle60{
-	width:60px; height:60px;   
-}
-#circle55{
-	width:55px; height:55px;   
-}
-
 .labelexpanded > input{
 	display:none;	
 }
@@ -197,15 +190,6 @@ $(document).ready(function(){
 					<div class="tittle-margin">
 						<h3 class="text-black text-center">색상</h3>
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded" for="black">
-							<input type="radio" name="colid" value="200" id="black" checked="checked" class="colorid">
-							<div class="radio-btns">
-								<img src="assets/images/1-black.png" class="img-circle" alt="col_Black">
-							</div>
-						</label>
-=======
 					<div th:each="c : ${color}">
 						<div class="col-xs-3 text-center" th:if="${c.colid} == 200">
 							<label class="labelexpanded" for="black">
@@ -243,36 +227,8 @@ $(document).ready(function(){
 							</label>
 							<h6 data-th-text="${#numbers.formatInteger(c.colprice, 0, 'COMMA') + '&#8361;'}"></h6>
 						</div>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded" for="white">
-							<input type="radio" name="colid" value="201" id="white" class="colorid">
-							<div class="radio-btns">
-								<img src="assets/images/1-white.png" class="img-circle" alt="col_White">
-							</div>
-						</label>
-					</div>
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded" for="red">
-							<input type="radio" name="colid" value="202" id="red" class="colorid">
-							<div class="radio-btns">
-								<img src="assets/images/1-red.png" class="img-circle" alt="col_Red">
-							</div>
-						</label>
-					</div>
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded" for="blue">
-							<input type="radio" name="colid" value="203" id="blue" class="colorid">
-							<div class="radio-btns">
-								<img src="assets/images/1-blue.png" class="img-circle" alt="col_Blue">
-							</div>
-						</label>
-					</div>
-=======
 					
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 				</div>	
 			
 				<!-- 휠 -->
@@ -280,16 +236,6 @@ $(document).ready(function(){
 					<div class="tittle-margin">
 						<h3 class="text-black text-center"> 휠 </h3>
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-3 text-center"></div>
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="wid" value="300" id="radio" checked="checked" class="wheelid">
-							<div class="radio-btns">
-								<img src="assets/images/carbuild/modely/w_19.png" class="img-circle" alt="w_19" id="w_19">
-							</div>
-						</label>
-=======
 					<div class="col-xs-3 text-center"></div>
 					
 					<div th:each="w : ${wheel}">
@@ -311,22 +257,9 @@ $(document).ready(function(){
 							</label>
 							<h6 data-th-text="${#numbers.formatInteger(w.wprice, 0, 'COMMA') + '&#8361;'}"></h6>
 						</div>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="wid" value="301" id="radio" class="wheelid">
-							<div class="radio-btns">
-								<img src="assets/images/carbuild/modely/w_21.png" class="img-circle" alt="w_21" id="w_21">
-							</div>
-						</label>
-					</div> 
-					<div class="col-sm-3 text-center"></div>
-=======
 					
 					<div class="col-xs-3 text-center"></div>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 				</div>
 			   		
 				<!-- 인테리어 -->
@@ -334,16 +267,6 @@ $(document).ready(function(){
 					<div class="tittle-margin">
 						<h3 class="text-black text-center"> 인테리어 </h3>
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-3 text-center"></div>
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="iid" value="400" id="radio" checked="checked">
-							<div class="radio-btns">
-								<img src="assets/images/3-black.png" class="img-circle" alt="inte_Black" id="circle60">
-							</div>
-						</label>
-=======
 					<div class="col-xs-3 text-center"></div>
 					
 					<div th:each="i : ${interior}">
@@ -365,22 +288,9 @@ $(document).ready(function(){
 							</label>
 							<h6 data-th-text="${#numbers.formatInteger(i.iprice, 0, 'COMMA') + '&#8361;'}"></h6>
 						</div>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 					</div>
-<<<<<<< HEAD
-					<div class="col-sm-3 text-center">
-						<label class="labelexpanded">
-							<input type="radio" name="iid" value="401" id="radio">
-							<div class="radio-btns">
-								<img src="assets/images/3-white.png" class="img-circle" alt="inte_white" id="circle60">
-							</div>
-						</label>
-					</div>	
-					<div class="col-sm-3 text-center"></div>
-=======
 					
 					<div class="col-xs-3 text-center"></div>
->>>>>>> branch 'master' of https://github.com/JangHyojoon/multisla.git
 				</div>
 			
 				<!-- 가격 표시 -->
