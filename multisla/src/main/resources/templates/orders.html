@@ -60,7 +60,49 @@
         }
         
         $(document).ready(function(){
+        	$('#namespan').hide();
+        	$('#phonespan').hide();
+        	
+        	$('#shipname').keyup(function(){
+        		$('#namespan').hide();
+        	});
+        	$('#shipphone').keyup(function(){
+        		$('#phonespan').hide();
+        	});
+       
+        	
+        	
 	        $('#ordersbtn').click(function(){
+	        	
+	        	var name = $('#shipname').val();
+	    		var phone = $('#shipphone').val();
+	    		
+	    		if(phone !=''){
+	    			$('#phonespan').hide();
+	    		}
+	    		if(name !=''){
+	    			$('#namespan').hide();
+	    		}
+	    		if(post !='')
+	    			$('#addrspan').hide();
+	    		
+	    		
+	    		
+	    		if(name ==''){
+	    			$('#namespan').show();
+	    			$('#shipname').focus();
+	    			return;
+	    		}
+	    		if(phone ==''){
+	    			$('#phonespan').show();
+	    			$('#shipphone').focus();
+	    			return;
+	    		}
+
+	        	
+	        	
+	        	
+	        	
 	    		$('.form-horizontal').attr({
 	    			'method':'post',
 	    			'action':'ordersimpl'
@@ -215,28 +257,29 @@
 	                                        </div> 
 	                                        <div class="blog_details_figure m-top-40">	              
 	                                  			<div class="m-top-40">
-													<label class="col-md-3" for="phone">이름</label>
+													<label class="col-md-3" for="name">이름</label>
 													<div class="col-md-9">          
-														<input type=text class="form-control" name="shipname" id="shippname" th:value="${users.uname}">
+														<input type=text class="form-control" name="shipname" id="shipname" th:value="${users.uname}">
+														<span id="namespan" class="help-block">필수 입력사항입니다</span>
 													</div>
 												</div>
-												<div>
+												<div class="m-top-10">
 													<label class="col-md-3" for="phone">연락처</label>
 													<div class="col-md-9">          
 														<input type="tel" class="form-control" name="shipphone" id="shipphone" maxlength="13" th:value="${users.uphone}">
-													
+														<span id="phonespan" class="help-block">필수 입력사항입니다</span>
 													</div>
 												</div>
-												<div style="padding-top:10px">
+												<div class="m-top-10">
 													<label class="col-md-3" for="addr">주소</label>
 													<div class="col-md-4">
 														<input type="text" class="form-control" name="shippost" id="shippost" placeholder="우편번호" readonly th:value="${users.upost}"/>
 													</div>
 													<div class="col-md-4">
-														<button type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
+														<button id="postbtn"type="button" class="btn btn-info" onclick="execDaumPostcode()">우편번호 찾기</button>
 													</div>
 												</div>
-												<div style="padding-top:10px">
+												<div class="m-top-10">
 													<label class="control-label col-md-3" for="addr"></label>
 													<div class="col-md-9">
 														<input
@@ -249,10 +292,11 @@
 														  th:value="${users.uaddr}"
 														 
 														/>
+														
 													</div>
 												</div>
 	
-												<div style="padding-top:10px">
+												<div class="m-top-10">
 													<label class="control-label col-md-3" for="addr"></label>
 													<div class="col-md-9">
 														<input
