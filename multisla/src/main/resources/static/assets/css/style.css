@@ -435,7 +435,13 @@ Button
     border-color: #8E93A3;
     color:#fff;
 }
-.btn-info{}
+.btn-info{
+	color: #fff;
+    background-color: #333;
+    border:1px solid;
+    border-color: #333;
+    border-radius: 5px;
+}
 .btn-warning{}
 .btn-danger{}
 .btn-link{}
@@ -901,6 +907,8 @@ Nav Menu style
 .navbar-nav > li > a {
     padding-top: 30px;
     padding-bottom: 30px;
+    text-color: black;
+    text-shadow: 1px 1px 2px white;
 }
 .attr-nav > ul > li > a {
     padding: 30px 15px;
@@ -1963,5 +1971,10 @@ Multisla- Kayoung Jin
 
 .selectbox2{
 	margin-top: 250px;
+	margin-bottom: 50px;
+}
+
+.selectbox3{
+	margin-top: 0px;
 	margin-bottom: 50px;
 }
