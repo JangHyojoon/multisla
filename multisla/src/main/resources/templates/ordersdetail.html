@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
     <head>
 		<style>
 			#div-top{
@@ -95,19 +95,19 @@
 									    <span  class="pull-right" th:text="${o.shipphone}"></span>								   
 								    </li>
 								    
-  								    <li>   <label class="col-md-2" style="font-size=30px">모델</label>
+  								    <li>   <label class="col-md-2" style="font-size:30px">모델</label>
 									    <span  class="pull-center " th:text="${m.mname}"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(m.mprice, 0, 'COMMA')}"></span>
 								    </li>  
-   								    <li>  <label class="col-md-2" style="font-size=30px">색상</label>
+   								    <li>  <label class="col-md-2" style="font-size:30px">색상</label>
 									    <span  class="pull-center" th:text="${c.coloption}"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(c.colprice, 0, 'COMMA')}"></span>
 								    </li>  
-   								    <li>   <label class="col-md-2" style="font-size=30px">휠</label>
+   								    <li>   <label class="col-md-2" style="font-size:30px">휠</label>
 									    <span  class="pull-center" th:text="${w.woption} + '인치'"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(w.wprice, 0, 'COMMA')}"></span>
 								    </li>
-   								    <li>   <label class="col-md-2" style="font-size=30px">인테리어</label>
+   								    <li>   <label class="col-md-2" style="font-size:30px">인테리어</label>
 									    <span  class="pull-center" th:text="${i.ioption}"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(i.iprice, 0, 'COMMA')}"></span>
 								    </li>       

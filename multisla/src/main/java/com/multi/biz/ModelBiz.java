@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.frame.Biz;
-import com.multi.mapper.CartypeMapper;
 import com.multi.mapper.ModelMapper;
-import com.multi.vo.CartypeVO;
 import com.multi.vo.ModelVO;
 @Service
 public class ModelBiz implements Biz<Integer,ModelVO>{
