@@ -39,7 +39,17 @@
 	
                                 
                             </div>
+							    <div class="grid models text-center">
+                            	
+                                <div th:each="u : ${ugarage}" class="grid-item model-item transition" th:classappend="${u.mname} ? ${u.mname}" >
+                                    <img alt="????" th:src="@{'assets/images/garage/'+${u.mname}+'_'+${u.coloption}+'_'+${u.woption}+'.png'}">
+									<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details<i class="fa fa-long-arrow-right"></i></a>
+                   			
+                                </div><!-- End off grid item -->
 
+	
+                                
+                            </div>
                             <div style="clear: both;"></div>
 
                         </div>
