@@ -156,7 +156,7 @@ $(document).ready(function(){
 			<div class="selectbox">
 				<div class="tittle-margin">
 					<h1 class="text-black text-center">MODEL X</h1>
-					<h3 class="text-black text-center" data-th-text="${#numbers.formatInteger(model.mprice, 0, 'COMMA') + '&#8361;'}"></h3>
+					<h3 class="text-black text-center" data-th-text="${'&#8361;'+ #numbers.formatInteger(model.mprice, 0, 'COMMA')}"></h3>
 				</div>
 				<div class="col-sm-4 text-center">
 					<h4 style="display:inline;">499</h4>
@@ -201,7 +201,7 @@ $(document).ready(function(){
 									<img src="assets/images/1-black.png" class="img-circle" alt="col_Black">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(c.colprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(c.colprice, 0, 'COMMA')}"></h6>
 						</div>
 						<div class="col-xs-3 text-center" th:if="${c.colid} == 201">
 							<label class="labelexpanded" for="white">
@@ -210,7 +210,7 @@ $(document).ready(function(){
 									<img src="assets/images/1-white.png" class="img-circle" alt="col_White">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(c.colprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="'&#8361;' + ${#numbers.formatInteger(c.colprice, 0, 'COMMA')}"></h6>
 						</div>
 						<div class="col-xs-3 text-center" th:if="${c.colid} == 202">
 							<label class="labelexpanded" for="red">
@@ -219,7 +219,7 @@ $(document).ready(function(){
 									<img src="assets/images/1-red.png" class="img-circle" alt="col_Red">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(c.colprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(c.colprice, 0, 'COMMA')}"></h6>
 						</div>
 						<div class="col-xs-3 text-center" th:if="${c.colid} == 203">
 							<label class="labelexpanded" for="blue">
@@ -228,7 +228,7 @@ $(document).ready(function(){
 									<img src="assets/images/1-blue.png" class="img-circle" alt="col_Blue">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(c.colprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(c.colprice, 0, 'COMMA')}"></h6>
 						</div>
 					</div>
 					
@@ -249,7 +249,7 @@ $(document).ready(function(){
 									<img src="assets/images/carbuild/models/w_19.png" class="img-circle" alt="whe_Black" id="w_19">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(w.wprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(w.wprice, 0, 'COMMA')}"></h6>
 						</div>
 						<div class="col-xs-3 text-center" th:if="${w.wid} == 301">
 							<label class="labelexpanded" for="w21">
@@ -258,7 +258,7 @@ $(document).ready(function(){
 									<img src="assets/images/carbuild/models/w_21.png" class="img-circle" alt="whe_White" id="w_21">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(w.wprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(w.wprice, 0, 'COMMA')}"></h6>
 						</div>
 					</div>
 					
@@ -280,7 +280,7 @@ $(document).ready(function(){
 									<img src="assets/images/3-black.png" class="img-circle" alt="inte_Black">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(i.iprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(i.iprice, 0, 'COMMA')}"></h6>
 						</div>
 						<div class="col-xs-3 text-center" th:if="${i.iid} == 401">
 							<label class="labelexpanded" for="iwhite">
@@ -289,7 +289,7 @@ $(document).ready(function(){
 									<img src="assets/images/3-white.png" class="img-circle" alt="inte_white">
 								</div>
 							</label>
-							<h6 data-th-text="${#numbers.formatInteger(i.iprice, 0, 'COMMA') + '&#8361;'}"></h6>
+							<h6 data-th-text="${'&#8361;' + #numbers.formatInteger(i.iprice, 0, 'COMMA')}"></h6>
 						</div>
 					</div>
 					
@@ -310,8 +310,8 @@ $(document).ready(function(){
 									<div class="main_counter text-center">
 									    <div class="col-md-2">
 									        <div class="counter_item">
-										            <h3 class="statistic-counter" id="price"></h3>
-										            <h3>&#8361;</h3>
+									            <h3 class="statistic-counter" id="price"></h3>
+									            <h3>원</h3>
 									        </div>
 									    </div>
 									</div>
