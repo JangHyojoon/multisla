@@ -177,7 +177,7 @@
                                     <ul class="text-uppercase m-top-40">
                                         <li>  모델&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         <span th:text="${model.mname}" class="pull-center"></span>
-                                        <span th:text="${model.mprice}" class="pull-right"></span>
+                                        <span th:text="'₩'+(${model.mprice})" class="pull-right"></span>
                                         </li>
                                         <li>  색상&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         <span th:text="${color.coloption}" class="pull-center"></span>
@@ -185,14 +185,14 @@
                                         </li>
                                         <li>   휠&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         <span th:text="${wheel.woption}+'inch'" class="pull-center"></span>
-                                        <span th:text="${wheel.wprice}" class="pull-right"></span>
+                                        <span th:text="'₩'+(${wheel.wprice})" class="pull-right"></span>
                                         </li>
                                         <li>인테리어&nbsp&nbsp&nbsp&nbsp&nbsp 
                                         <span th:text="${interior.ioption}" class="pull-center"></span>
-                                        <span th:text="${interior.iprice}" class="pull-right"></span>
+                                        <span th:text="'₩'+(${interior.iprice})" class="pull-right"></span>
                                         </li>                                        
                                     </ul>
-                                    <h6 class="text-uppercase">견적가<span th:text="${garage.price}" class="pull-right"></span></h6>
+                                    <h6 class="text-uppercase">견적가<span th:text="'₩'+(${garage.price})" class="pull-right"></span></h6>
                                 </div>
                                 <form class="form-horizontal">
                                 <input type="hidden" class="form-control" name="uid" id="uid" th:value="${garage.uid}"/>
@@ -280,12 +280,12 @@
 	                         
 	                                    <ul class="text-uppercase m-top-40">
 	                                        <li>  견적가&nbsp&nbsp&nbsp&nbsp&nbsp 
-	                                        <span th:text="${garage.price}" class="pull-right"></span>                                      
+	                                        <span th:text="'₩'+(${garage.price})" class="pull-right"></span>                                      
 	                                        </li>
 	                                        <li>  탁송비&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-	                                        <span  class="pull-right">100000</span>                                                                        
+	                                        <span  class="pull-right">₩100000</span>                                                                        
 	                                    </ul>
-	                                    <h6 class="text-uppercase">최종금액<span th:text="${garage.price}" class="pull-right"></span></h6>
+	                                    <h6 class="text-uppercase">최종금액<span th:text="'₩'+(${garage.price}+100000)" class="pull-right"></span></h6>
 										
 											<div class="m-top-40">
 												<div class="radio" style="text-align: center">
