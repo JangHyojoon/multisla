@@ -43,7 +43,6 @@
         <link rel="stylesheet" href="assets/css/responsive.css" />
 
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -103,17 +102,7 @@
                                     <span class="badge">3</span>
                                 </a>
                                 <ul class="dropdown-menu cart-list">
-                                    <li>
-                                        <a href="#" class="photo"><img src="assets/images/thumb01.jpg" class="cart-thumb" alt="" /></a>
-                                        <h6><a href="#">Delica omtantur </a></h6>
-                                        <p class="m-top-10">2x - <span class="price">$99.99</span></p>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="photo"><img src="assets/images/thumb01.jpg" class="cart-thumb" alt="" /></a>
-                                        <h6><a href="#">Delica omtantur </a></h6>
-                                        <p class="m-top-10">2x - <span class="price">$99.99</span></p>
-                                    </li>
-                                    <li>
+                                    <li th:each="g : ${glist}">
                                         <a href="#" class="photo"><img src="assets/images/thumb01.jpg" class="cart-thumb" alt="" /></a>
                                         <h6><a href="#">Delica omtantur </a></h6>
                                         <p class="m-top-10">2x - <span class="price">$99.99</span></p>
@@ -166,7 +155,7 @@
             <footer id="footer" class="footer bg-mega">
                 <div class="container">
                     <div class="row">
-                        <div class="main_footer p-top-40  p-bottom-30">
+                        <div class="main_footer p-top-40 p-bottom-30">
                             <div class="col-md-6 text-left sm-text-center">
                                 <p class="wow fadeInRight" data-wow-duration="1s">
                                     14th Development of Web Services Using AI Platforms
