@@ -49,4 +49,8 @@ public class GarageBiz implements Biz<Integer, GarageVO>{
 	public List<GarageVO> getcart() throws Exception {
 		return dao.selectcart();
 	}
+	
+	public int cartcount(String uid) throws Exception {
+		return dao.cartcount(uid);
+	}
 }
