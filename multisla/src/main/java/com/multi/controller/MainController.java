@@ -158,7 +158,7 @@ public class MainController {
 		}
 		
 	
-		return "index";
+		return "redirect:/";
 	}
 	@RequestMapping("/delete")
 	public String delete(Model m,int gid) {

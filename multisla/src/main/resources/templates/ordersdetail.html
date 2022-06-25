@@ -48,7 +48,8 @@
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
-
+<div th:if="${session.loginusers != null}">
+	<div th:if="${session.loginusers.uid == o.uid}">
 	<!--Home Sections-->
 		<!--Blog Features Section-->
 		<section id="blog_details" class="blog_details roomy-100">
@@ -95,19 +96,19 @@
 									    <span  class="pull-right" th:text="${o.shipphone}"></span>								   
 								    </li>
 								    
-  								    <li>   <label class="col-md-2" style="font-size:30px">모델</label>
+  								    <li>   <label class="col-md-2">모델</label>
 									    <span  class="pull-center " th:text="${m.mname}"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(m.mprice, 0, 'COMMA')}"></span>
 								    </li>  
-   								    <li>  <label class="col-md-2" style="font-size:30px">색상</label>
+   								    <li>  <label class="col-md-2">색상</label>
 									    <span  class="pull-center" th:text="${c.coloption}"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(c.colprice, 0, 'COMMA')}"></span>
 								    </li>  
-   								    <li>   <label class="col-md-2" style="font-size:30px">휠</label>
+   								    <li>   <label class="col-md-2">휠</label>
 									    <span  class="pull-center" th:text="${w.woption} + '인치'"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(w.wprice, 0, 'COMMA')}"></span>
 								    </li>
-   								    <li>   <label class="col-md-2" style="font-size:30px">인테리어</label>
+   								    <li>   <label class="col-md-2">인테리어</label>
 									    <span  class="pull-center" th:text="${i.ioption}"></span>
 									    <span  class="pull-right" data-th-text="'&#8361;'+${#numbers.formatInteger(i.iprice, 0, 'COMMA')}"></span>
 								    </li>       
@@ -141,9 +142,15 @@
 		<div class="scrollup">
 		    <a href="#"><i class="fa fa-chevron-up"></i></a>
 		</div><!-- End off scroll up -->
+	</div>
+	<div id="div-top" class="container-fluid" th:unless="${session.loginusers.uid == o.uid}">
+		<h1 class="text-black text-center">잘못 된 경로입니다.</h1>
+	</div>
+</div>
 
-
-           
+<div id="div-top" class="container-fluid" th:unless="${session.loginusers != null}">
+	<h1 class="text-black text-center">잘못 된 경로입니다.</h1>
+</div>
 
 
 
