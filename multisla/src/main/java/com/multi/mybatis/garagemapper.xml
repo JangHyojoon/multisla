@@ -59,6 +59,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN interior i ON i.iid = ca.iid
 		WHERE ca.corder=0
 	</select>
+	<select id="cartcount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM garage g
+		INNER JOIN carbuild ca ON g.codeno = ca.codeno
+		WHERE g.uid = #{uid} AND ca.corder = false;
+	</select>
 	<insert id="insert" parameterType="garageVO">
 		INSERT INTO GARAGE VALUES (NULL,#{codeno},#{uid})
 	</insert>

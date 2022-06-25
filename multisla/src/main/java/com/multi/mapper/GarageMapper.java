@@ -18,4 +18,5 @@ public interface GarageMapper {
 	public List<GarageVO> selectuid(String uid) throws Exception;
 	public List<GarageVO> selectmid(int mid) throws Exception;
 	public List<GarageVO> selectcart() throws Exception;
+	public int cartcount(String uid) throws Exception;
 }
