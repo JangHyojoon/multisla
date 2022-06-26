@@ -11,8 +11,8 @@
 		<h4>My Garage</h4>
 		<p>내가 디자인한 나만의 멀티슬라 자동차 리스트와 주문건을 확인할 수 있습니다.</p>
 	</div>
-	<div class="col-md-1"></div>					
-	<div class="col-md-5">
+				
+
 		<!--Cart Section-->
 		<section id="gallery" class="gallery margin-top-50 bg-white">
 			<!-- Cart container-->
@@ -38,12 +38,12 @@
 					                    
 						<div class="grid models text-center">
 							<div  th:each="u : ${ugarage}">
-							<div  class="grid-item model-item " th:if ="${u.corder} == false" th:classappend="${u.mname} ? ${u.mname}">
+							<div  class="grid-item model-item " th:classappend="${u.mname} ? ${u.mname}">
 								<img alt="????" th:src="@{'assets/images/garage/'+${u.mname}+'_'+${u.coloption}+'_'+${u.woption}+'.png'}">
 								<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details</a>
 							    
 							    <h5 class="m-top-20" th:text="${u.mname}"></h5>
-							    <h5 th:if ="${u.corder} == true" th:text="Ordered"></h5>  			
+							    <h5 class="m-top-20" th:if ="${u.corder} == true" th:text="Ordered"></h5>  			
 							</div><!-- End off grid item -->
 							</div>
 						</div>
@@ -52,38 +52,10 @@
 				</div>
 			</div><!-- Cart container end -->
 		</section><!-- End off Cart section -->
-		</div>
-	</div>
-	
-		<div class="col-md-5">
-		<section id="gallery" class="gallery margin-top-50 bg-white">
-			<!-- Order completed container-->
-			<div class="container">
-				<div class="row">
-					<div class="main-gallery main-model roomy-80">
-						<div class="col-md-12 m-bottom-60 m-top-60">
-							<h3>Order Completed</h3>
-							<div class="filters-button-group sm-text-center">
-								<button class="button is-checked" data-filter="*">View all</button>
-							</div>
-						</div>
-						<div style="clear: both;"></div>
-						<div class="grid models text-center">
-							<div  th:each="u : ${ugarage}">
-							<div  class="grid-item model-item " th:if ="${u.corder} == true" th:classappend="${u.mname} ? ${u.mname}">
-								<img alt="????" th:src="@{'assets/images/garage/'+${u.mname}+'_'+${u.coloption}+'_'+${u.woption}+'.png'}">
-								<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details</a>
-							    
-							    <h5 class="m-top-20" th:text="${u.mname}"></h5>			
-							</div><!-- End off grid item -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div><!-- Order completed container end -->
-		</section><!-- End off Order completed section -->
 		
 	</div>
+	
+
 	<div class="col-md-1"></div>
 	<div id="div-top" class="container-fluid" th:unless="${session.loginusers.uid == uid}">
 		<h1 class="text-black text-center">잘못 된 경로입니다.</h1>
