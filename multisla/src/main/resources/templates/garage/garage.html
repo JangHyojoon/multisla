@@ -43,7 +43,8 @@
 								<a th:href="@{garagedetail(gid=${u.gid})}" class="btn btn-default m-top-20">View Details</a>
 							    
 							    <h5 class="m-top-20" th:text="${u.mname}"></h5>
-							    <h5 class="m-top-20" th:if ="${u.corder} == true" th:text="Ordered"></h5>  			
+							    <h5 class="m-top-20" th:if ="${u.corder} == true" th:text="Ordered"></h5>  	
+							    <h5 class="m-top-20" th:if ="${u.corder} == false" >&nbsp </h5>  		
 							</div><!-- End off grid item -->
 							</div>
 						</div>
