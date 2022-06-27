@@ -1,6 +1,9 @@
 # 프로젝트 : Multisla
 자동차 온라인 커스터마이징 판매 웹서비스 개발
-
+시연영
+<video width="100%" height="100%" controls="controls">
+  <source src="/assets/mp4/multisla.mp4" type="video/mp4">
+</video>
 ## 1. 제작 기간 & 참여 인원
 - 2022년 06월 16일 ~ 06월 26일
 - 팀 프로젝트 (장효준 / 신승욱 / 진가영)
