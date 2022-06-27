@@ -7,8 +7,7 @@
   <source src="/assets/mp4/Multisla.mp4" type="video/mp4">
 </video>
 
-<iframe id="video" width="가로" height="세로" src="/assets/mp4/Multisla.mp4" frameborder="0">
-</iframe>
+
 ## 1. 제작 기간 & 참여 인원
 - 2022년 06월 16일 ~ 06월 26일
 - 팀 프로젝트 (장효준 / 신승욱 / 진가영)
