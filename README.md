@@ -5,9 +5,9 @@
 ### 시연영상 
 
 
-<video width="100%" height="100%" controls="controls">
-  <source src="/assets/mp4/Multisla.mp4" type="video/mp4">
-</video>
+
+https://user-images.githubusercontent.com/103174607/175891876-d0cfa8e1-613f-44b8-b742-8d79026e4e44.mp4
+
 
 
 ## 1. 제작 기간 & 참여 인원
