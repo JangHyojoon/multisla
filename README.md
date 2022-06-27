@@ -1,4 +1,4 @@
-# multisla
+# 프로젝트 : Multisla
 
 ## 1. 제작 기간 & 참여 인원
 
