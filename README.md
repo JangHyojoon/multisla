@@ -161,6 +161,27 @@
   ![orders detail](https://user-images.githubusercontent.com/103157377/175876159-b635a788-5abd-4947-a11a-ac195b78460b.gif)
 <br>
 
+### 4.f. 필수 기능에 대한 보안 적용
+
+#### 4.f.1 로그인 보안 기술
+
+- 화면 흐름도에서 build 이후에 일어나는 모든 기능들은 옳바른 사용자가 로그인 하지 않으면 기능들을 쓸 수 없도록 막아야 한다.
+- 그렇지 않으면 개인정보 유출과 같은 사고가 일어날 수 있다.
+- 로그인 상태에서 링크를 복사해 테스트를 진행했다.
+
+<br>
+
+#### 4.f.2 로그인에 대한 보안
+
+- 로그아웃 상태에서 접근
+
+  ![garage secure](https://user-images.githubusercontent.com/103157377/175882121-7a50454d-8bef-4a3a-bf6d-e5901a3427b6.gif)
+
+- 다른 사용자로 로그인 했을 때 접근
+
+  ![garage secure login](https://user-images.githubusercontent.com/103157377/175882697-f5bf3d1d-cd4f-435e-9a25-ea243546e609.gif)
+
+<br>
 
 ## 5. 핵심 트러블 슈팅
 #### 5-1. 차 견적 시 비로그인인 경우 
