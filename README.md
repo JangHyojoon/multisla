@@ -14,27 +14,12 @@ https://user-images.githubusercontent.com/103174607/175891876-d0cfa8e1-613f-44b8
 - 2022년 06월 16일 ~ 06월 26일
 - 팀 프로젝트 (장효준 / 신승욱 / 진가영)
 ## 2. 사용 기술
-#### `협업도구`
-- zoom
-- gitHUB
 
-#### `Data Base`
-- MySQL
+|협업도구|DB|Back-end|Front-end|
+|------|------|------|------|
+|- zoom</br>- gitHUB|- MySQL|- Java</br>- Spring Boot</br>- Java Script|- CSS</br>- HTML</br>- Bootstrap</br>- jQuery</br>- Ajax</br>- Java Script</br>- kakao developers|
 
-#### `Back-end`
-- Java8
-- Spring Boot
-- Java Script
 
-#### `Front-end`
-- CSS
-- HTML
-- Bootstrap
-- jQuery
-- Ajax
-- Java Script
-- kakao developers
-- 
 ## 3. ERD 설계
 ![ERD](https://user-images.githubusercontent.com/103174607/175862522-ea573639-8caa-4aea-a1c6-6f25897d73ec.png)
 ### 3-1. ERD 설계 단계 주요 쟁점
