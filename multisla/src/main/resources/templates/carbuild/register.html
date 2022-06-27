@@ -34,9 +34,9 @@ function sendUid(uid){
       data:{'uid':uid},
       success:function(data){
          if(data == '1'){
-            $('#uspan').text('사용불가능한 ID입니다');
+            $('#sid').text('사용불가능한 ID입니다');
          }else{
-            $('#uspan').text('사용가능한 ID입니다');
+            $('#sid').text('사용가능한 ID입니다');
         
          }
       }
@@ -48,9 +48,9 @@ $(document).ready(function(){
 	
 	   var uid = $(this).val();
 		if(uid.length <3){
-		 $('#uspan').text('3자리 이상이어야 합니다.');
+		 $('#sid').text('3자리 이상이어야 합니다.');
 		}else{
-		 $('#uspan').text('');
+		 $('#sid').text('');
 		   sendUid(uid);
 		}
 	});
@@ -146,6 +146,53 @@ $(document).ready(function(){
 
 	
 	$('#registerbtn').click(function(){
+		var uid = $('#uid').val();
+		var uname = $('#uname').val();
+		var upwd = $('#upwd').val();
+		var uphone = $('#uphone').val();
+		var uaddr = $('#uaddr').val();
+		
+		if(uid !=''){
+			$('#sid').text('');
+		}
+		if(upwd !=''){
+			$('#spwd').text('');
+		}
+		if(uname !=''){
+			$('#sname').text('');
+		}
+		if(uphone != ''){
+			$('#sphone').text('');	
+		}
+		if(uaddr !=''){
+			$('#saddr').text('');
+		}
+		if(uid ==''){
+			$('#sid').text('필수 입력 사항입니다');
+			$('#uid').focus();
+			return;
+		}
+		if(upwd ==''){
+			$('#spwd').text('필수 입력 사항입니다');
+			$('#upwd').focus();
+			return;
+		}
+		if(uname ==''){
+			$('#sname').text('필수 입력 사항입니다');
+			$('#uname').focus();
+			return;
+		}
+		if(uphone ==''){
+			$('#sphone').text('필수 입력 사항입니다');
+			$('#uphone').focus();
+			return;
+		}
+		if(uaddr ==''){
+			$('#saddr').text('필수 입력 사항입니다');
+			$('#uaddr').focus();
+			return;
+		}
+
 		$('.form-horizontal').attr({
 			'method':'post',
 			'action':'/build_register'
@@ -171,7 +218,7 @@ $(document).ready(function(){
                <label class="control-label col-sm-2" for="id">ID: </label>
                <div class="col-sm-4">
                     <input type="text" class="form-control" id="uid" name="uid">
-                     <span id="uspan"></span>
+                     <span id="sid"></span>
                   </div>
             </div>
             
@@ -196,13 +243,14 @@ $(document).ready(function(){
                <label class="control-label col-sm-2" for="name">Name:</label>
                  <div class="col-sm-4">          
                     <input type="text" class="form-control" name="uname" id="uname">
+                    <span id="sname"></span>
                  </div>
              </div>
              <div class="form-group">
                <label class="control-label col-sm-2" for="phone">Phone Number:</label>
                  <div class="col-sm-4">          
                     <input type="tel" class="form-control" name="uphone" id="uphone" maxlength="13">
-                 
+                 	<span id="sphone"></span>
            
                  </div>
              </div>

@@ -161,6 +161,7 @@ $(document).ready(function(){
 		var uid = $('#uid').val();
 		var uname = $('#uname').val();
 		var upwd = $('#upwd').val();
+		var uphone = $('#uphone').val();
 		var uaddr = $('#uaddr').val();
 		
 		if(uid !=''){
@@ -171,6 +172,9 @@ $(document).ready(function(){
 		}
 		if(uname !=''){
 			$('#sname').text('');
+		}
+		if(uphone != ''){
+			$('#sphone').text('');	
 		}
 		if(uaddr !=''){
 			$('#saddr').text('');
@@ -190,11 +194,17 @@ $(document).ready(function(){
 			$('#uname').focus();
 			return;
 		}
+		if(uphone ==''){
+			$('#sphone').text('필수 입력 사항입니다');
+			$('#uphone').focus();
+			return;
+		}
 		if(uaddr ==''){
 			$('#saddr').text('필수 입력 사항입니다');
 			$('#uaddr').focus();
 			return;
 		}
+
 
 		
 		$('.form-horizontal').attr({
