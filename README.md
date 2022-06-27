@@ -43,7 +43,7 @@
 
 ## 4. 핵심 기능
 ### 4.1. 페이지 흐름
-![image](https://user-images.githubusercontent.com/103157377/175879339-db639f56-5e7e-4567-b115-7c30019d2e0b.png)
+![image](https://user-images.githubusercontent.com/103157377/175880032-0aae2008-b3c9-468d-827f-83382d1593ec.png)
 <br>
 
 ### 4.a. Build
