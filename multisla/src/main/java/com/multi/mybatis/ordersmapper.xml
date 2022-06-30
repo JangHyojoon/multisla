@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT o.ordersno, o.uid, o.regdate, o.carprice,
 		m.mid, co.colid, w.wid, i.iid,
 		m.mname, co.coloption, w.woption,i.ioption,o.shipprice,o.pay,
-		o.shipname, o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM ORDERS o
+		o.shipname, o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM orders o
 		INNER JOIN model m ON m.mid = o.mid
 		INNER JOIN color co ON co.colid = o.colid
 		INNER JOIN wheel w ON w.wid = o.wid
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT o.ordersno, o.uid, o.regdate, o.carprice,
 		m.mid, co.colid, w.wid, i.iid,
 		m.mname, co.coloption, w.woption,i.ioption,o.shipprice,o.pay,
-		o.shipname, o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM ORDERS o
+		o.shipname, o.shipphone,o.shippost,o.shipaddr,o.shipdaddr,o.finalprice FROM orders o
 		INNER JOIN model m ON m.mid = o.mid
 		INNER JOIN color co ON co.colid = o.colid
 		INNER JOIN wheel w ON w.wid = o.wid
@@ -29,15 +29,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT MAX(ordersno) FROM orders
 	</select>
 	<insert id="insert" parameterType="ordersVO">
-		INSERT INTO ORDERS VALUES (NULL,#{uid},SYSDATE(),#{carprice},#{mid},#{colid},#{wid},#{iid},#{shipprice},#{pay},#{shipname},#{shipphone},#{shippost},#{shipaddr},#{shipdaddr},#{finalprice})
+		INSERT INTO orders VALUES (NULL,#{uid},SYSDATE(),#{carprice},#{mid},#{colid},#{wid},#{iid},#{shipprice},#{pay},#{shipname},#{shipphone},#{shippost},#{shipaddr},#{shipdaddr},#{finalprice})
 	</insert>
 	<update id="update" parameterType="ordersVO">
-		UPDATE ORDERS SET UID=#{uid},CARPRICE=#{carprice}, MID=#{mid}, COLID=#{colid}, WID=#{wid}, IID=#{iid}, SHIPPRICE=#{shipprice},PAY=#{pay},
-		SHIPNAME=#{shipname},SHIPPHONE=#{shipphone},SHIPPOST=#{shippost}, SHIPPOST=#{shippost}, SHIPADDR=#{shipaddr}, SHIPDADDR=#{shipdaddr},FINALPRICE=#{finalprice}
-		WHERE ORDERSNO=#{ordersno}
+		UPDATE ORDERS SET uid=#{uid},carprice=#{carprice}, mid=#{mid}, colid=#{colid}, wid=#{wid}, iid=#{iid}, shipprice=#{shipprice},pay=#{pay},
+		shipname=#{shipname},shipphone=#{shipphone},shippost=#{shippost}, shippost=#{shippost}, shipaddr=#{shipaddr}, shipdaddr=#{shipdaddr},finalprice=#{finalprice}
+		WHERE ordersno=#{ordersno}
 	</update>
 	<delete id="delete" parameterType="ordersVO">
-		DELETE FROM ORDERS WHERE ORDERSNO=#{ordersno}
+		DELETE FROM orders WHERE ordersno=#{ordersno}
 	</delete>
 </mapper>
 

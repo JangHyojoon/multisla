@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartypeMapper">
 	
 	<select id="select" parameterType="int" resultType="cartypeVO">
-		SELECT * FROM cartype WHERE CTID=#{ctid}
+		SELECT * FROM cartype WHERE ctid=#{ctid}
 	</select>
 	<select id="selectall" resultType="cartypeVO">
 		SELECT * FROM cartype
@@ -20,14 +20,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 	<update id="update" parameterType="cartypeVO">
 		<if test="pid != 0">
-			UPDATE cartype SET CTNAME=#{ctname},PID=#{pid} WHERE CTID=#{ctid}
+			UPDATE cartype SET ctname=#{ctname},pid=#{pid} WHERE ctid=#{ctid}
 		</if>
 		<if test="pid == 0">
-			UPDATE cartype SET CTNAME=#{ctname} WHERE CTID=#{ctid}
+			UPDATE cartype SET ctname=#{ctname} WHERE ctid=#{ctid}
 		</if>
 	</update>
 	<delete id="delete" parameterType="int">
-		DELETE FROM cartype WHERE CTID=#{ctid}
+		DELETE FROM cartype WHERE ctid=#{ctid}
 	</delete>
 	
 </mapper>

@@ -5,19 +5,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.ColorMapper">
 
 	<select id="select" parameterType="int" resultType="colorVO">
-		SELECT * FROM COLOR WHERE COLID=#{id}
+		SELECT * FROM color WHERE colid=#{id}
 	</select>
 	<select id="selectall" resultType="colorVO">
-		SELECT * FROM COLOR
+		SELECT * FROM color
 	</select>
 	<insert id="insert" parameterType="colorVO">
-		INSERT INTO COLOR VALUES (NULL,#{coloption},#{colprice})
+		INSERT INTO color VALUES (NULL,#{coloption},#{colprice})
 	</insert>
 	<update id="update" parameterType="colorVO">
-		UPDATE COLOR SET COLOPTION=#{coloption},COLPRICE=#{colprice} WHERE COLID=#{colid}
+		UPDATE color SET coloption=#{coloption},colprice=#{colprice} WHERE colid=#{colid}
 	</update>
 	<delete id="delete" parameterType="int">
-		DELETE FROM COLOR WHERE COLID=#{colid}
+		DELETE FROM color WHERE colid=#{colid}
 	</delete>
 
 </mapper>

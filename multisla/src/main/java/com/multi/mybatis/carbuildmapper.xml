@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN color c on cb.colid=c.colid
 		INNER JOIN wheel w on cb.wid=w.wid
 		INNER JOIN interior i on cb.iid=i.iid
-		WHERE CODENO=#{codeno}
+		WHERE codeno=#{codeno}
 	</select>
 	<select id="selectall" resultType="carbuildVO">
 		select cb.codeno,cb.mid,cb.colid,cb.wid,cb.iid,cb.corder,m.mprice+c.colprice+w.wprice+i.iprice as carprice from carbuild cb
@@ -33,10 +33,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO carbuild VALUES (NULL,#{mid},#{colid},#{wid},#{iid},#{corder})
 	</insert>
 	<update id="update" parameterType="carbuildVO">
-		UPDATE carbuild SET MID=#{mid}, COLID=#{colid},WID=#{wid},IID=#{iid},CORDER=#{corder} WHERE CODENO=#{codeno}
+		UPDATE carbuild SET mid=#{mid}, colid=#{colid},wid=#{wid},iid=#{iid},corder=#{corder} WHERE codeno=#{codeno}
 	</update>
 	<delete id="delete" parameterType="int">
-		DELETE FROM carbuild WHERE CODENO=#{codeno}
+		DELETE FROM carbuild WHERE codeno=#{codeno}
 	</delete>
 	
 </mapper>

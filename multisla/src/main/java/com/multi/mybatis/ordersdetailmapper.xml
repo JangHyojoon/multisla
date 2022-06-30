@@ -5,25 +5,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.OrdersdetailMapper">
 	
 	<select id="select" parameterType="int" resultType="ordersdetailVO">
-		SELECT * FROM ORDERSDETAIL WHERE ODETAILNO=#{odetailno}
+		SELECT * FROM ordersdetail WHERE odetailno=#{odetailno}
 	</select>
 	<select id="selectall" resultType="ordersdetailVO">
-		SELECT * FROM ORDERSDETAIL
+		SELECT * FROM ordersdetail
 	</select>
 	<select id="selectcodeno" parameterType="int" resultType="ordersdetailVO">
-		SELECT * FROM ORDERSDETAIL WHERE CODENO=#{codeno}
+		SELECT * FROM ordersdetail WHERE codeno=#{codeno}
 	</select>
 	<select id="selectlast" resultType="int">
 		SELECT MAX(odetailno) FROM ordersdetail
 	</select>
 	<insert id="insert" parameterType="ordersdetailVO">
-		INSERT INTO ORDERSDETAIL VALUES (NULL,#{ostatus},#{shipdate},#{ordersno},#{codeno})
+		INSERT INTO ordersdetail VALUES (NULL,#{ostatus},#{shipdate},#{ordersno},#{codeno})
 	</insert>
 	<update id="update" parameterType="ordersdetailVO">
-		UPDATE ORDERSDETAIL SET OSTATUS=#{ostatus},SHIPDATE=#{shipdate},ORDERSNO=#{ordersno},CODENO=#{codeno} WHERE ODETAILNO=#{odetailno}
+		UPDATE ordersdetail SET ostatus=#{ostatus},shipdate=#{shipdate},ordersno=#{ordersno},codeno=#{codeno} WHERE odetailno=#{odetailno}
 	</update>
 	<delete id="delete" parameterType="ordersdetailVO">
-		DELETE FROM ORDERSDETAIL WHERE ODETAILNO=#{odetailno}
+		DELETE FROM ordersdetail WHERE odetailno=#{odetailno}
 	</delete>
 </mapper>
 

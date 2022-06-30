@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.ModelMapper">
 	
 	<select id="select" parameterType="int" resultType="modelVO">
-		SELECT * FROM model WHERE MID=#{mid}
+		SELECT * FROM model WHERE mid=#{mid}
 	</select>
 	<select id="selectall" resultType="modelVO">
 		SELECT * FROM model
@@ -14,10 +14,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO model VALUES (NULL,#{ctid},#{mname},#{mprice},curdate())
 	</insert>
 	<update id="update" parameterType="modelVO">
-		UPDATE model SET MNAME=#{mname},MPRICE=#{mprice},CTID=#{ctid} WHERE MID=#{mid}
+		UPDATE model SET mname=#{mname},mprice=#{mprice},ctid=#{ctid} WHERE mid=#{mid}
 	</update>
 	<delete id="delete" parameterType="int">
-		DELETE FROM model WHERE MID=#{mid}
+		DELETE FROM model WHERE mid=#{mid}
 	</delete>
 	
 </mapper>

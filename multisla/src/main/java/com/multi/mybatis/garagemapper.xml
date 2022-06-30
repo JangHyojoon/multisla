@@ -65,13 +65,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE g.uid = #{uid} AND ca.corder = false;
 	</select>
 	<insert id="insert" parameterType="garageVO">
-		INSERT INTO GARAGE VALUES (NULL,#{codeno},#{uid})
+		INSERT INTO garage VALUES (NULL,#{codeno},#{uid})
 	</insert>
 	<update id="update" parameterType="garageVO">
-		UPDATE GARAGE SET CODENO=#{codeno},UID=#{uid} WHERE GID=#{gid}
+		UPDATE garage SET codeno=#{codeno},uid=#{uid} WHERE gid=#{gid}
 	</update>
 	<delete id="delete" parameterType="int">
-		DELETE FROM GARAGE WHERE GID=#{gid}
+		DELETE FROM garage WHERE gid=#{gid}
 	</delete>
 
 </mapper>
